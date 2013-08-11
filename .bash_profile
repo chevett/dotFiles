@@ -40,4 +40,3 @@ GIT_PS1_SHOWCOLORHINTS="yes"
 
 export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ ";'
 
-cd ~/code
