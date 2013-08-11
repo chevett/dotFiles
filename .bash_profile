@@ -26,17 +26,8 @@ alias hbuiTests='testTango'
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-#export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
-
-#export PS1="\u@\h \W\e[1;33m\]\$(parse_git_branch)\e[m $ "
-
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS="yes"
 
-
-export PROMPT_COMMAND='__git_ps1 "\u@\h:\W" "\\\$ ";'
+export PROMPT_COMMAND='__git_ps1 "\u\[\033[0;97m\]@\[\033[0;00m\]\h:\[\033[0;97m\]\W\[\033[0;00m\] " "\\\$ ";'
 
