@@ -1,0 +1,26 @@
+[alias]
+	ci = commit am
+	sup = submodule update --init --recursive
+	hash = rev-parse
+	co = checkout
+	h = rev-parse
+	cph = !sh -c 'git hash HEAD | pbcopy' -
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	cp = cherry-pick
+[user]
+	name = Mike Chevett
+	email = mchevett@appnexus.com
+[core]
+	excludesfile = /Users/mchevett/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color]
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
