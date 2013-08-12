@@ -21,7 +21,7 @@ hi PMenu cterm=NONE ctermbg=39 ctermfg=233 guibg=darkred guifg=white
 "hi Search cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi PMenuSel cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 "hi PMenu cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"hi PMenu cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi LineNr cterm=NONE ctermfg=237
 hi NonText ctermfg=234
 hi SpecialKey ctermfg=234
 hi Search ctermbg=49 ctermfg=233

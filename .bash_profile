@@ -23,11 +23,12 @@ alias testTango='/Users/mchevett/adnxs/hbui/master/tests/PhantomJasmine/runUnitT
 alias tangoTests='testTango'
 alias hbuiTests='testTango'
 
+
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS="yes"
 
-export PROMPT_COMMAND='__git_ps1 "\u\[\033[0;97m\]@\[\033[0;00m\]\h:\[\033[0;97m\]\W\[\033[0;00m\] " "\\\$ ";'
+export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]\h:\[\033[0;97m\]\W\[\033[0;255m\] " "\\\$ ";'
 
