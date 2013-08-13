@@ -7,6 +7,10 @@ syntax on
 set nocompatible               " be iMproved
  filetype off                   " required!
 
+ let g:vimfiler_as_default_explorer = 1
+
+ set showtabline=2
+ 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
@@ -14,6 +18,9 @@ let g:CommandTMaxFiles=20000
 "let g:CommandTHighlightColor=red
 
 exec 'set viminfo=%,' . &viminfo
+
+set grepprg=ack
+
 
 hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred guifg=#121212
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -34,6 +41,7 @@ nmap <C-j> :call smooth_scroll#down(15, 4, 1)<CR>
 nmap <C-h> 10h
 nmap <C-l> 10l
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+map <C-l> :VimFilerExplorer<CR> 
 
  set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
@@ -58,6 +66,7 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
  Bundle 'git@github.com:terryma/vim-smooth-scroll.git' 
  Bundle 'git@github.com:Shougo/unite.vim.git'
  Bundle 'git@github.com:Shougo/vimfiler.vim.git'
+ Bundle 'https://github.com/mileszs/ack.vim.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
