@@ -4,3 +4,4 @@ ln -sF ~/code/dotFiles/.bash_profile ~/.bash_profile
 ln -sF ~/code/dotFiles/.vimrc ~/.vimrc
 ln -sF ~/code/dotFiles/.gitconfig ~/.gitconfig
 ln -sF ~/code/dotFiles/.gitignore_global ~/.gitignore_global
+ln -sF ~/code/dotFiles/.ackrc ~/.ackrc
