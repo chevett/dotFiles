@@ -33,7 +33,7 @@ hi NonText ctermfg=234
 hi SpecialKey ctermfg=234
 hi Search ctermbg=49 ctermfg=233
 
-nmap <Space> ,b
+"nmap <Space> ,b
 "nmap <S-Enter> 
 
 nmap <C-k> :call smooth_scroll#up(15, 5, 1)<CR>
@@ -41,6 +41,9 @@ nmap <C-j> :call smooth_scroll#down(15, 4, 1)<CR>
 nmap <C-h> 10h
 nmap <C-l> 10l
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>m :TernDef<CR>
+nnoremap <Leader>u :TernRefs<CR>
+nnoremap <Leader>r :TernRename<CR>
 map <C-l> :VimFilerExplorer<CR> 
 
  set rtp+=~/.vim/bundle/vundle/
@@ -67,6 +70,8 @@ map <C-l> :VimFilerExplorer<CR>
  Bundle 'git@github.com:Shougo/unite.vim.git'
  Bundle 'git@github.com:Shougo/vimfiler.vim.git'
  Bundle 'https://github.com/mileszs/ack.vim.git'
+ Bundle 'git@github.com:guns/xterm-color-table.vim.git'
+ 
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
@@ -86,7 +91,6 @@ else
 endif
 endfunction "call AutoHighlightToggle() "======================================================================== 
 
- Bundle 'git@github.com:guns/xterm-color-table.vim.git'
 
  "------------------------ neo completion with cache -------------------------------------
  let g:acp_enableAtStartup = 0
