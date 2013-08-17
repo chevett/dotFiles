@@ -71,6 +71,7 @@ map <C-l> :VimFilerExplorer<CR>
  Bundle 'git@github.com:Shougo/vimfiler.vim.git'
  Bundle 'https://github.com/mileszs/ack.vim.git'
  Bundle 'git@github.com:guns/xterm-color-table.vim.git'
+ Bundle 'https://github.com/groenewege/vim-less.git'
  
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
