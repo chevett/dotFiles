@@ -13,6 +13,7 @@
 	email = mchevett@appnexus.com
 [core]
 	excludesfile = /Users/mchevett/.gitignore_global
+	editor = /usr/local/bin/vim -f
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
