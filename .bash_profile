@@ -6,7 +6,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 alias 'cd..'='cd ..'
-alias ll="ls -lv" # --group-directories-first"
+alias ll="ls -lv" # --group-directories-first
 alias lm='ll |more'        #  Pipe through 'more'
 alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
