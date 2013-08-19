@@ -15,7 +15,6 @@ alias jpp='python -mjson.tool'
 
 
 alias ipReset='sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP && sudo launchctl stop com.apple.racoon && sudo launchctl start com.apple.racoon'
-alias txt="sublime"
 
 alias commitLink='sh /users/mchevett/scripts/commitLink'  
 
@@ -30,5 +29,5 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS="yes"
 
-export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]\h:\[\033[0;97m\]\W\[\033[0;255m\] " "\\\$ ";'
+export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]\h:\[\033[0;97m\]\W\[\033[0;255m\]" "\\\$ ";'
 
