@@ -31,3 +31,4 @@ GIT_PS1_SHOWCOLORHINTS="yes"
 
 export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]\h:\[\033[0;97m\]\W\[\033[0;255m\]" "\\\$ ";'
 
+alias find=gfind #use find from homebrew
