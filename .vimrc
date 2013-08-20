@@ -21,6 +21,7 @@ exec 'set viminfo=%,' . &viminfo
 
 set grepprg=ack
 
+set mouse=n
 
 hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred guifg=#121212
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
