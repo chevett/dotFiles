@@ -40,6 +40,7 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 6, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 6, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 6, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 6, 4)<CR>
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
 nmap <C-h> 10h
 nmap <C-l> 10l
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
