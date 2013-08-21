@@ -7,6 +7,7 @@ syntax on
 set nocompatible               " be iMproved
  filetype off                   " required!
 
+set wildignore+=node_modules,.git
  let g:vimfiler_as_default_explorer = 1
 
  set showtabline=2
