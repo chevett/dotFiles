@@ -10,6 +10,7 @@ set nocompatible               " be iMproved
 set wildignore+=node_modules,.git
  let g:vimfiler_as_default_explorer = 1
 
+let g:vimfiler_edit_action = 'tabopen'
  set showtabline=2
  
 filetype plugin on
@@ -49,7 +50,7 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
-map <C-l> :VimFilerExplorer<CR> 
+map <C-l> :NERDTree<CR> 
 
  set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
@@ -72,11 +73,10 @@ map <C-l> :VimFilerExplorer<CR>
  Bundle 'git@github.com:marijnh/tern_for_vim.git'
  Bundle 'git@github.com:terryma/vim-expand-region.git' 
  Bundle 'git@github.com:terryma/vim-smooth-scroll.git' 
- Bundle 'git@github.com:Shougo/unite.vim.git'
- Bundle 'git@github.com:Shougo/vimfiler.vim.git'
  Bundle 'https://github.com/mileszs/ack.vim.git'
  Bundle 'git@github.com:guns/xterm-color-table.vim.git'
  Bundle 'https://github.com/groenewege/vim-less.git'
+ Bundle 'git@github.com:scrooloose/nerdtree.git'
  
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
