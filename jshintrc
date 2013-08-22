@@ -3,6 +3,7 @@
 	"unused": true,
 	"globals": {
 		"anx": false,
-		"ANX": false
+		"ANX": false,
+		"console": false
 	}
 }
