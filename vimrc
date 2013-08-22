@@ -46,10 +46,13 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
-nnoremap <Leader>l :NERDTreeToggle<CR>
 nnoremap <Leader>k :cd %:p:h<CR>:NERDTreeCWD<CR>
+nnoremap <Leader>l :NERDTreeToggle<CR>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
- 
+
+nnoremap <Space> <C-w>w
+nnoremap <Tab> gT
+
 set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
 
