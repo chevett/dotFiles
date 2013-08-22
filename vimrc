@@ -75,7 +75,7 @@ set rtp+=~/.vim/bundle/vundle/
  Bundle 'git@github.com:guns/xterm-color-table.vim.git'
  Bundle 'https://github.com/groenewege/vim-less.git'
  Bundle 'git@github.com:scrooloose/nerdtree.git'
- 
+ Bundle 'git@github.com:scrooloose/syntastic.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
