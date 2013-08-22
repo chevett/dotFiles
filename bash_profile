@@ -1,5 +1,4 @@
-#export PATH=/usr/local/bin:
-
+PATH=~/bin:$PATH
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
@@ -12,6 +11,7 @@ alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias jpp='python -mjson.tool'
+alias dif='git --no-pager diff'
 
 
 alias ipReset='sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP && sudo launchctl stop com.apple.racoon && sudo launchctl start com.apple.racoon'

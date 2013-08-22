@@ -8,7 +8,6 @@ set nocompatible               " be iMproved
  filetype off                   " required!
 
 set wildignore+=node_modules,.git
- let g:vimfiler_as_default_explorer = 1
 
 let g:vimfiler_edit_action = 'tabopen'
  set showtabline=2
@@ -48,7 +47,7 @@ nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
 nnoremap <Leader>l :NERDTreeToggle<CR>
-nnoremap <Leader>k :NERDTreeToggleCWD<CR>
+nnoremap <Leader>k :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
  
 set rtp+=~/.vim/bundle/vundle/

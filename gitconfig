@@ -14,9 +14,6 @@
 [core]
 	excludesfile = /Users/mchevett/.gitignore_global
 	editor = /usr/local/bin/vim -f
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -25,3 +22,10 @@
         diff = auto
         interactive = auto
         status = auto
+[diff]
+	external = git_diff_wrapper
+	pager = cat
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
