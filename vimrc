@@ -1,42 +1,37 @@
 let mapleader=","
 let t_Co=256
+
 set tags=tags;~
 set cursorline
 set number
-syntax on
-set nocompatible               " be iMproved
- filetype off                   " required!
-
+set nocompatible 
+set grepprg=ack
+set omnifunc=syntaxcomplete#Complete
 set wildignore+=node_modules,.git
+set showtabline=2
+set mouse=n
 
-let g:vimfiler_edit_action = 'tabopen'
- set showtabline=2
+syntax on
+filetype off                   " required!
+
  
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
 
 let g:CommandTMaxFiles=20000
 "let g:CommandTHighlightColor=red
 
 exec 'set viminfo=%,' . &viminfo
 
-set grepprg=ack
 
-set mouse=n
 
 hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred guifg=#121212
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi PMenu cterm=NONE ctermbg=39 ctermfg=233 guibg=darkred guifg=white
-"hi Search cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi PMenuSel cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"hi PMenu cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi LineNr cterm=NONE ctermfg=237
 hi NonText ctermfg=234
 hi SpecialKey ctermfg=234
 hi Search ctermbg=49 ctermfg=233
-
-"nmap <Space> ,b
-"nmap <S-Enter> 
 
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 6, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 6, 2)<CR>
@@ -48,10 +43,12 @@ nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
 nnoremap <Leader>k :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader>l :NERDTreeToggle<CR>
+nnoremap <Leader>s :w<CR>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
-
 nnoremap <Space> <C-w>w
 nnoremap <Tab> gT
+nnoremap <C-s> :w<CR>
+
 
 set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
@@ -117,7 +114,7 @@ function! s:my_cr_function()
 
  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>" 
  inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
- inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
  inoremap <expr><C-y>  neocomplcache#close_popup()
  inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "========================================================================================
@@ -133,7 +130,7 @@ set laststatus=2
 set statusline+=%F
 
  " highlight tabs and trailing spaces
- set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+ set listchars=tab:>-,trail:~,extends:>,precedes:<
  set list
  set tabstop=4
  
