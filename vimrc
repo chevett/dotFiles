@@ -46,6 +46,8 @@ nnoremap <Leader>l :NERDTreeToggle<CR>
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
 nnoremap <Space> <C-w>w
+nnoremap <C-Space> <Esc>
+nnoremap <C-V> :tabe ~/.vimrc<CR>
 nnoremap <Tab> gT
 nnoremap <C-s> :w<CR>
 
