@@ -67,31 +67,24 @@ nnoremap <C-V> :tabe ~/.vimrc<CR>
 nnoremap <Tab> gT
 
 set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
+call vundle#rc()
 
- " let Vundle manage Vundle
- " required! 
- Bundle 'gmarik/vundle'
-
- " My Bundles here:
- "
- " original repos on github
- Bundle 'tpope/vim-fugitive'
-
- Bundle 'L9'
- Bundle 'FuzzyFinder'
- Bundle 'Lokaltog/vim-easymotion'
- Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
- Bundle 'tpope/vim-rails.git'
- Bundle 'git://git.wincent.com/command-t.git'
- Bundle 'git@github.com:marijnh/tern_for_vim.git'
- Bundle 'git@github.com:terryma/vim-expand-region.git' 
- Bundle 'git@github.com:terryma/vim-smooth-scroll.git' 
- Bundle 'https://github.com/mileszs/ack.vim.git'
- Bundle 'git@github.com:guns/xterm-color-table.vim.git'
- Bundle 'https://github.com/groenewege/vim-less.git'
- Bundle 'git@github.com:scrooloose/nerdtree.git'
- Bundle 'git@github.com:scrooloose/syntastic.git'
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'git@github.com:marijnh/tern_for_vim.git'
+Bundle 'git@github.com:terryma/vim-expand-region.git' 
+Bundle 'git@github.com:terryma/vim-smooth-scroll.git' 
+Bundle 'https://github.com/mileszs/ack.vim.git'
+Bundle 'git@github.com:guns/xterm-color-table.vim.git'
+Bundle 'https://github.com/groenewege/vim-less.git'
+Bundle 'git@github.com:scrooloose/nerdtree.git'
+Bundle 'git@github.com:scrooloose/syntastic.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
