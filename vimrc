@@ -13,8 +13,20 @@ set mouse=n
 set shiftwidth=4
 set tabstop=4
 
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set rnu
+autocmd InsertEnter * :call SetInsertOptions()
+autocmd InsertLeave * :call SetNormalOptions()
+
+function SetInsertOptions()
+	hi StatusLine ctermfg=darkred ctermbg=white
+	set number
+endfunction
+
+function SetNormalOptions()
+	hi StatusLine ctermfg=41 ctermbg=black
+	set relativenumber
+endfunction
+
+call SetNormalOptions()
 
 syntax on
 filetype off                   " required!
