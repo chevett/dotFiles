@@ -105,29 +105,6 @@ endif
 endfunction "call AutoHighlightToggle() "======================================================================== 
 
 
- "------------------------ neo completion with cache -------------------------------------
- let g:acp_enableAtStartup = 0
- 
- " Use neocomplcache.
- let g:neocomplcache_enable_at_startup = 1
- Bundle 'git@github.com:Shougo/neocomplcache.vim.git'
-
-noremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-	  return neocomplcache#smart_close_popup() . "\<CR>"
-	    " For no inserting <CR> key.
-	    "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-	  endfunction
-
-
-
- inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>" 
- inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
- inoremap <expr><C-y>  neocomplcache#close_popup()
- inoremap <expr><C-e>  neocomplcache#cancel_popup()
-"========================================================================================
-
 " Enable omni completion.
  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -141,15 +118,3 @@ set statusline+=%F
  " highlight tabs and trailing spaces
  set listchars=tab:>-,trail:~,extends:>,precedes:<
  set list
- 
- 
- 
- "
- " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Bundle command are not allowed..
