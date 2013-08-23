@@ -3,18 +3,23 @@ let t_Co=256
 
 set tags=tags;~
 set cursorline
-set number
+set relativenumber
 set nocompatible 
 set grepprg=ack
 set omnifunc=syntaxcomplete#Complete
 set wildignore+=node_modules,.git
 set showtabline=2
 set mouse=n
+set shiftwidth=4
+set tabstop=4
+
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set rnu
 
 syntax on
 filetype off                   " required!
 
- 
+
 filetype plugin on
 
 let g:CommandTMaxFiles=20000
@@ -131,7 +136,6 @@ set statusline+=%F
  " highlight tabs and trailing spaces
  set listchars=tab:>-,trail:~,extends:>,precedes:<
  set list
- set tabstop=4
  
  
  
