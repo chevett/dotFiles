@@ -5,7 +5,7 @@ set tags=tags;~
 set cursorline
 set relativenumber
 set nocompatible 
-set grepprg=ack
+"set grepprg=ack
 set omnifunc=syntaxcomplete#Complete
 set wildignore+=node_modules,.git
 set showtabline=2
@@ -35,13 +35,11 @@ filetype off                   " required!
 filetype plugin on
 
 let g:CommandTMaxFiles=20000
-"let g:CommandTHighlightColor=red
 
 exec 'set viminfo=%,' . &viminfo
 
 
-
-hi CursorLine   cterm=NONE ctermbg=233 guibg=darkred guifg=#121212
+hi CursorLine   cterm=NONE ctermbg=235
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi PMenu cterm=NONE ctermbg=39 ctermfg=233 guibg=darkred guifg=white
 hi PMenuSel cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -60,11 +58,13 @@ nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
 nnoremap <Leader>k :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader>l :NERDTreeToggle<CR>
+nnoremap <Leader>f :Ack --smart-case<space>
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
 nnoremap <Space> <C-w>w
 nnoremap <C-V> :tabe ~/.vimrc<CR>
 nnoremap <Tab> gT
+
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
