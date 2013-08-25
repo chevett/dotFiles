@@ -4,6 +4,11 @@
 	"globals": {
 		"anx": false,
 		"ANX": false,
-		"console": false
+		"console": false,
+		"describe": false,
+		"it": false,
+		"exports": false,
+		"require": false
+		
 	}
 }

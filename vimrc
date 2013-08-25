@@ -17,7 +17,7 @@ autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
 
 function SetInsertOptions()
-	hi StatusLine ctermfg=darkred ctermbg=white
+	hi StatusLine ctermfg=124 ctermbg=white
 	set number
 endfunction
 
