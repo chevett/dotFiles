@@ -64,6 +64,12 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the cu
 nnoremap <Space> <C-w>w
 nnoremap <C-V> :tabe ~/.vimrc<CR>
 nnoremap <Tab> gT
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
+imap <C-w> <C-o>w
+imap <C-b> <C-o>b
 
 
 set rtp+=~/.vim/bundle/vundle/
