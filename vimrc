@@ -91,6 +91,7 @@ Bundle 'git@github.com:guns/xterm-color-table.vim.git'
 Bundle 'https://github.com/groenewege/vim-less.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
+Bundle 'git@github.com:itchyny/lightline.vim.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
