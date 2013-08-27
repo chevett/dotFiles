@@ -1,6 +1,6 @@
 let mapleader=","
 let t_Co=256
-
+let g:rbpt_loadcmd_toggle = 0 " rainbow parens
 set tags=tags;~
 set cursorline
 set relativenumber
@@ -70,7 +70,7 @@ imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 imap <C-w> <C-o>w
 imap <C-b> <C-o>b
-imap <C-q> <Esc>:w!<CR>
+imap <C-]> <Esc>:w!<CR>
 
 
 set rtp+=~/.vim/bundle/vundle/
@@ -93,6 +93,7 @@ Bundle 'https://github.com/groenewege/vim-less.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:itchyny/lightline.vim.git'
+Bundle 'https://github.com/kien/rainbow_parentheses.vim'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
@@ -126,3 +127,18 @@ set statusline+=%F
  " highlight tabs and trailing spaces
  set listchars=tab:>-,trail:~,extends:>,precedes:<
  set list
+
+ let g:rbpt_colorpairs = [
+     \ ['2',    '2'],
+     \ ['3',    '3'],
+     \ ['4',   '4'],
+     \ ['5',    '5'],
+     \ ['6',     '6'],
+     \ ['7', '7'],
+     \ ]
+
+let g:rbpt_max=6
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
