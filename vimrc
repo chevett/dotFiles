@@ -70,6 +70,7 @@ imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 imap <C-w> <C-o>w
 imap <C-b> <C-o>b
+imap <C-q> <Esc>:w!<CR>
 
 
 set rtp+=~/.vim/bundle/vundle/
