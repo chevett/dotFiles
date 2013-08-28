@@ -39,6 +39,7 @@ let g:CommandTMaxFiles=20000
 exec 'set viminfo=%,' . &viminfo
 
 
+
 hi CursorLine   cterm=NONE ctermbg=235
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi PMenu cterm=NONE ctermbg=39 ctermfg=233 guibg=darkred guifg=white
@@ -60,11 +61,11 @@ nnoremap <Leader>k :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader>l :NERDTreeToggle<CR>
 nnoremap <Leader>f :Ack --smart-case<space>
 nnoremap <Leader>s :w<CR>
+nnoremap <Leader>O O<Esc>
+nnoremap <Leader>o o<Esc>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
 nnoremap <Space> <C-w>w
 nnoremap <C-V> :tabe ~/.vimrc<CR>
-nnoremap <C-O> O<Esc>
-nnoremap <C-o> o<Esc>
 nnoremap <Tab> gT
 imap <C-h> <C-o>h
 imap <C-j> <C-o>j
