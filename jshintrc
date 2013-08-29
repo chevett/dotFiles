@@ -1,6 +1,9 @@
 {
 	"undef": true,
 	"unused": true,
+	"node" : true,
+    "es5" : true,
+    "browser" : true,	
 	"globals": {
 		"anx": false,
 		"ANX": false,
