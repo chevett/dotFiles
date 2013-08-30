@@ -5,3 +5,4 @@
 .tern-project
 .tern-port
 *.swp
+node_modules
