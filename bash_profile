@@ -32,4 +32,9 @@ GIT_PS1_SHOWCOLORHINTS="yes"
 export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]\h:\[\033[0;97m\]\W\[\033[0;255m\]" "\\\$ ";'
 
 alias find=gfind #use find from homebrew
-alias sed=gsed -r #use find from homebrew
+alias sed='gsed -r' #use find from homebrew
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
