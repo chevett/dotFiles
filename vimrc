@@ -57,8 +57,6 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
-nnoremap <Leader>k :cd %:p:h<CR>:NERDTreeCWD<CR>
-nnoremap <Leader>l :NERDTreeToggle<CR>
 nnoremap <Leader>f :Ack --smart-case<space>
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>O O<Esc>
@@ -73,8 +71,18 @@ imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 imap <C-w> <C-o>w
 imap <C-b> <C-o>b
+imap <C-6> <C-o>^
+imap <C-4> <C-o>$
 imap <C-]> <Esc>:w!<CR>
 
+
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+
+nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
+nnoremap <Leader><Leader>2 :NERDTreeToggle<CR>
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
