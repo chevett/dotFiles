@@ -8,3 +8,5 @@ ln -sF ~/code/dotFiles/ackrc ~/.ackrc
 ln -sF ~/code/dotFiles/jshintrc ~/.jshintrc
 ln -sF ~/code/dotFiles/tmux.conf ~/.tmux.conf
 ln -sF ~/code/dotFiles/git_diff_wrapper ~/bin/git_diff_wrapper
+rm -rf ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+ln -sF ~/code/dotFiles/sublime2/User/ ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
