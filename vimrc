@@ -92,7 +92,7 @@ nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
 "nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
-nnoremap <Leader><Leader>1 :NERDTreeToggle<CR>
+nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
 nnoremap <Leader><Leader>2 :NERDTreeFind<CR>
 
 set rtp+=~/.vim/bundle/vundle/
@@ -116,6 +116,7 @@ Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:itchyny/lightline.vim.git'
 Bundle 'git@github.com:airblade/vim-gitgutter.git'
+Bundle 'git@github.com:jistr/vim-nerdtree-tabs.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
