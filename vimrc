@@ -4,7 +4,12 @@ let g:rbpt_loadcmd_toggle = 0 " rainbow parens
 set tags=tags;~
 set cursorline
 set relativenumber
+set hidden 
+set autoindent
+set smartcase
+set ignorecase
 set nocompatible 
+set backspace=2 " make backspace work like most other apps
 "set grepprg=ack
 set omnifunc=syntaxcomplete#Complete
 set wildignore+=node_modules,.git
@@ -12,6 +17,11 @@ set showtabline=2
 set mouse=n
 set shiftwidth=4
 set tabstop=4
+set nobackup
+set noswapfile
+
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
@@ -38,8 +48,7 @@ let g:CommandTMaxFiles=20000
 
 exec 'set viminfo=%,' . &viminfo
 
-
-
+hi MatchParen cterm=NONE ctermbg=169
 hi CursorLine   cterm=NONE ctermbg=235
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi PMenu cterm=NONE ctermbg=39 ctermfg=233 guibg=darkred guifg=white
@@ -49,10 +58,11 @@ hi NonText ctermfg=234
 hi SpecialKey ctermfg=234
 hi Search ctermbg=49 ctermfg=233
 
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 6, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 6, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 6, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 6, 4)<CR>
+nnoremap ; :
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
@@ -71,8 +81,8 @@ imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 imap <C-w> <C-o>w
 imap <C-b> <C-o>b
-imap <C-6> <C-o>^
-imap <C-4> <C-o>$
+imap <C-^> <C-o>^
+imap <C-$> <C-o>$
 imap <C-]> <Esc>:w!<CR>
 
 
@@ -81,8 +91,9 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
-nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
-nnoremap <Leader><Leader>2 :NERDTreeToggle<CR>
+"nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
+nnoremap <Leader><Leader>1 :NERDTreeToggle<CR>
+nnoremap <Leader><Leader>2 :NERDTreeFind<CR>
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
