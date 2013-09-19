@@ -27,6 +27,7 @@ let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
 autocmd BufNewFile,BufRead *.pjs set filetype=javascript
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 function SetInsertOptions()
 	hi StatusLine ctermfg=124 ctermbg=white
