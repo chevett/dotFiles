@@ -14,7 +14,7 @@ set backspace=2 " make backspace work like most other apps
 set omnifunc=syntaxcomplete#Complete
 set wildignore+=node_modules,.git
 set showtabline=2
-set mouse=n
+set mouse=nirc
 set shiftwidth=4
 set tabstop=4
 set nobackup
@@ -106,7 +106,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git@github.com:marijnh/tern_for_vim.git'
@@ -154,3 +153,5 @@ set statusline+=%F
  set listchars=tab:>-,trail:~,extends:>,precedes:<
  set list
 
+
+ vnoremap <C-c> "+yi
