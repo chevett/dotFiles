@@ -22,7 +22,6 @@ alias tangoTests='testTango'
 alias hbuiTests='testTango'
 alias find=gfind #use find from homebrew
 alias sed='gsed -r' #use find from homebrew
-alias 8888='~/code/8888/sync' #do the ploy port 8888 style
 
 
 GIT_PS1_SHOWUPSTREAM="auto"

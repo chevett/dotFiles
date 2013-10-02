@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+cd ~/code/public/
+git add -A
+git commit -am'syncing'
+git push ploy master
+cd -
