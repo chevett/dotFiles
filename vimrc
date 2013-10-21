@@ -48,6 +48,7 @@ filetype off                   " required!
 filetype plugin on
 
 let g:CommandTMaxFiles=20000
+let g:CommandTMatchWindowAtTop=1
 
 exec 'set viminfo=%,' . &viminfo
 

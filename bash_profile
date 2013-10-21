@@ -22,7 +22,7 @@ alias tangoTests='testTango'
 alias hbuiTests='testTango'
 alias find=gfind #use find from homebrew
 alias sed='gsed -r' #use find from homebrew
-
+stty -ixon -ixoff # this allows ctrl-s in vim
 
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS="yes"
