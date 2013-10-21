@@ -12,7 +12,6 @@ set backspace=2 " make backspace work like most other apps
 "set grepprg=ack
 set omnifunc=syntaxcomplete#Complete
 set wildignore+=node_modules,.git
-set showtabline=2
 set mouse=nirc
 set shiftwidth=4
 set tabstop=4
@@ -60,6 +59,8 @@ hi LineNr cterm=NONE ctermfg=237
 hi NonText ctermfg=234
 hi SpecialKey ctermfg=234
 hi Search ctermbg=49 ctermfg=233
+hi Visual  ctermfg=232 ctermbg=198 gui=none
+hi SignColumn ctermbg=NONE
 
 nnoremap ; :
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
