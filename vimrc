@@ -75,9 +75,11 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
-nnoremap <Space> <C-w>w
+nnoremap <C-j> <C-w>j<C-w>_
+nnoremap <C-k> <C-w>k<C-w>_
+nnoremap <C-l> <C-w>l<C-w>_
+nnoremap <C-h> <C-w>h<C-w>_
 "nnoremap <C-V> :tabe ~/.vimrc<CR>
-nnoremap <Tab> gT
 noremap <F5> :CommandTFlush<CR>
 imap <C-h> <C-o>h
 imap <C-j> <C-o>j
@@ -88,12 +90,6 @@ imap <C-b> <C-o>b
 imap <C-^> <C-o>^
 imap <C-$> <C-o>$
 imap <C-]> <Esc>:w!<CR>
-
-
-nnoremap <Leader>h <C-w>h
-nnoremap <Leader>j <C-w>j
-nnoremap <Leader>k <C-w>k
-nnoremap <Leader>l <C-w>l
 
 "nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
