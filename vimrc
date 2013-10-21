@@ -1,6 +1,5 @@
 let mapleader=","
 let t_Co=256
-let g:rbpt_loadcmd_toggle = 0 " rainbow parens
 set tags=tags;~
 set cursorline
 set relativenumber
@@ -76,10 +75,10 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
-nnoremap <C-j> <C-w>j<C-w>_
-nnoremap <C-k> <C-w>k<C-w>_
-nnoremap <C-l> <C-w>l<C-w>_
-nnoremap <C-h> <C-w>h<C-w>_
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 "nnoremap <C-V> :tabe ~/.vimrc<CR>
 noremap <F5> :CommandTFlush<CR>
 imap <C-h> <C-o>h
@@ -100,11 +99,9 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-rails.git'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git@github.com:marijnh/tern_for_vim.git'
 Bundle 'git@github.com:terryma/vim-expand-region.git' 
@@ -113,10 +110,10 @@ Bundle 'https://github.com/mileszs/ack.vim.git'
 Bundle 'git@github.com:guns/xterm-color-table.vim.git'
 Bundle 'https://github.com/groenewege/vim-less.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
+Bundle 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:itchyny/lightline.vim.git'
 Bundle 'git@github.com:airblade/vim-gitgutter.git'
-Bundle 'git@github.com:jistr/vim-nerdtree-tabs.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
