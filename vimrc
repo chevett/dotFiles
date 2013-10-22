@@ -116,6 +116,7 @@ Bundle 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:itchyny/lightline.vim.git'
 Bundle 'git@github.com:airblade/vim-gitgutter.git'
+Bundle 'jelera/vim-javascript-syntax'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
