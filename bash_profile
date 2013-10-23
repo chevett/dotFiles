@@ -22,6 +22,8 @@ alias tangoTests='testTango'
 alias hbuiTests='testTango'
 alias find=gfind #use find from homebrew
 alias sed='gsed -r' #use find from homebrew
+alias lastcmd="history | tail -n 2 | head -n 1 | sed 's/\s*[0-9]\s*//g' | pbcopy"
+
 stty -ixon -ixoff # this allows ctrl-s in vim
 
 GIT_PS1_SHOWUPSTREAM="auto"
