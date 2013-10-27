@@ -34,3 +34,5 @@
 	path = 
 [gui]
 	editor = subl
+[pager]
+	diff = false
