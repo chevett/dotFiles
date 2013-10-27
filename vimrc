@@ -79,6 +79,8 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gD :call MyCloseDiff()<cr>
 nnoremap <Leader>f :Ack --smart-case<space>
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>O O<Esc>
@@ -125,6 +127,7 @@ Bundle 'git@github.com:airblade/vim-gitgutter.git'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'git@github.com:ervandew/supertab.git'
 Bundle 'git@github.com:altercation/vim-colors-solarized.git'
+Bundle 'git@github.com:tpope/vim-fugitive.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
@@ -160,7 +163,6 @@ set statusline+=%F
  set list
 
 
- vnoremap <C-c> "+yi
  let g:lightline = {
        \ 'colorscheme': 'solarized',
        \ 'component': {
@@ -169,3 +171,24 @@ set statusline+=%F
        \ 'separator': { 'left': '', 'right': '' },
        \ 'subseparator': { 'left': '', 'right': '' }
        \ }
+
+function! MyCloseDiff()
+  if (&diff == 0 || getbufvar('#', '&diff') == 0)
+        \ && (bufname('%') !~ '^fugitive:' && bufname('#') !~ '^fugitive:')
+    echom "Not in diff view."
+    return
+  endif
+
+  " close current buffer if alternate is not fugitive but current one is
+  if bufname('#') !~ '^fugitive:' && bufname('%') =~ '^fugitive:'
+    if bufwinnr("#") == -1
+      b #
+      bd #
+    else
+      bd
+    endif
+  else
+    bd #
+  endif
+  norm! zR
+endfunction
