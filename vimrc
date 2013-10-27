@@ -3,7 +3,7 @@ let t_Co=256
 let g:Powerline_symbols = 'fancy'
 set tags=tags;~
 set cursorline
-set relativenumber
+set number
 set hidden 
 set autoindent
 set smartcase
@@ -22,6 +22,11 @@ set scrolloff=4
 set nowrap
 set incsearch
 
+syntax enable
+set background=dark
+colorscheme solarized
+
+
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
@@ -32,12 +37,12 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 
 function SetInsertOptions()
 	hi StatusLine ctermfg=124 ctermbg=white
-	set number
+	set nocursorline
 endfunction
 
 function SetNormalOptions()
 	hi StatusLine ctermfg=41 ctermbg=black
-	set relativenumber
+	set cursorline
 endfunction
 
 call SetNormalOptions()
@@ -104,7 +109,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'L9'
-Bundle 'FuzzyFinder'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git@github.com:marijnh/tern_for_vim.git'
@@ -120,6 +124,7 @@ Bundle 'git@github.com:itchyny/lightline.vim.git'
 Bundle 'git@github.com:airblade/vim-gitgutter.git'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'git@github.com:ervandew/supertab.git'
+Bundle 'git@github.com:altercation/vim-colors-solarized.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
