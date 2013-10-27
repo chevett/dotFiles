@@ -79,9 +79,10 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
-nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gd :w!<CR>:tabe %<CR>:Gdiff<CR>
 nnoremap <Leader>gD :call MyCloseDiff()<cr>
 nnoremap <Leader>f :Ack --smart-case<space>
+
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>o o<Esc>
@@ -190,5 +191,6 @@ function! MyCloseDiff()
   else
     bd #
   endif
-  norm! zR
+  w!
+  tabclose!
 endfunction
