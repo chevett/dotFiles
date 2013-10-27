@@ -79,8 +79,7 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>m :TernDef<CR>
 nnoremap <Leader>u :TernRefs<CR>
 nnoremap <Leader>r :TernRename<CR>
-nnoremap <Leader>gd :w!<CR>:tabe %<CR>:Gdiff<CR>
-nnoremap <Leader>gD :call MyCloseDiff()<cr>
+nnoremap <Leader>gd :call MyDiffToggle()<cr>
 nnoremap <Leader>f :Ack --smart-case<space>
 
 nnoremap <Leader>s :w<CR>
@@ -173,10 +172,12 @@ set statusline+=%F
        \ 'subseparator': { 'left': '', 'right': '' }
        \ }
 
-function! MyCloseDiff()
+function! MyDiffToggle()
   if (&diff == 0 || getbufvar('#', '&diff') == 0)
         \ && (bufname('%') !~ '^fugitive:' && bufname('#') !~ '^fugitive:')
-    echom "Not in diff view."
+    w!
+	tabe %
+	Gdiff
     return
   endif
 
