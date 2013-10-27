@@ -1,5 +1,6 @@
 let mapleader=","
 let t_Co=256
+let g:Powerline_symbols = 'fancy'
 set tags=tags;~
 set cursorline
 set relativenumber
@@ -19,6 +20,7 @@ set nobackup
 set noswapfile
 set scrolloff=4
 set nowrap
+set incsearch
 
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -154,3 +156,11 @@ set statusline+=%F
 
 
  vnoremap <C-c> "+yi
+ let g:lightline = {
+       \ 'colorscheme': 'solarized',
+       \ 'component': {
+       \   'readonly': '%{&readonly?"":""}',
+       \ },
+       \ 'separator': { 'left': '', 'right': '' },
+       \ 'subseparator': { 'left': '', 'right': '' }
+       \ }

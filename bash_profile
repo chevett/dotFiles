@@ -23,13 +23,13 @@ alias hbuiTests='testTango'
 alias find=gfind #use find from homebrew
 alias sed='gsed -r' #use find from homebrew
 alias lastcmd="history | tail -n 2 | head -n 1 | sed 's/\s*[0-9]\s*//g' | pbcopy"
-
+alias nind="gfind -iname"
 stty -ixon -ixoff # this allows ctrl-s in vim
 
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS="yes"
 
-export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]\h:\[\033[0;97m\]\W\[\033[0;255m\]" "\\\$ ";'
+export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]\h:\[\033[0;97m\]\W\[\033[0;214m\]" "\\\$ ";'
 
 
 
