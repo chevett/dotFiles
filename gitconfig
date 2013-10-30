@@ -1,12 +1,12 @@
 [alias]
-	ci = commit am
+	cm = commit am
 	sup = submodule update --init --recursive
 	hash = rev-parse
 	co = checkout
 	h = rev-parse
 	cph = !sh -c 'git hash HEAD | pbcopy' -
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	cp = cherry-pick
 [user]
 	name = Mike Chevett
