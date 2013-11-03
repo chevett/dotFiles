@@ -1,9 +1,0 @@
-{
-	"installed_packages":
-	[
-		"GitGutter",
-		"Package Control",
-		"SublimeLinter",
-		"SyncedSideBar"
-	]
-}
