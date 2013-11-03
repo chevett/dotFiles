@@ -1,3 +1,4 @@
+
 let mapleader=","
 let t_Co=256
 let g:Powerline_symbols = 'fancy'
@@ -36,12 +37,10 @@ autocmd BufNewFile,BufRead *.pjs set filetype=javascript
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
 function SetInsertOptions()
-	hi StatusLine ctermfg=124 ctermbg=white
 	set nocursorline
 endfunction
 
 function SetNormalOptions()
-	hi StatusLine ctermfg=41 ctermbg=black
 	set cursorline
 endfunction
 
@@ -106,6 +105,7 @@ imap <C-]> <Esc>:w!<CR>
 nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
 nnoremap <Leader><Leader>2 :NERDTreeFind<CR>
 
+set rtp+=/Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -122,7 +122,6 @@ Bundle 'https://github.com/groenewege/vim-less.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
-Bundle 'git@github.com:itchyny/lightline.vim.git'
 Bundle 'git@github.com:airblade/vim-gitgutter.git'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'git@github.com:ervandew/supertab.git'
@@ -163,14 +162,6 @@ set statusline+=%F
  set list
 
 
- let g:lightline = {
-       \ 'colorscheme': 'solarized',
-       \ 'component': {
-       \   'readonly': '%{&readonly?"":""}',
-       \ },
-       \ 'separator': { 'left': '', 'right': '' },
-       \ 'subseparator': { 'left': '', 'right': '' }
-       \ }
 
 function! MyDiffToggle()
   if (&diff == 0 || getbufvar('#', '&diff') == 0)

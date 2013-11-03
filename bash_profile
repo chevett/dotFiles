@@ -1,4 +1,6 @@
 PATH=~/bin:$PATH
+PATH=~/Library/Python/2.7/bin/:$PATH
+
 export PATH="/usr/local/heroku/bin:$PATH"
 export EDITOR='vim'
 export CLICOLOR=1
@@ -37,3 +39,5 @@ export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]
 
 function purl { curl "$@" | prettyjson ; }
 function cdl { cd $1; ls;}
+
+. /Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
