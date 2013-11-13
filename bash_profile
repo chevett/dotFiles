@@ -1,5 +1,5 @@
 PATH=~/bin:$PATH
-PATH=~/Library/Python/2.7/bin/:$PATH
+PATH=~/Library/Python/2.7/bin:$PATH
 
 export PATH="/usr/local/heroku/bin:$PATH"
 export EDITOR='vim'
