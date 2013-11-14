@@ -17,21 +17,25 @@
 	"segments": {
 		"left": [
 			{
-				"name": "hostname"
-			},
-			{
-				"name": "user"
+				"name": "hostname",
+				"args": {
+					"only_if_ssh": true
+				}
 			},
 			{
 				"name": "virtualenv"
 			},
 			{
-				"name": "branch"
+				"name": "branch",
+				"args": {
+					"status_colors": true
+				}
 			},
 			{
 				"name": "cwd",
 				"args": {
-					"dir_limit_depth": 3
+					"dir_limit_depth": 3,
+					"use_path_separator": true
 				}
 			},
 			{
