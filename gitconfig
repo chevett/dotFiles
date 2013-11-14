@@ -3,6 +3,7 @@
 	sup = submodule update --init --recursive
 	hash = rev-parse
 	co = checkout
+	br = branch
 	h = rev-parse
 	cph = !sh -c 'git hash HEAD | pbcopy' -
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
