@@ -39,5 +39,6 @@ export PROMPT_COMMAND='__git_ps1 "\[\033[0;32m\]\u\[\033[0;255m\]@\[\033[0;32m\]
 
 function purl { curl "$@" | prettyjson ; }
 function cdl { cd $1; ls;}
+function cm() { git commit -am "$*"; }
 
 . /Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
