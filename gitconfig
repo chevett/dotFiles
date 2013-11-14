@@ -9,6 +9,7 @@
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	cp = cherry-pick
+	files = diff-tree --no-commit-id --name-only -r
 [user]
 	name = Mike Chevett
 	email = mchevett@appnexus.com
