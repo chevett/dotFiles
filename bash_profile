@@ -17,6 +17,7 @@ alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias jpp='python -mjson.tool | less'
+alias jpp2='prettyjson | less -R'
 alias dif='git --no-pager diff'
 alias commitLink='sh /users/mchevett/scripts/commitLink'  
 alias testTango='/Users/mchevett/adnxs/hbui/master/tests/PhantomJasmine/runUnitTests.py -c -d myDevBox'
