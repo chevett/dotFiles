@@ -127,6 +127,7 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'git@github.com:ervandew/supertab.git'
 Bundle 'git@github.com:altercation/vim-colors-solarized.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
+Bundle 'christoomey/vim-tmux-navigator'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
