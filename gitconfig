@@ -11,6 +11,7 @@
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	cp = cherry-pick
 	files = diff-tree --no-commit-id --name-only -r
+	authors = !sh -c 'git shortlog -s | sort -r'
 [user]
 	name = Mike Chevett
 	email = mchevett@appnexus.com
