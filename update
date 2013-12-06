@@ -2,6 +2,7 @@
 
 mkdir -p ~/bin
 mkdir -p ~/.config
+mkdir -p ~/.vim
 
 ln -sf ~/code/dotFiles/bash_profile ~/.bash_profile
 ln -sf ~/code/dotFiles/vimrc ~/.vimrc
@@ -14,6 +15,8 @@ ln -sf ~/code/dotFiles/pydistutils.cfg ~/.pydistutils.cfg
 ln -sf ~/code/dotFiles/git_diff_wrapper ~/bin/git_diff_wrapper
 ln -sf ~/code/dotFiles/ploy_sync ~/bin/8888
 ln -sf ~/code/dotFiles/powerline ~/.config/powerline
+ln -sf ~/code/dotFiles/powerline ~/.config/powerline
+ln -sf ~/code/dotFiles/vim/color ~/.vim/colors
 
 source ~/.bash_profile
 vim +BundleInstall +qall
