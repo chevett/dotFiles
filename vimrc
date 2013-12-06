@@ -111,23 +111,23 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'L9'
-Bundle 'Lokaltog/vim-easymotion'
+Bundle 'git@github.com:Lokaltog/vim-easymotion.git'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git@github.com:marijnh/tern_for_vim.git'
 Bundle 'git@github.com:terryma/vim-expand-region.git' 
 Bundle 'git@github.com:terryma/vim-smooth-scroll.git' 
-Bundle 'https://github.com/mileszs/ack.vim.git'
+Bundle 'git@github.com:mileszs/ack.vim.git'
 Bundle 'git@github.com:guns/xterm-color-table.vim.git'
-Bundle 'https://github.com/groenewege/vim-less.git'
+Bundle 'git@github.com:groenewege/vim-less.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:airblade/vim-gitgutter.git'
-Bundle 'jelera/vim-javascript-syntax'
+Bundle 'git@github.com:jelera/vim-javascript-syntax.git'
 Bundle 'git@github.com:ervandew/supertab.git'
 Bundle 'git@github.com:altercation/vim-colors-solarized.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
-Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()

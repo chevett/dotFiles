@@ -42,3 +42,8 @@ function cdl { cd $1; ls;}
 function cm() { git commit -am "$*"; }
 
 . /Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+
+
+
+# random stuff really just for reference when i forget
+alias list-terminals='find /usr/share/terminfo -type f'
