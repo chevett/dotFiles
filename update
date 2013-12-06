@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+mkdir -p ~/bin
+mkdir -p ~/.config
+
 ln -sf ~/code/dotFiles/bash_profile ~/.bash_profile
 ln -sf ~/code/dotFiles/vimrc ~/.vimrc
 ln -sf ~/code/dotFiles/gitconfig ~/.gitconfig
