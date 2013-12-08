@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-cd ~/code/public/
+cd ~/code/ez-app/
 git add -A
 git commit -am'syncing'
-git push ploy master
+git push origin master
 cd -
