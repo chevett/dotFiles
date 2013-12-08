@@ -6,6 +6,10 @@ export EDITOR='vim'
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
 alias 'cd..'='cd ..'
 alias ll="ls -lvh" # --group-directories-first
 alias lm='ll | 	less'        #  Pipe through 'more'
