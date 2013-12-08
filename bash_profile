@@ -24,15 +24,14 @@ alias lastcmd="history | tail -n 2 | head -n 1 | sed 's/\s*[0-9]\s*//g' | pbcopy
 alias nind="gfind -iname"
 stty -ixon -ixoff # this allows ctrl-s in vim
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 function purl { curl -b cookies -c cookies "$@" | prettyjson | less -R; }
 function cdl { cd $1; ls;}
 function cm() { git commit -am "$*"; }
 
-[[ -d "/Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash" ]] && . /Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
-
-
-
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
+
+# run other stuff
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.bash_profile.private" ]] && source "$HOME/.bash_profile.private"
+[[ -d "/Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash" ]] && . /Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
