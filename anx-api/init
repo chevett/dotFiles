@@ -3,7 +3,7 @@
 
 dataDir="$HOME/code/dotFiles/anx-api"
 
-function curl(){
+function mycurl(){
 	result=$(http --print=hb --session=$@) &&
 	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
 }
@@ -27,7 +27,7 @@ function api_client() {
 	route="$url/$1"
 	shift
 	
-	curl $sess $method $route $@
+	mycurl $sess $method $route $@
 
 	if [[ "$status" == "401" ]]; then
 		if [[ ! -s  "$authfile" ]]; then
@@ -35,7 +35,7 @@ function api_client() {
 			return 1
 		fi
 		printf 'logging in...'
-		curl $sess 'POST' "$url/auth" @$authfile
+		mycurl $sess 'POST' "$url/auth" @$authfile
 
 		if [[ "$status" != "200" ]]; then
 			echo 'unable to authenticate'
@@ -45,7 +45,7 @@ function api_client() {
 		fi
 		
 		#now do it again
-		curl $sess $method $route $@
+		mycurl $sess $method $route $@
 	fi
 
 	echo "$result" | tail -n 1 | jpp2
