@@ -15,6 +15,9 @@ function api_client() {
 	url=$1
 	shift
 
+	authfile=$1
+	shift
+
 	method='get'
 	if [[ $1 =~ ^(get|post|put|head|delete|GET|POST|PUT|HEAD|DELETE)$ ]]; then
 		method=$1
@@ -27,12 +30,12 @@ function api_client() {
 	curl $sess $method $route $@
 
 	if [[ "$status" == "401" ]]; then
-		if [[ ! -s "$dataDir/auth.private" ]]; then
-			echo 'unable to authenticate.  create auth.private to enable auto-login'
+		if [[ ! -s  "$authfile" ]]; then
+			echo "unable to authenticate.  create $authfile to enable auto-login"
 			return 1
 		fi
 		echo 'logging in...'
-		curl $sess 'POST' "$url/auth" @$dataDir/auth.private
+		curl $sess 'POST' "$url/auth" @$authfile
 
 		if [[ "$status" != "200" ]]; then
 			echo 'unable to authenticate'
@@ -49,9 +52,9 @@ function api_client() {
 }
 
 function sand(){
-	api_client 'sand' 'http://sand.api.appnexus.com' $@
+	api_client 'sand' 'http://sand.api.appnexus.com' "$dataDir/auth-sand.private" $@
 }
 
 function prod(){
-	api_client 'prod' 'http://api.appnexus.com' $@
+	api_client 'prod' 'http://api.appnexus.com' "$dataDir/auth-prod.private" $@
 }
