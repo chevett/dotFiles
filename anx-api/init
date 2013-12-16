@@ -34,7 +34,7 @@ function api_client() {
 			echo "unable to authenticate.  create $authfile to enable auto-login"
 			return 1
 		fi
-		echo 'logging in...'
+		printf 'logging in...'
 		curl $sess 'POST' "$url/auth" @$authfile
 
 		if [[ "$status" != "200" ]]; then
