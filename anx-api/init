@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# http --print=hb --session=sand sand.api.appnexus.com/template | head -n 1 | gsed -nr 's/.*([0-9]{3}).*/\1/p'
+
+dataDir="$HOME/code/dotFiles/anx-api"
+
+function curl(){
+	result=$(http --print=hb --session=$@) &&
+	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
+}
+
+function api_client() {
+	sess=$1
+	shift
+
+	url=$1
+	shift
+
+	method='get'
+	if [[ $1 =~ ^(get|post|put|head|delete|GET|POST|PUT|HEAD|DELETE)$ ]]; then
+		method=$1
+		shift
+	fi
+
+	route="$url/$1"
+	shift
+	
+	curl $sess $method $route $@
+
+	if [[ "$status" == "401" ]]; then
+		if [[ ! -s "$dataDir/auth.private" ]]; then
+			echo 'unable to authenticate.  create auth.private to enable auto-login'
+			return 1
+		fi
+		echo 'logging in...'
+		curl $sess 'POST' "$url/auth" @$dataDir/auth.private
+
+		if [[ "$status" != "200" ]]; then
+			echo 'unable to authenticate'
+			return 1
+		else
+			echo 'done'
+		fi
+		
+		#now do it again
+		curl $sess $method $route $@
+	fi
+
+	echo "$result" | tail -n 1 | jpp2
+}
+
+function sand(){
+	api_client 'sand' 'http://sand.api.appnexus.com' $@
+}
+
+function prod(){
+	api_client 'prod' 'http://api.appnexus.com' $@
+}

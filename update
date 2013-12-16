@@ -5,7 +5,6 @@ mkdir -p ~/.config
 mkdir -p ~/.vim
 
 ln -sf ~/code/dotFiles/bash_profile ~/.bash_profile
-ln -sf ~/code/dotFiles/bash_api_client ~/.bash_api_client
 ln -sf ~/code/dotFiles/vimrc ~/.vimrc
 ln -sf ~/code/dotFiles/gitconfig ~/.gitconfig
 ln -sf ~/code/dotFiles/gitignore_global ~/.gitignore_global
