@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# http --print=hb --session=sand sand.api.appnexus.com/template | head -n 1 | gsed -nr 's/.*([0-9]{3}).*/\1/p'
 
 dataDir="$HOME/code/dotFiles/anx-api"
 
@@ -11,6 +10,12 @@ function mycurl(){
 function api_client() {
 
 	sess=$1
+	shift
+
+	member=$1
+	shift
+
+	anx_obj_id=$1
 	shift
 
 	url=$1
@@ -28,6 +33,24 @@ function api_client() {
 	route="$url/$1"
 	shift
 	
+
+	if [[ ! -z "$member" ]]; then
+		if [[ $route =~ \? ]]; then
+			route="$route&member_id=$member"
+		else
+			route="$route?member_id=$member"
+		fi
+	fi
+
+	if [[ ! -z "$anx_obj_id" ]]; then
+		if [[ $route =~ \? ]]; then
+			route="$route&id=$anx_obj_id"
+		else
+			route="$route?id=$anx_obj_id"
+		fi
+	fi
+
+	echo "$method $route"
 	mycurl $sess $method $route $@
 
 	if [[ "$status" == "401" ]]; then
@@ -54,7 +77,7 @@ function api_client() {
 
 function sand(){
 	local OPTIND
-	while getopts ":rm:v:" opt; do
+	while getopts ":ri:m:v:" opt; do
 	  case $opt in
 		v)
 			ANX_SAND_API_VERSION="$OPTARG"
@@ -62,9 +85,12 @@ function sand(){
 		m)
 			ANX_SAND_API_MEMBER="$OPTARG"
 			;;
+		i)
+			ANX_SAND_API_ID="$OPTARG"
+			;;
 		r)
 			ANX_SAND_API_VERSION=''
-			ANX_SAND_MEMBER=''
+			ANX_SAND_API_MEMBER=''
 			echo 'member and version cleared!'
 			return
 			;;
@@ -79,9 +105,10 @@ function sand(){
 	  esac
 	done
 	shift $((OPTIND-1))
-	api_client 'sand' "http://sand.api.appnexus.com/$ANX_SAND_API_VERSION" "$dataDir/auth-sand.private" $@
+	api_client 'sand' "$ANX_SAND_API_MEMBER" "$ANX_SAND_API_ID" "http://sand.api.appnexus.com/$ANX_SAND_API_VERSION" "$dataDir/auth-sand.private" $@
+	ANX_SAND_API_ID=''
 }
 
 function prod(){
-	api_client 'prod' 'http://api.appnexus.com' "$dataDir/auth-prod.private" $@
+	api_client 'prod' "$ANX_PROD_API_MEMBER" "$ANX_SAND_API_ID" 'http://api.appnexus.com' "$dataDir/auth-prod.private" $@
 }
