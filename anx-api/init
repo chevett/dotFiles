@@ -9,6 +9,7 @@ function mycurl(){
 }
 
 function api_client() {
+
 	sess=$1
 	shift
 
@@ -30,7 +31,7 @@ function api_client() {
 	mycurl $sess $method $route $@
 
 	if [[ "$status" == "401" ]]; then
-		if [[ ! -s  "$authfile" ]]; then
+		if [[ ! -s "$authfile" ]]; then
 			echo "unable to authenticate.  create $authfile to enable auto-login"
 			return 1
 		fi
@@ -41,7 +42,7 @@ function api_client() {
 			echo 'unable to authenticate'
 			return 1
 		else
-			echo 'done'
+			echo ' done.'
 		fi
 		
 		#now do it again
@@ -52,7 +53,33 @@ function api_client() {
 }
 
 function sand(){
-	api_client 'sand' 'http://sand.api.appnexus.com' "$dataDir/auth-sand.private" $@
+	local OPTIND
+	while getopts ":rm:v:" opt; do
+	  case $opt in
+		v)
+			ANX_SAND_API_VERSION="$OPTARG"
+			;;
+		m)
+			ANX_SAND_API_MEMBER="$OPTARG"
+			;;
+		r)
+			ANX_SAND_API_VERSION=''
+			ANX_SAND_MEMBER=''
+			echo 'member and version cleared!'
+			return
+			;;
+		\?)
+		  echo "Invalid option: -$OPTARG" >&2
+			return
+		  ;;
+		:)
+		  echo "Option -$OPTARG requires an argument." >&2
+		  return
+		  ;;
+	  esac
+	done
+	shift $((OPTIND-1))
+	api_client 'sand' "http://sand.api.appnexus.com/$ANX_SAND_API_VERSION" "$dataDir/auth-sand.private" $@
 }
 
 function prod(){
