@@ -72,7 +72,12 @@ function api_client() {
 		mycurl $sess $method $route $@
 	fi
 
-	echo "$result" | tail -n 1 | jpp2
+	# if we are being piped somewhere then no colors
+	if [ -t 1 ]; then
+		echo "$result" | tail -n 1 | prettyjson | less -R
+	else 
+		echo "$result" | tail -n 1 | python -m json.tool
+	fi
 }
 
 function sand(){
