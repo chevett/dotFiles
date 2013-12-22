@@ -81,6 +81,7 @@ function api_client() {
 }
 
 function sand(){
+	local ANX_SAND_API_ID
 	local OPTIND
 	while getopts ":ri:m:v:" opt; do
 	  case $opt in
@@ -111,7 +112,6 @@ function sand(){
 	done
 	shift $((OPTIND-1))
 	api_client 'sand' "$ANX_SAND_API_MEMBER" "$ANX_SAND_API_ID" "http://sand.api.appnexus.com/$ANX_SAND_API_VERSION" "$dataDir/auth-sand.private" $@
-	ANX_SAND_API_ID=''
 }
 
 function prod(){
