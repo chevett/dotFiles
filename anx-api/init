@@ -12,6 +12,9 @@ function api_client() {
 	sess=$1
 	shift
 
+	anx_version=$1
+	shift 
+
 	member=$1
 	shift
 
@@ -30,7 +33,12 @@ function api_client() {
 		shift
 	fi
 
-	route="$url/$1"
+	if [[ ! -z "$anx_version" ]]; then
+		url="$url/$anx_version"
+	fi
+
+	service="$1"
+	route="$url/$service"
 	shift
 	
 
@@ -72,17 +80,20 @@ function api_client() {
 		mycurl $sess $method $route $@
 	fi
 
-	# if we are being piped somewhere then no colors
-	if [ -t 1 ]; then
-		echo "$result" | tail -n 1 | prettyjson | less -R
+	local body=$(echo "$result" | tail -n 1)
+	if $do_save; then 
+		echo "$body" | python -m json.tool >  "$service.$anx_obj_id.json" && vim "$service.$anx_obj_id.json"
+	elif [ -t 1 ]; then # use colors if no being piped
+		echo "$body" | prettyjson | less -R
 	else 
-		echo "$result" | tail -n 1 | python -m json.tool
+		echo "$body" | python -m json.tool
 	fi
+
 }
 
 function parse_api(){
 	local OPTIND
-	while getopts ":ri:m:v:" opt; do
+	while getopts ":rsi:m:v:" opt; do
 	  case $opt in
 		v)
 			ANX_SAND_API_VERSION="$OPTARG"
@@ -96,8 +107,12 @@ function parse_api(){
 		r)
 			ANX_SAND_API_VERSION=''
 			ANX_SAND_API_MEMBER=''
+			rm -rf ~/.httpie
 			echo 'member and version cleared!'
-			return
+			return 1
+			;;
+		s)
+			do_save=true #"$OPTARG"
 			;;
 		\?)
 		  echo "Invalid option: -$OPTARG" >&2
@@ -122,11 +137,13 @@ function parse_api(){
 }
 
 function sand(){
+	local do_save=false
 	local httpie_args
 	local ANX_SAND_API_ID
 
-	parse_api "$@"
-	api_client 'sand' "$ANX_SAND_API_MEMBER" "$ANX_SAND_API_ID" "http://sand.api.appnexus.com/$ANX_SAND_API_VERSION" "$dataDir/auth-sand.private" $httpie_args
+	if parse_api "$@"; then 
+		api_client 'sand' "$ANX_SAND_API_VERSION" "$ANX_SAND_API_MEMBER" "$ANX_SAND_API_ID" "http://sand.api.appnexus.com" "$dataDir/auth-sand.private" $httpie_args
+	fi
 }
 
 function prod(){
