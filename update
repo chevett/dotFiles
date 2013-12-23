@@ -11,7 +11,6 @@ ln -sf ~/code/dotFiles/gitignore_global ~/.gitignore_global
 ln -sf ~/code/dotFiles/ackrc ~/.ackrc
 ln -sf ~/code/dotFiles/jshintrc ~/.jshintrc
 ln -sf ~/code/dotFiles/tmux.conf ~/.tmux.conf
-ln -sf ~/code/dotFiles/pydistutils.cfg ~/.pydistutils.cfg
 ln -sf ~/code/dotFiles/git_diff_wrapper ~/bin/git_diff_wrapper
 ln -sf ~/code/dotFiles/ploy_sync ~/bin/8888
 ln -sf ~/code/dotFiles/powerline ~/.config/
