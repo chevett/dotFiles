@@ -80,8 +80,7 @@ function api_client() {
 	fi
 }
 
-function sand(){
-	local ANX_SAND_API_ID
+function parse_api(){
 	local OPTIND
 	while getopts ":ri:m:v:" opt; do
 	  case $opt in
@@ -111,9 +110,26 @@ function sand(){
 	  esac
 	done
 	shift $((OPTIND-1))
-	api_client 'sand' "$ANX_SAND_API_MEMBER" "$ANX_SAND_API_ID" "http://sand.api.appnexus.com/$ANX_SAND_API_VERSION" "$dataDir/auth-sand.private" $@
+
+	if [[ "$#" -ge 1 ]]; then
+		httpie_args+=" $1"
+		shift
+		parse_api "$@";
+	else
+		:
+	fi
+
+}
+
+function sand(){
+	local httpie_args
+	local ANX_SAND_API_ID
+
+	parse_api "$@"
+	api_client 'sand' "$ANX_SAND_API_MEMBER" "$ANX_SAND_API_ID" "http://sand.api.appnexus.com/$ANX_SAND_API_VERSION" "$dataDir/auth-sand.private" $httpie_args
 }
 
 function prod(){
 	api_client 'prod' "$ANX_PROD_API_MEMBER" "$ANX_SAND_API_ID" 'http://api.appnexus.com' "$dataDir/auth-prod.private" $@
 }
+
