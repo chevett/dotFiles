@@ -82,18 +82,26 @@ function api_client() {
 
 	local body=$(echo "$result" | tail -n 1)
 	if $do_save; then 
-		echo "$body" | python -m json.tool >  "$service.$anx_obj_id.json" && vim "$service.$anx_obj_id.json"
+		local anx_property_name=$(echo "$body" | json response.dbg_info.output_term)
+		body=$(echo "$body" | json "response.$anx_property_name")
+		echo "{\"$anx_property_name\":$body}" | python -m json.tool >  "$service.$anx_obj_id.json" 
 	elif [ -t 1 ]; then # use colors if no being piped
 		echo "$body" | prettyjson | less -R
 	else 
 		echo "$body" | python -m json.tool
 	fi
 
+	if $do_edit; then 
+		printf 'Saving...'
+		 vim "$service.$anx_obj_id.json" &&
+			mycurl $sess PUT $route $@ "@$service.$anx_obj_id.json"
+		printf ' done.\n'
+	fi
 }
 
 function parse_api(){
 	local OPTIND
-	while getopts ":rsi:m:v:" opt; do
+	while getopts ":rsei:m:v:" opt; do
 	  case $opt in
 		v)
 			ANX_SAND_API_VERSION="$OPTARG"
@@ -112,7 +120,11 @@ function parse_api(){
 			return 1
 			;;
 		s)
-			do_save=true #"$OPTARG"
+			do_save=true
+			;;
+		e)
+			do_save=true
+			do_edit=true
 			;;
 		\?)
 		  echo "Invalid option: -$OPTARG" >&2
@@ -137,6 +149,7 @@ function parse_api(){
 }
 
 function sand(){
+	local do_edit=false
 	local do_save=false
 	local httpie_args
 	local ANX_SAND_API_ID
