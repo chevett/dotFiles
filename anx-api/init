@@ -5,31 +5,58 @@ dataDir="$HOME/code/dotFiles/anx-api"
 function mycurl(){
 	result=$(http --print=hb --session=$@) &&
 	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
+	json_response=$(echo "$result" | tail -n 1)
+	count=$(echo "$json_response" | json "response.count")
+
+	model=$(get_model "$json_response")
+	local el=$(echo "$model" | json 0)
+
+	if [[ $count == 1 ]] && [[ ! -z "$el" ]]; then
+		model="$el"
+	fi
+
+	id=$(echo "$model" | json "id")
+}
+
+function querystring_concat(){
+	if [[ ! -z "$2" ]]; then
+		if [[ $1 =~ \? ]]; then
+			echo "$1&$2"; return;
+		else
+			echo "$1?$2"; return;
+		fi
+	fi
+
+	echo "$1";
+}
+
+function get_count(){
+	echo "$1" | json "response.count"
+}
+
+function get_model(){
+	local n=$(echo "$1" | json "response.dbg_info.output_term")
+
+	if [[ $n == 'not_found' ]]; then
+		echo "$1"
+	else
+		local v=$(echo "$1" | json "response.$n")
+		echo "$v"
+	fi
 }
 
 function api_client() {
+	local sess=$1
+	local anx_version=$2
+	local member=$3
+	local anx_obj_id=$4
+	local url=$5
+	local authfile=$6
+	shift 6;
 
-	sess=$1
-	shift
-
-	anx_version=$1
-	shift 
-
-	member=$1
-	shift
-
-	anx_obj_id=$1
-	shift
-
-	url=$1
-	shift
-
-	authfile=$1
-	shift
-
-	method='get'
+	local method='get'
 	if [[ $1 =~ ^(get|post|put|head|delete|GET|POST|PUT|HEAD|DELETE)$ ]]; then
-		method=$1
+		method=$7
 		shift
 	fi
 
@@ -37,28 +64,23 @@ function api_client() {
 		url="$url/$anx_version"
 	fi
 
-	service="$1"
-	route="$url/$service"
+
+	service=${1/\?*/}
+	echo "service:$service"
+	route="$url/$1"
 	shift
-	
 
 	if [[ ! -z "$member" ]]; then
-		if [[ $route =~ \? ]]; then
-			route="$route&member_id=$member"
-		else
-			route="$route?member_id=$member"
-		fi
+		route=$(querystring_concat $route "member_id=$member")
 	fi
 
 	if [[ ! -z "$anx_obj_id" ]]; then
-		if [[ $route =~ \? ]]; then
-			route="$route&id=$anx_obj_id"
-		else
-			route="$route?id=$anx_obj_id"
-		fi
+		route=$(querystring_concat $route "id=$anx_obj_id")
 	fi
 
-	echo "$method $route"
+	route=$(querystring_concat $route "$querystring")
+
+	echo "$method $route $@"
 	mycurl $sess $method $route $@
 
 	if [[ "$status" == "401" ]]; then
@@ -80,29 +102,39 @@ function api_client() {
 		mycurl $sess $method $route $@
 	fi
 
-	local body=$(echo "$result" | tail -n 1)
+	local id="$anx_obj_id"
+	if [[ $count == 1 ]];then
+		id=$(echo "$model" | json "id")
+	fi
+
 	if $do_save; then 
-		local anx_property_name=$(echo "$body" | json response.dbg_info.output_term)
-		body=$(echo "$body" | json "response.$anx_property_name")
-		echo "{\"$anx_property_name\":$body}" | python -m json.tool >  "$service.$anx_obj_id.json" 
+		if [[ -z "$id" ]]; then
+			echo "need an id to save... exiting.";
+			return 666;
+		fi
+		echo "Writing file '$service.$id.json'"
+
+		echo "{\"$service\":$model}" | python -m json.tool >  "$service.$id.json" 
 	elif [ -t 1 ]; then # use colors if no being piped
-		echo "$body" | prettyjson | less -R
+		echo "$model" | python -m json.tool | pygmentize -l json | less -R
 	else 
-		echo "$body" | python -m json.tool
+		echo "$model" | python -m json.tool
 	fi
 
 	if $do_edit; then 
-		printf 'Saving...'
-		 vim "$service.$anx_obj_id.json" &&
-			mycurl $sess PUT $route $@ "@$service.$anx_obj_id.json"
-		printf ' done.\n'
+		printf 'PUTTING...'
+		 vim "$service.$id.json" &&
+			http --print=b --session="$sess" PUT "$url/$service?id=$id" @"$service.$id.json" | json response.status response.error
 	fi
 }
 
 function parse_api(){
 	local OPTIND
-	while getopts ":rsei:m:v:" opt; do
+	while getopts ":rsq:ei:m:v:" opt; do
 	  case $opt in
+		q)
+			querystring+="$OPTARG"
+			;;
 		v)
 			ANX_SAND_API_VERSION="$OPTARG"
 			;;
@@ -149,13 +181,21 @@ function parse_api(){
 }
 
 function sand(){
+	local querystring=''
 	local do_edit=false
 	local do_save=false
 	local httpie_args
 	local ANX_SAND_API_ID
 
 	if parse_api "$@"; then 
-		api_client 'sand' "$ANX_SAND_API_VERSION" "$ANX_SAND_API_MEMBER" "$ANX_SAND_API_ID" "http://sand.api.appnexus.com" "$dataDir/auth-sand.private" $httpie_args
+		api_client \
+			'sand' \
+			"$ANX_SAND_API_VERSION"  \
+			"$ANX_SAND_API_MEMBER"  \
+			"$ANX_SAND_API_ID"  \
+			"http://sand.api.appnexus.com"  \
+			"$dataDir/auth-sand.private"  \
+			$httpie_args
 	fi
 }
 
