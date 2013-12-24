@@ -8,14 +8,18 @@ function mycurl(){
 	json_response=$(echo "$result" | tail -n 1)
 	count=$(echo "$json_response" | json "response.count")
 
-	model=$(get_model "$json_response")
-	local el=$(echo "$model" | json 0)
+	if $strip_repsonse; then
+		model=$(get_model "$json_response")
+		local el=$(echo "$model" | json 0)
 
-	if [[ $count == 1 ]] && [[ ! -z "$el" ]]; then
-		model="$el"
+		if [[ $count == 1 ]] && [[ ! -z "$el" ]]; then
+			model="$el"
+		fi
+
+		id=$(echo "$model" | json "id")
+	else
+		model=$json_response;
 	fi
-
-	id=$(echo "$model" | json "id")
 }
 
 function querystring_concat(){
@@ -130,8 +134,11 @@ function api_client() {
 
 function parse_api(){
 	local OPTIND
-	while getopts ":rsq:ei:m:v:" opt; do
+	while getopts ":drsq:ei:m:v:" opt; do
 	  case $opt in
+		d)
+			strip_repsonse=false
+			;;
 		q)
 			querystring+="$OPTARG"
 			;;
@@ -160,11 +167,11 @@ function parse_api(){
 			;;
 		\?)
 		  echo "Invalid option: -$OPTARG" >&2
-			return
+			return 666;
 		  ;;
 		:)
 		  echo "Option -$OPTARG requires an argument." >&2
-		  return
+		  return 666;
 		  ;;
 	  esac
 	done
@@ -184,6 +191,7 @@ function sand(){
 	local querystring=''
 	local do_edit=false
 	local do_save=false
+	local strip_repsonse=true
 	local httpie_args
 	local ANX_SAND_API_ID
 
