@@ -15,8 +15,6 @@ function mycurl(){
 		if [[ $count == 1 ]] && [[ ! -z "$el" ]]; then
 			model="$el"
 		fi
-
-		id=$(echo "$model" | json "id")
 	else
 		model=$json_response;
 	fi
@@ -50,42 +48,46 @@ function get_model(){
 }
 
 function api_client() {
-	local sess=$1
-	local anx_version=$2
-	local member=$3
-	local anx_obj_id=$4
-	local url=$5
-	local authfile=$6
-	shift 6;
+	local key=$1;
+	local url=$2;
+	local authfile=$3;
+	shift 3;
 
-	local method='get'
+	local version=
+	local member=
+	local id=
+	local do_edit=false
+	local do_save=false
+	local strip_repsonse=true
+	local httpie_args=
+	local method='GET'
+	
+	parse_api "$@"
+	set -- $httpie_args;
+
 	if [[ $1 =~ ^(get|post|put|head|delete|GET|POST|PUT|HEAD|DELETE)$ ]]; then
-		method=$7
+		method=$(echo "$1" | tr '[a-z]' '[A-Z]')
 		shift
 	fi
 
-	if [[ ! -z "$anx_version" ]]; then
-		url="$url/$anx_version"
+	if [[ ! -z "${anx_api_version[$key]}" ]]; then
+		url="$url/${anx_api_version[$key]}"
 	fi
-
 
 	service=${1/\?*/}
-	echo "service:$service"
-	route="$url/$1"
+	route="$url/$service"
 	shift
 
-	if [[ ! -z "$member" ]]; then
-		route=$(querystring_concat $route "member_id=$member")
+	if [[ ! -z "${anx_api_member[$key]}" ]]; then
+		route=$(querystring_concat $route "member_id=${anx_api_member[$key]}")
 	fi
 
-	if [[ ! -z "$anx_obj_id" ]]; then
-		route=$(querystring_concat $route "id=$anx_obj_id")
+	if [[ ! -z "$id" ]]; then
+		route=$(querystring_concat $route "id=$id")
 	fi
-
-	route=$(querystring_concat $route "$querystring")
 
 	echo "$method $route $@"
-	mycurl $sess $method $route $@
+	mycurl $key $method $route $@
 
 	if [[ "$status" == "401" ]]; then
 		if [[ ! -s "$authfile" ]]; then
@@ -93,7 +95,7 @@ function api_client() {
 			return 1
 		fi
 		printf 'logging in...'
-		mycurl $sess 'POST' "$url/auth" @$authfile
+		mycurl $key 'POST' "$url/auth" @$authfile
 
 		if [[ "$status" != "200" ]]; then
 			echo 'unable to authenticate'
@@ -103,11 +105,10 @@ function api_client() {
 		fi
 		
 		#now do it again
-		mycurl $sess $method $route $@
+		mycurl $key $method $route $@
 	fi
 
-	local id="$anx_obj_id"
-	if [[ $count == 1 ]];then
+	if [[ -z "$id" ]] && [[ $count == 1 ]];then
 		id=$(echo "$model" | json "id")
 	fi
 
@@ -139,31 +140,28 @@ function parse_api(){
 		d)
 			strip_repsonse=false
 			;;
-		q)
-			querystring+="$OPTARG"
-			;;
-		v)
-			ANX_SAND_API_VERSION="$OPTARG"
-			;;
-		m)
-			ANX_SAND_API_MEMBER="$OPTARG"
-			;;
-		i)
-			ANX_SAND_API_ID="$OPTARG"
-			;;
-		r)
-			ANX_SAND_API_VERSION=''
-			ANX_SAND_API_MEMBER=''
-			rm -rf ~/.httpie
-			echo 'member and version cleared!'
-			return 1
-			;;
 		s)
 			do_save=true
 			;;
 		e)
 			do_save=true
 			do_edit=true
+			;;
+		i)
+			id="$OPTARG"
+			;;
+		v)
+			anx_api_version[$key]="$OPTARG"
+			;;
+		m)
+			anx_api_member[$key]="$OPTARG"
+			;;
+		r)
+			anx_api_version[$key]=''
+			anx_api_member[$key]=''
+			rm -rf ~/.httpie
+			echo 'member and version cleared!'
+			return 1
 			;;
 		\?)
 		  echo "Invalid option: -$OPTARG" >&2
@@ -188,23 +186,11 @@ function parse_api(){
 }
 
 function sand(){
-	local querystring=''
-	local do_edit=false
-	local do_save=false
-	local strip_repsonse=true
-	local httpie_args
-	local ANX_SAND_API_ID
-
-	if parse_api "$@"; then 
-		api_client \
-			'sand' \
-			"$ANX_SAND_API_VERSION"  \
-			"$ANX_SAND_API_MEMBER"  \
-			"$ANX_SAND_API_ID"  \
-			"http://sand.api.appnexus.com"  \
-			"$dataDir/auth-sand.private"  \
-			$httpie_args
-	fi
+	api_client \
+		'sand' \
+		"http://sand.api.appnexus.com"  \
+		"$dataDir/auth-sand.private" \
+		"$@"
 }
 
 function prod(){
