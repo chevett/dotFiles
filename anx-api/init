@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 dataDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 function mycurl(){
 	result=$(http --print=hb --session=$@) &&
 	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
@@ -8,13 +9,6 @@ function mycurl(){
 	count=$(echo "$json_response" | json "response.count")
 	local myObj=$(get_model "$json_response");
 	local myId=$(echo "$myObj" | json "id")
-
-	echo "$status"
-	if [[ $count == 0 ]]; then echo -n 'No results'; fi
-	if [[ $count > 1 ]]; then echo -n "Found $count results"; fi
-	if [[ $count == 1 ]] && [[ ! -z "$myId" ]]; then echo -n "Found 1 result: $myId"; fi
-	if [[ $count == 1 ]] && [[ -z "$myId" ]]; then echo -n "Found 1 result"; fi
-
 	
 	if $strip_repsonse; then
 		model=$myObj
@@ -52,6 +46,23 @@ function get_model(){
 	else
 		local v=$(echo "$1" | json "response.$n")
 		echo "$v"
+	fi
+}
+
+function print_call(){
+	if [[ -t 1 ]]; then
+		echo "$method $route"
+	fi
+}
+
+function print_results(){
+	if [[ -t 1 ]]; then
+		echo "$status"
+		if [[ $count == 0 ]]; then echo -n 'No results'; fi
+		if [[ $count > 1 ]]; then echo -n "Found $count results"; fi
+		if [[ $count == 1 ]] && [[ ! -z "$myId" ]]; then echo -n "Found 1 result: $myId"; fi
+		if [[ $count == 1 ]] && [[ -z "$myId" ]]; then echo -n "Found 1 result"; fi
+		read;
 	fi
 }
 
@@ -97,7 +108,7 @@ function api_client() {
 		route=$(querystring_concat $route "id=$id")
 	fi
 
-	echo "$method $route"
+	print_call
 	mycurl $key $method $route $file 
 
 	if [[ "$status" == "401" ]]; then
@@ -119,20 +130,30 @@ function api_client() {
 		mycurl $key $method $route $file
 	fi
 
+	if [[ -z "$file" ]] && [[ -z "$id" ]]; then
+		if [[ $method == 'PUT' ]]; then
+			echo 'A file name or id is required for a PUT'; return 666;
+		fi
+		if [[ $method == 'POST' ]]; then
+			echo 'A file name or id is required for a POST'; return 666;
+		fi
+		if $do_save; then
+			echo 'A file name or id is required to save the results';
+			do_save=false;
+			do_edit=false
+		fi
+	fi
+
+	print_results;
+
 	if [[ -z "$id" ]] && [[ $count == 1 ]];then
 		id=$(echo "$model" | json "id")
 	fi
 
 	if $do_save; then 
-		if [[ -z "$id" ]]; then
-			echo "need an id to save... exiting.";
-			return 666;
-		fi
 		echo "Writing file '$service.$id.json'"
-
 		echo "{\"$service\":$model}" | python -m json.tool >  "$service.$id.json" 
 	elif [ -t 1 ]; then # use colors if no being piped
-		echo -n '.' && sleep .3 && echo -n '.' && sleep .3 && echo -n '.' && sleep .3 && echo ''
 		echo "$model" | python -m json.tool | pygmentize -l json | less -R
 	else 
 		echo "$model" | python -m json.tool
@@ -194,7 +215,6 @@ function parse_api(){
 	else
 		:
 	fi
-
 }
 
 function sand(){
