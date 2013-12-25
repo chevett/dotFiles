@@ -1,6 +1,7 @@
 PATH=~/bin:$PATH
 PATH=~/Library/Python/2.7/bin:$PATH
 
+export ANDROID_HOME=/usr/local/opt/android-sdk
 export PATH="/usr/local/heroku/bin:$PATH"
 export EDITOR='vim'
 export CLICOLOR=1
