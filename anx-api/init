@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-dataDir="$HOME/code/dotFiles/anx-api"
-
+dataDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 function mycurl(){
 	result=$(http --print=hb --session=$@) &&
 	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
@@ -13,7 +12,8 @@ function mycurl(){
 	echo "$status"
 	if [[ $count == 0 ]]; then echo -n 'No results'; fi
 	if [[ $count > 1 ]]; then echo -n "Found $count results"; fi
-	if [[ $count == 1 ]]; then echo -n "Found 1 result: $myId"; fi
+	if [[ $count == 1 ]] && [[ ! -z "$myId" ]]; then echo -n "Found 1 result: $myId"; fi
+	if [[ $count == 1 ]] && [[ -z "$myId" ]]; then echo -n "Found 1 result"; fi
 
 	
 	if $strip_repsonse; then
@@ -86,6 +86,9 @@ function api_client() {
 	route="$url/$service"
 	shift
 
+	file=$1
+	shift
+
 	if [[ ! -z "${anx_api_member[$key]}" ]]; then
 		route=$(querystring_concat $route "member_id=${anx_api_member[$key]}")
 	fi
@@ -94,8 +97,8 @@ function api_client() {
 		route=$(querystring_concat $route "id=$id")
 	fi
 
-	echo "$method $route $@"
-	mycurl $key $method $route $@
+	echo "$method $route"
+	mycurl $key $method $route $file 
 
 	if [[ "$status" == "401" ]]; then
 		if [[ ! -s "$authfile" ]]; then
@@ -112,8 +115,8 @@ function api_client() {
 			echo ' done.'
 		fi
 		
-		#now do it again
-		mycurl $key $method $route $@
+		#now we are authenticated, so do it again
+		mycurl $key $method $route $file
 	fi
 
 	if [[ -z "$id" ]] && [[ $count == 1 ]];then
@@ -203,6 +206,10 @@ function sand(){
 }
 
 function prod(){
-	api_client 'prod' "$ANX_PROD_API_MEMBER" "$ANX_SAND_API_ID" 'http://api.appnexus.com' "$dataDir/auth-prod.private" $@
+	api_client \
+		'prod' \
+		"http://api.appnexus.com"  \
+		"$dataDir/auth-prod.private" \
+		"$@"
 }
 
