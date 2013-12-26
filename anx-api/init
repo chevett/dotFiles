@@ -113,13 +113,13 @@ function _api_client() {
 
 	if [[ -z "$file" ]] && [[ -z "$id" ]]; then
 		if [[ $method == 'PUT' ]]; then
-			echo 'A file name or id is required for a PUT'; return 666;
+			echo 'A file name or id is required for a PUT'>&2; return 666;
 		fi
 		if [[ $method == 'POST' ]]; then
-			echo 'A file name or id is required for a POST'; return 666;
+			echo 'A file name or id is required for a POST'>&2; return 666;
 		fi
 		if $do_save; then
-			echo 'A file name or id is required to save the results';
+			echo 'A file name or id is required to save the results'>&2;
 			do_save=false;
 			do_edit=false
 		fi
@@ -131,6 +131,11 @@ function _api_client() {
 
 	if [[ "$" =~ ^@ ]]; then
 		file="@$file"
+	fi
+
+	if [[ $method == 'PUT' && ! -s $file ]]; then
+		echo "$file does not exist">&2;
+		return 1;
 	fi
 
 	_print_call
