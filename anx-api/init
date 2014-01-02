@@ -130,7 +130,7 @@ function _api_client() {
 		file="$service.$id.json"
 	fi
 
-	if [[ ! "$file" =~ ^@ ]]; then
+	if [[ ! -z "$file" && ! "$file" =~ ^@ ]]; then
 		file="@$file"
 	fi
 
