@@ -22,6 +22,7 @@ set noswapfile
 set scrolloff=4
 set nowrap
 set incsearch
+set sidescroll=1 
 
 syntax enable
 set background=dark
