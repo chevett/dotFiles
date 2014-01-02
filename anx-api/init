@@ -105,6 +105,7 @@ function _api_client() {
 
 	if [[ ! -z "${anx_api_member[$key]}" ]]; then
 		route=$(_querystring_concat $route "member_id=${anx_api_member[$key]}")
+		member="${anx_api_member[$key]}"
 	fi
 
 	if [[ ! -z "$id" ]]; then
@@ -129,7 +130,7 @@ function _api_client() {
 		file="$service.$id.json"
 	fi
 
-	if [[ "$" =~ ^@ ]]; then
+	if [[ ! "$file" =~ ^@ ]]; then
 		file="@$file"
 	fi
 
