@@ -180,7 +180,6 @@ function _api_client() {
 		fi
 
 		if $do_save; then 
-			echo "Writing file '$service.$id.json'"
 			echo "{\"$service\":$model}" | python -m json.tool >  "$service.$id.json" 
 		elif [ -t 1 ]; then # use colors if no being piped
 			echo "$model" | python -m json.tool | pygmentize -l json | less -R
@@ -189,29 +188,35 @@ function _api_client() {
 		fi
 	fi
 
-	if $do_edit; then
-			# we edit the file before PUTING back to the server.  exiting vim with an error code stops everything
-			if ! vim "$filename"; then
-				echo 'PUT canceled.  Exiting...'
-				return 1;
-			fi
-
-			# keep on editing the file until it passes linting
-			while ! jsonlint -q "$filename" ; do
-				read;
-				if ! vim "$filename"; then
-					echo 'PUT canceled.  Exiting...'
-					return 1;
-				fi
-			done
-
-
-			_mycurl $key PUT $route $file
-			[[ -z "$err" ]] && echo 'Success!'
-			[[ ! -z "$err" ]] && echo "ERROR: $err ($err_id)"
-	fi
+	$do_edit && _start_edit;
+		
+	
 }
 
+function _start_edit(){
+	# we edit the file before PUTING back to the server.  exiting vim with an error code stops everything
+	if ! vim "$filename"; then
+		echo 'PUT canceled.  Exiting...'
+		return 1;
+	fi
+
+	# keep on editing the file until it passes linting
+	while ! jsonlint -q "$filename" ; do
+		read;
+		if ! vim "$filename"; then
+			echo 'PUT canceled.  Exiting...'
+			return 1;
+		fi
+	done
+
+
+	_mycurl $key PUT $route $file
+	[[ -z "$err" ]] && echo 'Success!'
+	[[ ! -z "$err" ]] && 
+		echo "ERROR: $err ($err_id)" &&
+			read && _start_edit
+
+}
 function _parse_api(){
 	local OPTIND
 	while getopts ":drsq:eEi:m:v:" opt; do
