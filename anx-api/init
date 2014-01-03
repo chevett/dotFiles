@@ -208,7 +208,7 @@ function _api_client() {
 
 			_mycurl $key PUT $route $file
 			[[ -z "$err" ]] && echo 'Success!'
-			echo "$err ($err_id)"
+			[[ ! -z "$err" ]] && echo "ERROR: $err ($err_id)"
 	fi
 }
 
