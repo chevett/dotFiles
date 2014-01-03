@@ -1,14 +1,35 @@
 #!/usr/bin/env bash
+RESTORE='\033[0m'
+
+RED='\033[00;31m'
+GREEN='\033[00;32m'
+YELLOW='\033[00;33m'
+BLUE='\033[00;34m'
+PURPLE='\033[00;35m'
+CYAN='\033[00;36m'
+LIGHTGRAY='\033[00;37m'
+
+LRED='\033[01;31m'
+LGREEN='\033[01;32m'
+LYELLOW='\033[01;33m'
+LBLUE='\033[01;34m'
+LPURPLE='\033[01;35m'
+LCYAN='\033[01;36m'
+WHITE='\033[01;37m'
 
 dataDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function _mycurl(){
-	[[ -t 1 ]] && printf "$2 $3 $4"
+	[[ -t 1 ]] && [[ $2 == "GET" ]] && printf "${BLUE}$2${RESTORE}"
+	[[ -t 1 ]] && [[ $2 == "PUT" ]] && printf "${PURPLE}$2${RESTORE}"
+	[[ -t 1 ]] && [[ $2 == "POST" ]] && printf "${LPURPLE}$2${RESTORE}"
+	[[ -t 1 ]] && printf " $3 $4"
 
 	result=$(http --print=hb --session=$@) &&
 	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
 	
-	[[ -t 1 ]] && echo " $status"
+	[[ -t 1 ]] && [[ $status =~ 4|5 ]] && printf " ${RED} $status ${RESTORE}\n"
+	[[ -t 1 ]] && [[ $status =~ 2.. ]] && printf " ${GREEN} $status ${RESTORE}\n"
 	if [[ "$status" == "401" ]]; then
 
 		if [[ ! -s "$authfile" ]]; then
@@ -209,17 +230,16 @@ function _start_edit(){
 		fi
 	done
 
-
 	_mycurl $key PUT $route $file
-	[[ -z "$err" ]] && echo 'Success!'
+	[[ -z "$err" ]] && printf "${GREEN}Success${RESTORE}!\n"
 	[[ ! -z "$err" ]] && 
-		echo "ERROR: $err ($err_id)" &&
+		printf "${RED}error${RESTORE}: $err (${RED}$err_id${RESTORE})\n" &&
 			read && _start_edit
-
 }
+
 function _parse_api(){
 	local OPTIND
-	while getopts ":drsq:eEi:m:v:" opt; do
+	while getopts ":drRsq:eEi:m:v:" opt; do
 	  case $opt in
 		d)
 			strip_repsonse=false
@@ -245,12 +265,15 @@ function _parse_api(){
 		m)
 			anx_api_member[$key]="$OPTARG"
 			;;
-		r)
+		R)
 			anx_api_version[$key]=''
 			anx_api_member[$key]=''
 			rm -rf ~/.httpie
 			echo 'member and version cleared!'
-			return 1
+			;;
+		r)
+			anx_api_version[$key]=''
+			anx_api_member[$key]=''
 			;;
 		\?)
 		  echo "Invalid option: -$OPTARG" >&2
