@@ -3,10 +3,34 @@
 dataDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function _mycurl(){
+	[[ -t 1 ]] && printf "$2 $3 $4"
+
 	result=$(http --print=hb --session=$@) &&
 	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
+	
+	[[ -t 1 ]] && echo " $status"
+	if [[ "$status" == "401" ]]; then
+
+		if [[ ! -s "$authfile" ]]; then
+			echo "unable to authenticate.  create $authfile to enable auto-login"
+			return 1
+		fi
+		_mycurl $key 'POST' "$url/auth" @$authfile
+
+		if [[ "$status" != "200" ]]; then
+			echo 'unable to authenticate'
+			return 1
+		fi
+		
+		#now we are authenticated, so do it again
+		_mycurl $@
+	fi
+	
 	json_response=$(echo "$result" | tail -n 1)
+
 	count=$(echo "$json_response" | json "response.count")
+	err=$(echo "$json_response" | json "response.error")
+	err_id=$(echo "$json_response" | json "response.error_id")
 	local myObj=$(_get_model "$json_response");
 	local myId=$(echo "$myObj" | json "id")
 
@@ -35,7 +59,7 @@ function _querystring_concat(){
 }
 
 function _get_count(){
-	echo "$1" | json "response.count"
+	[[ -t 1 ]] && echo "$1" | json "response.count"
 }
 
 function _get_model(){
@@ -49,16 +73,8 @@ function _get_model(){
 	fi
 }
 
-function _print_call(){
-	if [[ -t 1 ]]; then
-		echo "$method $route $file"
-	fi
-}
-
 function _print_status(){
-	if [[ -t 1 ]]; then
-		echo "$status"
-	fi
+	[[ -t 1 ]] && echo "$status"
 }
 function _print_results(){
 	if [[ -t 1 ]]; then
@@ -84,6 +100,7 @@ function _api_client() {
 	local id=
 	local do_edit=false
 	local do_save=false
+	local skip_fetch=false
 	local strip_repsonse=true
 	local httpie_args=
 	local method='GET'
@@ -146,42 +163,30 @@ function _api_client() {
 		return 6;
 	fi
 
-	_print_call
-	_mycurl $key $method $route $file 
-
-	if [[ "$status" == "401" ]]; then
-		if [[ ! -s "$authfile" ]]; then
-			echo "unable to authenticate.  create $authfile to enable auto-login"
-			return 1
-		fi
-		printf 'logging in...'
-		_mycurl $key 'POST' "$url/auth" @$authfile
-
-		if [[ "$status" == "200" ]]; then
-			echo ' done.'
-		else
-			echo 'unable to authenticate'
-			return 1
-		fi
-		
-		#now we are authenticated, so do it again
-		_mycurl $key $method $route $file
+	if $do_edit && [[ -s $filename ]]; then
+		#echo "Use exiting $filename file? Y/n:"
+		:
 	fi
 
+	if ! $skip_fetch; then
+		if ! _mycurl $key $method $route $file; then
+			return 555;
+		fi
 
-	_print_results;
+		_print_results;
 
-	if [[ -z "$id" ]] && [[ $count == 1 ]];then
-		id=$(echo "$model" | json "id")
-	fi
+		if [[ -z "$id" ]] && [[ $count == 1 ]];then
+			id=$(echo "$model" | json "id")
+		fi
 
-	if $do_save; then 
-		echo "Writing file '$service.$id.json'"
-		echo "{\"$service\":$model}" | python -m json.tool >  "$service.$id.json" 
-	elif [ -t 1 ]; then # use colors if no being piped
-		echo "$model" | python -m json.tool | pygmentize -l json | less -R
-	else 
-		echo "$model" | python -m json.tool
+		if $do_save; then 
+			echo "Writing file '$service.$id.json'"
+			echo "{\"$service\":$model}" | python -m json.tool >  "$service.$id.json" 
+		elif [ -t 1 ]; then # use colors if no being piped
+			echo "$model" | python -m json.tool | pygmentize -l json | less -R
+		else 
+			echo "$model" | python -m json.tool
+		fi
 	fi
 
 	if $do_edit; then
@@ -200,20 +205,27 @@ function _api_client() {
 				fi
 			done
 
-			_
-			http --print=b --session="$key" PUT "$url/$service?id=$id&member_id=$member" @"$service.$id.json" | json response.status response.error
+
+			_mycurl $key PUT $route $file
+			[[ -z "$err" ]] && echo 'Success!'
+			echo "$err ($err_id)"
 	fi
 }
 
 function _parse_api(){
 	local OPTIND
-	while getopts ":drsq:ei:m:v:" opt; do
+	while getopts ":drsq:eEi:m:v:" opt; do
 	  case $opt in
 		d)
 			strip_repsonse=false
 			;;
 		s)
 			do_save=true
+			;;
+		E)
+			do_save=true
+			do_edit=true
+			skip_fetch=true
 			;;
 		e)
 			do_save=true
