@@ -84,7 +84,9 @@ function _api_client() {
 	local method='GET'
 	local file=
 	
-	_parse_api "$@"
+	if ! _parse_api "$@"; then
+		return 666;
+	fi
 	set -- $httpie_args;
 
 	if [[ $1 =~ ^(get|post|put|head|delete|GET|POST|PUT|HEAD|DELETE)$ ]]; then
@@ -112,31 +114,29 @@ function _api_client() {
 		route=$(_querystring_concat $route "id=$id")
 	fi
 
-	if [[ -z "$file" ]] && [[ -z "$id" ]]; then
-		if [[ $method == 'PUT' ]]; then
-			echo 'A file name or id is required for a PUT'>&2; return 666;
-		fi
-		if [[ $method == 'POST' ]]; then
-			echo 'A file name or id is required for a POST'>&2; return 666;
-		fi
-		if $do_save; then
-			echo 'A file name or id is required to save the results'>&2;
-			do_save=false;
-			do_edit=false
-		fi
-	fi
 
-	if [[ -z "$file" && ! -z "$id" ]]; then
-		file="$service.$id.json"
+	if $do_save || [[ $method =~ ^PUT|POST$ ]]; then
+		# if we don't have a filename
+		if [[ -z "$file" ]]; then
+			if [[ ! -z "$id" ]]; then
+				file="$service.$id.json"
+			elif [[ $method =~ ^PUT|POST$ ]]; then
+				echo "A file name or id is required for a $method.">&2; return 666;
+			elif $do_save; then
+				echo 'A file name or id is required to save the results'>&2;
+				do_save=false;
+				do_edit=false
+			fi
+		fi
 	fi
 
 	if [[ ! -z "$file" && ! "$file" =~ ^@ ]]; then
 		file="@$file"
 	fi
 
-	if [[ $method == 'PUT' && ! -s $file ]]; then
-		echo "$file does not exist">&2;
-		return 1;
+	if [[ $method =~ ^PUT|POST$ && ! -s $file ]]; then
+		echo "$file not found.">&2;
+		return 6;
 	fi
 
 	_print_call
@@ -150,11 +150,11 @@ function _api_client() {
 		printf 'logging in...'
 		_mycurl $key 'POST' "$url/auth" @$authfile
 
-		if [[ "$status" != "200" ]]; then
+		if [[ "$status" == "200" ]]; then
+			echo ' done.'
+		else
 			echo 'unable to authenticate'
 			return 1
-		else
-			echo ' done.'
 		fi
 		
 		#now we are authenticated, so do it again
@@ -229,9 +229,12 @@ function _parse_api(){
 	if [[ "$#" -ge 1 ]]; then
 		httpie_args+=" $1"
 		shift
-		_parse_api "$@";
+		if ! _parse_api "$@"; then
+			return 555;
+		fi
+		
 	else
-		:
+		return 0;
 	fi
 
 }
