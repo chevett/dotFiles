@@ -158,8 +158,8 @@ function _api_client() {
 
 	local filename=$(echo $file | tr -d '@')
 
-	if [[ $method =~ ^PUT|POST$ && ! -s $file ]]; then
-		echo "$file not found.">&2;
+	if [[ $method =~ ^PUT|POST$ && ! -s $filename ]]; then
+		echo "$filename not found.">&2;
 		return 6;
 	fi
 
