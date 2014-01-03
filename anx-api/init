@@ -55,6 +55,11 @@ function _print_call(){
 	fi
 }
 
+function _print_status(){
+	if [[ -t 1 ]]; then
+		echo "$status"
+	fi
+}
 function _print_results(){
 	if [[ -t 1 ]]; then
 		if [[ $count == 0 ]]; then echo -n 'No results'; fi
@@ -134,6 +139,8 @@ function _api_client() {
 		file="@$file"
 	fi
 
+	local filename=$(echo $file | tr -d '@')
+
 	if [[ $method =~ ^PUT|POST$ && ! -s $file ]]; then
 		echo "$file not found.">&2;
 		return 6;
@@ -177,9 +184,23 @@ function _api_client() {
 		echo "$model" | python -m json.tool
 	fi
 
-	if $do_edit; then 
-		printf 'PUTTING...'
-		 vim "$service.$id.json" &&
+	if $do_edit; then
+			# we edit the file before PUTING back to the server.  exiting vim with an error code stops everything
+			if ! vim "$filename"; then
+				echo 'PUT canceled.  Exiting...'
+				return 1;
+			fi
+
+			# keep on editing the file until it passes linting
+			while ! jsonlint -q "$filename" ; do
+				read;
+				if ! vim "$filename"; then
+					echo 'PUT canceled.  Exiting...'
+					return 1;
+				fi
+			done
+
+			_
 			http --print=b --session="$key" PUT "$url/$service?id=$id&member_id=$member" @"$service.$id.json" | json response.status response.error
 	fi
 }
