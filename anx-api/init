@@ -99,8 +99,8 @@ function _print_status(){
 }
 function _print_results(){
 	if [[ -t 1 ]]; then
-		if [[ $count == 0 ]]; then echo -n 'No results'; fi
-		if [[ $count > 1 ]]; then echo -n "Found $count results"; fi
+		if [[ $count == 0 ]]; then echo 'No results'; fi
+		if [[ $count > 1 ]]; then echo "Found $count results"; fi
 		if [[ $count == 1 ]] && [[ ! -z "$myId" ]]; then echo -n "Found 1 result: $myId"; fi
 		if [[ $count == 1 ]] && [[ -z "$myId" ]]; then echo -n "Found 1 result"; fi
 		
