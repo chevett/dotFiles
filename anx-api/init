@@ -110,6 +110,26 @@ function _print_results(){
 	fi
 }
 
+function _ensureFileName(){
+	if [[ -z "$file" ]]; then
+		if [[ ! -z "$id" ]]; then
+			file="$service.$id.json"
+		elif [[ $method =~ ^PUT|POST$ ]]; then
+			echo "A file name or id is required for a $method.">&2; return 666;
+		elif $do_save; then
+			echo 'A file name or id is required to save the results'>&2;
+			do_save=false;
+			do_edit=false
+		fi
+	fi
+
+	if [[ ! -z "$file" && ! "$file" =~ ^@ ]]; then
+		file="@$file"
+	fi
+
+	filename=$(echo $file | tr -d '@')
+}
+
 function _api_client() {
 	local key=$1;
 	local url=$2;
@@ -126,6 +146,7 @@ function _api_client() {
 	local httpie_args=
 	local method='GET'
 	local file=
+	local filename=
 	
 	if ! _parse_api "$@"; then
 		return 666;
@@ -157,36 +178,12 @@ function _api_client() {
 		route=$(_querystring_concat $route "id=$id")
 	fi
 
-
-	if $do_save || [[ $method =~ ^PUT|POST$ ]]; then
-		# if we don't have a filename
-		if [[ -z "$file" ]]; then
-			if [[ ! -z "$id" ]]; then
-				file="$service.$id.json"
-			elif [[ $method =~ ^PUT|POST$ ]]; then
-				echo "A file name or id is required for a $method.">&2; return 666;
-			elif $do_save; then
-				echo 'A file name or id is required to save the results'>&2;
-				do_save=false;
-				do_edit=false
-			fi
+	if $skip_fetch || [[ $method =~ ^PUT|POST$ ]]; then
+		_ensureFileName
+		if [[ ! -s $filename ]]; then
+			echo "File not found: $filename">&2;
+			return 666;
 		fi
-	fi
-
-	if [[ ! -z "$file" && ! "$file" =~ ^@ ]]; then
-		file="@$file"
-	fi
-
-	local filename=$(echo $file | tr -d '@')
-
-	if [[ $method =~ ^PUT|POST$ && ! -s $filename ]]; then
-		echo "$filename not found.">&2;
-		return 6;
-	fi
-
-	if $do_edit && [[ -s $filename ]]; then
-		#echo "Use exiting $filename file? Y/n:"
-		:
 	fi
 
 	if ! $skip_fetch; then
@@ -199,6 +196,8 @@ function _api_client() {
 		if [[ -z "$id" ]] && [[ $count == 1 ]];then
 			id=$(echo "$model" | json "id")
 		fi
+
+		$do_save && _ensureFileName
 
 		if $do_save; then 
 			echo "{\"$service\":$model}" | python -m json.tool >  "$service.$id.json" 
