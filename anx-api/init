@@ -197,10 +197,9 @@ function _api_client() {
 			id=$(echo "$model" | json "id")
 		fi
 
-		$do_save && _ensureFileName
-
 		if $do_save; then 
-			echo "{\"$service\":$model}" | python -m json.tool >  "$service.$id.json" 
+			_ensureFileName
+			echo "{\"$service\":$model}" | python -m json.tool >  "$filename" 
 		elif [ -t 1 ]; then # use colors if no being piped
 			echo "$model" | python -m json.tool | pygmentize -l json | less -R
 		else 

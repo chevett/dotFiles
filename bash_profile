@@ -27,6 +27,7 @@ alias find=gfind #use find from homebrew
 #alias sed='gsed -r' #use find from homebrew
 alias lastcmd="history | tail -n 2 | head -n 1 | gsed -r 's/^\s+[0-9]+\s+//g'  | pbcopy"
 alias nind="gfind -iname"
+alias j=json
 stty -ixon -ixoff # this allows ctrl-s in vim
 
 function purl { curl -b cookies -c cookies "$@" | prettyjson | less -R; }
