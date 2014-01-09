@@ -32,7 +32,29 @@ stty -ixon -ixoff # this allows ctrl-s in vim
 function purl { curl -b cookies -c cookies "$@" | prettyjson | less -R; }
 function cdl { cd $1; ls;}
 function cm() { git commit -am "$*"; }
+function killp() { 
+	local d=$(lsof -i :"$1" | tail -1)
+	local p
+	local n
+	
+	if [[ -z "$d" ]]; then
+		echo "Nothing running on $1."
+		return 666;
+	fi
 
+	read n p _ < <(echo "$d");
+	read -p "Kill $n($p)? " -n 1 -r
+	
+	echo "";
+
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		echo "not killed.";
+		return 666;
+	else 
+		kill "$p";
+		echo "killed.";
+	fi
+}
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
 alias show-path="echo $PATH | tr ':' '\n'"
