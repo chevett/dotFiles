@@ -32,6 +32,9 @@ stty -ixon -ixoff # this allows ctrl-s in vim
 function purl { curl -b cookies -c cookies "$@" | prettyjson | less -R; }
 function cdl { cd $1; ls;}
 function cm() { git commit -am "$*"; }
+function lastfiletime(){
+	echo "$(ll -tr | tail -1 | awk '{print $8;}') vs $(date | awk '{print $4;}')"
+}
 function killp() { 
 	local d=$(lsof -i :"$1" | tail -1)
 	local p
