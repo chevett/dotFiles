@@ -3,5 +3,8 @@
 username='mchevett'
 srcDir="/Users/$username/adnxs/hbui"
 destDir="$username@$username.devnxs.net:/home/$username/"
+cmd="rsync -hrtlC --out-format='%n' --exclude-from=sync_ignore.txt --delete --rsh='ssh' $srcDir $destDir"
+cmd="(echo 'Syncing... ' && $cmd && echo 'done.') || echo 'FAIL!'"
 
-rsync -vhrtlCi --progress --exclude-from=./sync_ignore.txt --delete --rsh='ssh' "$srcDir" "$destDir"
+echo "Watching $srcDir"
+fswatch "$srcDir" "$cmd"
