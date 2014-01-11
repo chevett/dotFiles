@@ -23,7 +23,9 @@ set scrolloff=4
 set nowrap
 set incsearch
 set sidescroll=1 
-
+set noerrorbells 
+set novisualbell
+set t_vb=
 syntax enable
 set background=dark
 colorscheme solarized
@@ -92,6 +94,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 "nnoremap <C-V> :tabe ~/.vimrc<CR>
 noremap <F5> :CommandTFlush<CR>
+noremap <F4> :set noet|retab!<CR>
 imap <C-h> <C-o>h
 imap <C-j> <C-o>j
 imap <C-k> <C-o>k
