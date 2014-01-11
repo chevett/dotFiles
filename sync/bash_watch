@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+username='mchevett'
+srcDir="/Users/$username/adnxs/hbui/master"
+destDir="$username@$username.devnxs.net:/home/$username/hbui/"
+
+fswatch "$srcDir" "./bash_sync $srcDir $destDir"

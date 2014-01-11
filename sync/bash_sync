@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-username='mchevett'
-srcDir="/Users/$username/adnxs/hbui"
-destDir="$username@$username.devnxs.net:/home/$username/"
-cmd="rsync -hrtlC --out-format='%n' --exclude-from=sync_ignore.txt --delete --rsh='ssh' $srcDir $destDir"
-cmd="(echo 'Syncing... ' && $cmd && echo 'done.') || echo 'FAIL!'"
+rsyncOpts="-rhtlC  --itemize-changes --delete --exclude-from=sync_ignore.txt" 
+output=$(rsync $rsyncOpts "$1" "$2")
 
-echo "Watching $srcDir"
-fswatch "$srcDir" "$cmd"
+echo "$output" | ack  '^.f' | awk '{print $2;}'
+
+[[ ! -z "$output" ]] && echo "$(date | awk '{print $4;}')"
+
