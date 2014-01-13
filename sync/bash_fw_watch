@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+username='mchevett'
+srcDir="/Users/$username/code/ui-framework-v2"
+destDir="$username@$username.devnxs.net:/home/$username/code/"
+
+fswatch "$srcDir" "./bash_sync $srcDir $destDir"
