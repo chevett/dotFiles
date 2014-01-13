@@ -7,8 +7,6 @@ export EDITOR='vim'
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-setterm -blength 0 # no bell?
-
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
