@@ -29,7 +29,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-
 "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
@@ -127,7 +126,6 @@ Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:airblade/vim-gitgutter.git'
 Bundle 'git@github.com:jelera/vim-javascript-syntax.git'
 Bundle 'git@github.com:ervandew/supertab.git'
-Bundle 'git@github.com:altercation/vim-colors-solarized.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
 Bundle 'git@github.com:itchyny/lightline.vim.git'
@@ -199,3 +197,8 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+highlight DiffAdd    cterm=bold ctermfg=233 ctermbg=70 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=236 ctermbg=88 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
