@@ -67,4 +67,4 @@ alias show-path="echo $PATH | tr ':' '\n'"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.bash_profile.private" ]] && source "$HOME/.bash_profile.private"
 [[ -s "$HOME/code/dotFiles/anx-api/init" ]] && source "$HOME/code/dotFiles/anx-api/init"
-[[ -d "/Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash" ]] && . /Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+

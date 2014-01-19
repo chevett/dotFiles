@@ -1,7 +1,6 @@
 
 let mapleader=","
 let t_Co=256
-let g:Powerline_symbols = 'fancy'
 set tags=tags;~
 set cursorline
 set number
@@ -109,7 +108,6 @@ imap <C-]> <Esc>:w!<CR>
 nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
 nnoremap <Leader><Leader>2 :NERDTreeFind<CR>
 
-set rtp+=/Users/mchevett/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
