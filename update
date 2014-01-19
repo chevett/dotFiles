@@ -6,6 +6,7 @@ mkdir -p ~/.vim
 
 ln -sf ~/code/dotFiles/bash_profile ~/.bash_profile
 ln -sf ~/code/dotFiles/bash_colors ~/.bash_colors
+ln -sf ~/code/dotFiles/bash_functions ~/.bash_functions
 ln -sf ~/code/dotFiles/vimrc ~/.vimrc
 ln -sf ~/code/dotFiles/gitconfig ~/.gitconfig
 ln -sf ~/code/dotFiles/gitignore_global ~/.gitignore_global

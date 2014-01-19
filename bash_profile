@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 source ~/.bash_colors
 
 PATH=~/bin:$PATH
@@ -20,9 +21,6 @@ fi
 
 alias 'cd..'='cd ..'
 alias ll="ls -lvh" # --group-directories-first
-alias lm='ll | 	less'        #  Pipe through 'more'
-alias lr='ll -R'           #  Recursive ls.
-alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias jpp='python -mjson.tool | less'
 alias jpp2='prettyjson | less -R'
@@ -37,44 +35,14 @@ alias nind="gfind -iname"
 alias j=json
 stty -ixon -ixoff # this allows ctrl-s in vim
 
-function where(){
-	gfind . -iname "*$1*"
-}
-function purl { curl -b cookies -c cookies "$@" | prettyjson | less -R; }
-function cdl { cd $1; ls;}
-function cm() { git commit -am "$*"; }
-function lastfiletime(){
-	echo "$(ll -tr | tail -1 | awk '{print $8;}') vs $(date | awk '{print $4;}')"
-}
-function killp() { 
-	local d=$(lsof -i :"$1" | tail -1)
-	local p
-	local n
-	
-	if [[ -z "$d" ]]; then
-		echo "Nothing running on $1."
-		return 666;
-	fi
-
-	read n p _ < <(echo "$d");
-	read -p "Kill $n($p)? " -n 1 -r
-	
-	echo "";
-
-	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-		echo "not killed.";
-		return 666;
-	else 
-		kill "$p";
-		echo "killed.";
-	fi
-}
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
-alias show-path="echo $PATH | tr ':' '\n'"
+alias show-path="echo $PATH | tr ':' '\n'";
 
-# run other stuff
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.bash_profile.private" ]] && source "$HOME/.bash_profile.private"
-[[ -s "$HOME/code/dotFiles/anx-api/init" ]] && source "$HOME/code/dotFiles/anx-api/init"
-
+function __runIfPresent(){
+	[[ -s "$1" ]] && source "$1";
+}
+__runIfPresent "$HOME/.bash_functions"
+__runIfPresent "$HOME/.rvm/scripts/rvm"
+__runIfPresent "$HOME/.bash_profile.private"
+__runIfPresent "$HOME/code/dotFiles/anx-api/init"
