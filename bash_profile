@@ -12,7 +12,8 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 	GIT_PS1_SHOWUPSTREAM="auto"
 	GIT_PS1_SHOWCOLORHINTS="yes"
-	PS1="\h:\W \u\$(__git_ps1 \" (%s) \")\$"
+	export PROMPT_COMMAND='__git_ps1 "\u@\W" "\\\$ ";'
+	GIT_PS1_SHOWUNTRACKEDFILES='yes'
 fi
 
 alias 'cd..'='cd ..'
