@@ -130,6 +130,7 @@ Bundle 'git@github.com:ervandew/supertab.git'
 Bundle 'git@github.com:altercation/vim-colors-solarized.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
+Bundle 'git@github.com:itchyny/lightline.vim.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
@@ -189,3 +190,12 @@ function! MyDiffToggle()
   w!
   tabclose!
 endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
