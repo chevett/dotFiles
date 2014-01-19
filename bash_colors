@@ -1,4 +1,7 @@
 #! /usr/bin/env bash
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 RESTORE='\033[0m'
 
 RED='\033[00;31m'

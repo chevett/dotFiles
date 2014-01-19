@@ -1,22 +1,26 @@
 #!/usr/bin/env bash
 
+dirname="$PWD"
+
 mkdir -p ~/bin
 mkdir -p ~/.config
 mkdir -p ~/.vim
 
-ln -sf ~/code/dotFiles/bash_profile ~/.bash_profile
-ln -sf ~/code/dotFiles/bash_colors ~/.bash_colors
-ln -sf ~/code/dotFiles/bash_functions ~/.bash_functions
-ln -sf ~/code/dotFiles/vimrc ~/.vimrc
-ln -sf ~/code/dotFiles/gitconfig ~/.gitconfig
-ln -sf ~/code/dotFiles/gitignore_global ~/.gitignore_global
-ln -sf ~/code/dotFiles/ackrc ~/.ackrc
-ln -sf ~/code/dotFiles/jshintrc ~/.jshintrc
-ln -sf ~/code/dotFiles/tmux.conf ~/.tmux.conf
-ln -sf ~/code/dotFiles/git_diff_wrapper ~/bin/git_diff_wrapper
-ln -sf ~/code/dotFiles/ploy_sync ~/bin/8888
-ln -sf ~/code/dotFiles/powerline ~/.config/
-ln -sf ~/code/dotFiles/vim/colors ~/.vim/
+for file in $(gfind . -maxdepth 1 -iname 'bash_*'); do
+	name=$(echo "$file" | ack -o '[^\/]*$');
+	ln -sF "$dirname/$name" "$HOME/.$name"
+done
+
+ln -sf $dirname/vimrc ~/.vimrc
+ln -sf $dirname/gitconfig ~/.gitconfig
+ln -sf $dirname/gitignore_global ~/.gitignore_global
+ln -sf $dirname/ackrc ~/.ackrc
+ln -sf $dirname/jshintrc ~/.jshintrc
+ln -sf $dirname/tmux.conf ~/.tmux.conf
+ln -sf $dirname/git_diff_wrapper ~/bin/git_diff_wrapper
+ln -sf $dirname/ploy_sync ~/bin/8888
+ln -sf $dirname/powerline ~/.config/
+ln -sf $dirname/vim/colors ~/.vim/
 
 source ~/.bash_profile
 vim +BundleInstall +qall

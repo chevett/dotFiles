@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+
+alias 'cd..'='cd ..'
+alias ll="ls -lvh" # --group-directories-first
+alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
+alias jpp='python -mjson.tool | less'
+alias jpp2='prettyjson | less -R'
+alias dif='git --no-pager diff'
+alias testTango='/Users/mchevett/adnxs/hbui/master/tests/PhantomJasmine/runUnitTests.py -c -d myDevBox'
+alias tangoTests='testTango'
+alias hbuiTests='testTango'
+alias find=gfind #use find from homebrew
+#alias sed='gsed -r' #use find from homebrew
+alias lastcmd="history | tail -n 2 | head -n 1 | gsed -r 's/^\s+[0-9]+\s+//g'  | pbcopy"
+alias nind="gfind -iname"
+alias j=json
+
+# random stuff really just for reference when i forget
+alias list-terminals='find /usr/share/terminfo -type f'
+alias show-path="echo $PATH | tr ':' '\n'";
