@@ -37,6 +37,9 @@ alias nind="gfind -iname"
 alias j=json
 stty -ixon -ixoff # this allows ctrl-s in vim
 
+function where(){
+	gfind . -iname "*$1*"
+}
 function purl { curl -b cookies -c cookies "$@" | prettyjson | less -R; }
 function cdl { cd $1; ls;}
 function cm() { git commit -am "$*"; }
