@@ -10,6 +10,8 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
     source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+	GIT_PS1_SHOWUPSTREAM="auto"
+	GIT_PS1_SHOWCOLORHINTS="yes"
 	PS1="\h:\W \u\$(__git_ps1 \" (%s) \")\$"
 fi
 
