@@ -5,6 +5,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 	GIT_PS1_SHOWUPSTREAM="auto"
 	GIT_PS1_SHOWCOLORHINTS="yes"
-	export PROMPT_COMMAND='__git_ps1 "\u@\W" "\\\$ ";'
 	GIT_PS1_SHOWUNTRACKEDFILES='yes'
+	export PROMPT_COMMAND='__git_ps1 "\u@\W" "\\\$ ";'
 fi
