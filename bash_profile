@@ -1,3 +1,5 @@
+source ~/.bash_colors
+
 PATH=~/bin:$PATH
 PATH=~/Library/Python/2.7/bin:$PATH
 
