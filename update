@@ -6,9 +6,9 @@ mkdir -p ~/bin
 mkdir -p ~/.config
 mkdir -p ~/.vim
 
-for file in $(gfind . -maxdepth 1 -iname 'bash_*'); do
+for file in ./bash/*; do
 	name=$(echo "$file" | ack -o '[^\/]*$');
-	ln -sF "$dirname/$name" "$HOME/.$name"
+	ln -sF "$dirname/bash/$name" "$HOME/.bash_$name"
 done
 
 ln -sf $dirname/vimrc ~/.vimrc
