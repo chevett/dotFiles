@@ -18,3 +18,6 @@ alias j=json
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
 alias show-path="echo $PATH | tr ':' '\n'";
+
+alias g=git
+complete -o default -o nospace -F _git g
