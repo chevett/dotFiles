@@ -19,5 +19,6 @@ alias j=json
 alias list-terminals='find /usr/share/terminfo -type f'
 alias show-path="echo $PATH | tr ':' '\n'";
 
-alias g=git
-complete -o default -o nospace -F _git g
+
+
+alias serve='python -m SimpleHTTPServer $1'
