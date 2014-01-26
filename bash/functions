@@ -32,3 +32,14 @@ function killp() {
 		echo "killed.";
 	fi
 }
+
+function serve(){
+	local p="$1";
+
+	if [[ -z "$p" ]]; then
+		p="8000";
+	fi
+
+	python -m SimpleHTTPServer "$p"&
+	open -a Google\ Chrome "http://localhost:$p/";
+}
