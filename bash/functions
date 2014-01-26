@@ -40,6 +40,7 @@ function serve(){
 		p="8000";
 	fi
 
-	python -m SimpleHTTPServer "$p"&
+	yes | killp "$p";
+	python -m SimpleHTTPServer "$p" > /dev/null 2>&1 &
 	open -a Google\ Chrome "http://localhost:$p/";
 }
