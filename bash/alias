@@ -14,6 +14,7 @@ alias find=gfind #use find from homebrew
 alias lastcmd="history | tail -n 2 | head -n 1 | gsed -r 's/^\s+[0-9]+\s+//g'  | pbcopy"
 alias nind="gfind -iname"
 alias j=json
+alias patch='git format-patch master --stdout | pbcopy'
 
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
