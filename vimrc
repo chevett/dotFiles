@@ -103,6 +103,9 @@ imap <C-^> <C-o>^
 imap <C-$> <C-o>$
 imap <C-]> <Esc>:w!<CR>
 
+nnoremap kj :w<CR>
+inoremap kj <Esc>
+
 "nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
 nnoremap <Leader><Leader>2 :NERDTreeFind<CR>
