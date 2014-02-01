@@ -28,7 +28,7 @@ set t_vb=
 syntax enable
 set background=dark
 colorscheme solarized
-
+set timeoutlen=200
 "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
@@ -39,6 +39,9 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 
 function SetInsertOptions()
 	set nocursorline
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	set timeoutlen=200
 endfunction
 
 function SetNormalOptions()
@@ -103,8 +106,13 @@ imap <C-^> <C-o>^
 imap <C-$> <C-o>$
 imap <C-]> <Esc>:w!<CR>
 
-nnoremap kj :w<CR>
 inoremap kj <Esc>
+
+
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
 
 "nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
