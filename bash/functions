@@ -44,3 +44,36 @@ function serve(){
 	python -m SimpleHTTPServer "$p" > /dev/null 2>&1 &
 	open -a Google\ Chrome "http://localhost:$p/";
 }
+
+function d(){
+	# should look like 'd head^^^ head^^ javascript.js'
+	# if only one commit is given then it assumed we want to compare to it's parent
+	local start="$1";
+	local stop="$2";
+	local fileName="$3";
+
+	if [[ "$#" == 2 ]]; then
+		stop="$start";
+		start="$start^";
+		fileName="$2";
+	fi
+
+	local filePath=$(where $fileName);
+
+	read n _ < <(echo "$filePath" | wc -l);
+
+	if [[ "$n" == 0 ]]; then
+		printf 'no files found.';
+		return 1;
+	fi
+
+	if [[ "$n" == 1 ]]; then
+		echo "$start" "$stop"
+		git diff "$start" "$stop" -- "$filePath";
+	fi
+
+	if [[ "$n" > 1 ]]; then
+		echo 'too much tuna';
+		echo "$filePath";
+	fi
+}
