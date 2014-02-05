@@ -45,7 +45,7 @@ function serve(){
 	open -a Google\ Chrome "http://localhost:$p/";
 }
 
-function d(){
+function diff(){
 	# should look like 'd head^^^ head^^ javascript.js'
 	# if only one commit is given then it assumed we want to compare to it's parent
 	local start="$1";
