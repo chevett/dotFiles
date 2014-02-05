@@ -106,6 +106,10 @@ imap <C-]> <Esc>:w!<CR>
 
 inoremap kj <Esc>
 
+nmap <F1> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+imap <F1> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+nmap <F2> :.w !pbcopy<CR><CR>
+vmap <F2> :w !pbcopy<CR><CR>
 
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
