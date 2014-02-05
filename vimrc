@@ -28,7 +28,6 @@ set t_vb=
 syntax enable
 set background=dark
 colorscheme solarized
-set timeoutlen=200
 "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
@@ -41,7 +40,6 @@ function SetInsertOptions()
 	set nocursorline
 	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-	set timeoutlen=200
 endfunction
 
 function SetNormalOptions()
@@ -200,14 +198,6 @@ function! MyDiffToggle()
   tabclose!
 endfunction
 
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
 highlight DiffAdd    cterm=bold ctermfg=87 ctermbg=22 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=236 ctermbg=52 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=99 ctermbg=17 gui=none guifg=bg guibg=Red
