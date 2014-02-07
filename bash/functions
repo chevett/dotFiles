@@ -4,7 +4,6 @@ function where(){
 	gfind . -iname "*$1*"
 }
 
-function purl { curl -b cookies -c cookies "$@" | prettyjson | less -R; }
 function cm() { git commit -am "$*"; }
 function lastfiletime(){
 	echo "$(ll -tr | tail -1 | awk '{print $8;}') vs $(date | awk '{print $4;}')"
@@ -45,35 +44,71 @@ function serve(){
 	open -a Google\ Chrome "http://localhost:$p/";
 }
 
+function resolveCaretRefs(){
+	# ^^^ file.js means get the hash from 3 changes back
+	# todo: must pass filename
+
+
+	if [[  $1 =~ ^\^+$ ]]; then
+		local x=$(echo "$1" | wc -c);
+		x=$((x-1));
+		git log --format="%H" "$2" | sed -n "$x p";
+	else
+		echo "$1";
+	fi
+}
+
 function d(){
 	# should look like 'd head^^^ head^^ javascript.js'
 	# if only one commit is given then it assumed we want to compare to it's parent
-	local start="$1";
-	local stop="$2";
-	local fileName="$3";
+	local start=;
+	local stop=;
+	local fileName=;
+	local filePath=;
 
+		
 	if [[ "$#" == 2 ]]; then
+		fileName="$2";
+		filePath=$(whereSelect "$fileName");
+
+		start=$(resolveCaretRefs "$1" "$filePath")
 		stop="$start";
 		start="$start^";
-		fileName="$2";
+	else
+		fileName="$3";
+		filePath=$(whereSelect "$fileName");
+
+		start=$(resolveCaretRefs "$1" "$filePath")
+		stop=$(resolveCaretRefs "$2" "$filePath")
 	fi
 
-	local filePath=$(where $fileName);
-
-	read n _ < <(echo "$filePath" | wc -l);
-
-	if [[ "$n" == 0 ]]; then
-		printf 'no files found.';
-		return 1;
-	fi
-
-	if [[ "$n" == 1 ]]; then
-		echo "$start" "$stop"
+		echo "$start" "$stop" "$filePath"
 		git diff "$start" "$stop" -- "$filePath";
-	fi
+}
 
-	if [[ "$n" > 1 ]]; then
-		echo 'too much tuna';
-		echo "$filePath";
+function s(){
+	local file=$(whereSelect "$2");
+	git show $(resolveCaretRefs "$1" "$file"):"$file";
+}
+
+function whereSelect(){
+	local results=$(where "$1");
+	local count=$(echo "$results" | wc -l | awk '{print $1}');
+	
+	if [[ $count == 0 ]]; then
+		echo 'no matching file\n';
+	elif [[ $count == 1 ]]; then
+		echo "$results";
+	else
+		echo 'The choice is yours: ' > /dev/tty;
+		local x=1;
+
+		for t in $results; do
+			echo "$x) $t" > /dev/tty;
+			x=$((x+1));
+		done
+
+		read selection;
+		echo "$results" | sed -n "$selection p";
 	fi
 }
