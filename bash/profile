@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
+PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
 PATH=~/Library/Python/2.7/bin:$PATH
 
