@@ -16,6 +16,9 @@ alias nind="gfind -iname"
 alias j=json
 alias patch='git format-patch master --stdout | pbcopy'
 
+alias mpm='npm --registry "http://npm.miketown3.com"'
+alias apm='npm --registry "http://68.67.148.20:8000/"'
+
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
 alias show-path="echo $PATH | tr ':' '\n'";
