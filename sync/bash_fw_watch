@@ -2,6 +2,6 @@
 
 username='mchevett'
 srcDir="/Users/$username/code/ui-framework-v2"
-destDir="$username@$username.devnxs.net:/home/$username/code/"
+destDir="$username@$username.devnxs.net:/home/$username/code/ui-framework-v2/"
 
 fswatch "$srcDir" "./bash_sync $srcDir $destDir"
