@@ -3,16 +3,16 @@
 dataDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function _mycurl(){
-	[[ -t 1 ]] && [[ $2 == "GET" ]] && printf "${BLUE}$2${RESTORE}"
-	[[ -t 1 ]] && [[ $2 == "PUT" ]] && printf "${PURPLE}$2${RESTORE}"
-	[[ -t 1 ]] && [[ $2 == "POST" ]] && printf "${LPURPLE}$2${RESTORE}"
-	[[ -t 1 ]] && printf " $3 $4"
+	[[ -t 1 ]] && [[ $2 == "GET" ]] && printf "${BLUE}$2${RESTORE}" > /dev/tty
+	[[ -t 1 ]] && [[ $2 == "PUT" ]] && printf "${PURPLE}$2${RESTORE}" > /dev/tty
+	[[ -t 1 ]] && [[ $2 == "POST" ]] && printf "${LPURPLE}$2${RESTORE}" > /dev/tty
+	[[ -t 1 ]] && printf " $3 $4" > /dev/tty
 
 	result=$(http --print=hb --session=$@) &&
 	status=$(echo "$result" | head -n 1 | ack -o -1 '[1-5][0-9]{2}')
 	
-	[[ -t 1 ]] && [[ $status =~ 4|5 ]] && printf " ${RED} $status ${RESTORE}\n"
-	[[ -t 1 ]] && [[ $status =~ 2.. ]] && printf " ${GREEN} $status ${RESTORE}\n"
+	[[ -t 1 ]] && [[ $status =~ 4|5 ]] && printf " ${RED} $status ${RESTORE}\n" > /dev/tty
+	[[ -t 1 ]] && [[ $status =~ 2.. ]] && printf " ${GREEN} $status ${RESTORE}\n" > /dev/tty
 	if [[ "$status" == "401" ]]; then
 
 		if [[ ! -s "$authfile" ]]; then
@@ -63,7 +63,7 @@ function _querystring_concat(){
 }
 
 function _get_count(){
-	[[ -t 1 ]] && echo "$1" | json "response.count"
+	[[ -t 1 ]] && echo "$1" | json "response.count" > /dev/tty
 }
 
 function _get_model(){
@@ -78,7 +78,7 @@ function _get_model(){
 }
 
 function _print_status(){
-	[[ -t 1 ]] && echo "$status"
+	[[ -t 1 ]] && echo "$status" > /dev/tty
 }
 function _print_results(){
 	if [[ -t 1 ]]; then
