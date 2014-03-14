@@ -145,6 +145,7 @@ function _api_client() {
 		url="$url/${anx_api_version[$key]}"
 	fi
 
+	query=${1/*\?/}
 	service=${1/\?*/}
 	route="$url/$service"
 	shift

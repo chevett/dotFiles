@@ -16,6 +16,7 @@ set wildignore+=node_modules,.git
 set mouse=nirc
 set shiftwidth=4
 set tabstop=4
+set noexpandtab
 set nobackup
 set noswapfile
 set scrolloff=4
@@ -93,15 +94,16 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 "nnoremap <C-V> :tabe ~/.vimrc<CR>
 noremap <F5> :CommandTFlush<CR>
-noremap <F4> :set noet|retab!<CR>
+"noremap <F4> :set noet|retab!<CR>
+nnoremap <F4> :%retab! <CR>
 imap <C-h> <C-o>h
 imap <C-j> <C-o>j
 imap <C-k> <C-o>k
 imap <C-l> <C-o>l
-imap <C-w> <C-o>w
-imap <C-b> <C-o>b
-imap <C-^> <C-o>^
-imap <C-$> <C-o>$
+imap <C-w> <C-]>w
+imap <C-b> <C-]>b
+imap <C-^> <C-]>^
+imap <C-$> <C-]>$
 imap <C-]> <Esc>:w!<CR>
 
 inoremap kj <Esc>
