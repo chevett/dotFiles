@@ -101,6 +101,7 @@ imap <C-j> <C-o>j
 imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 imap <C-w> <C-]>w
+imap <C-e> <C-]>e
 imap <C-b> <C-]>b
 imap <C-^> <C-]>^
 imap <C-$> <C-]>$
