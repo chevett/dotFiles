@@ -158,6 +158,10 @@ function _api_client() {
 		member="${anx_api_member[$key]}"
 	fi
 
+	if [[ ! -z "$query" ]]; then
+		route=$(_querystring_concat $route "$query")
+	fi
+
 	if [[ ! -z "$id" ]]; then
 		route=$(_querystring_concat $route "id=$id")
 	fi
