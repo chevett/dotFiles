@@ -88,6 +88,8 @@ nnoremap <Leader>s :w<CR>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
+nnoremap <Tab> :bNext<CR>
+nnoremap <BS> :bprevious<CR>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
