@@ -4,6 +4,10 @@ PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
 PATH=~/Library/Python/2.7/bin:$PATH
 
+if [ -d "$HOME/tools/android-sdk-macosx/tools" ]; then
+	PATH=~/tools/android-sdk-macosx/tools:$PATH
+fi
+
 export PATH="/usr/local/heroku/bin:$PATH"
 export EDITOR='vim'
 
