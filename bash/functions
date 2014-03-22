@@ -112,3 +112,9 @@ function whereSelect(){
 		echo "$results" | sed -n "$selection p";
 	fi
 }
+
+function tmx(){
+	tmux attach-session -t $(tmux list-sessions | head -1 | awk '{print $1;}' | sed 's/://');
+}
+
+
