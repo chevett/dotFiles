@@ -114,7 +114,6 @@ inoremap kj <Esc>
 nmap <F1> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 imap <F1> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 nmap <F2> :.w !pbcopy<CR><CR>
-nmap <Leader>t :CtrlP<CR>
 vmap <F2> :w !pbcopy<CR><CR>
 
 inoremap <Left>  <NOP>
@@ -132,10 +131,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'L9'
 Bundle 'git@github.com:Lokaltog/vim-easymotion.git'
-Bundle 'git@github.com:kien/ctrlp.vim.git'
+Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git@github.com:marijnh/tern_for_vim.git'
 Bundle 'git@github.com:terryma/vim-expand-region.git' 
-Bundle 'git@github.com:altercation/vim-colors-solarized.git'
 Bundle 'git@github.com:terryma/vim-smooth-scroll.git' 
 Bundle 'git@github.com:mileszs/ack.vim.git'
 Bundle 'git@github.com:guns/xterm-color-table.vim.git'
