@@ -15,7 +15,7 @@ alias lastcmd="history | tail -n 2 | head -n 1 | gsed -r 's/^\s+[0-9]+\s+//g'  |
 alias nind="gfind -iname"
 alias j=json
 alias patch='git format-patch master --stdout | pbcopy'
-
+alias py=python
 
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
