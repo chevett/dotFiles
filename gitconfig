@@ -14,7 +14,7 @@
 	authors = !sh -c 'git shortlog -s | sort -r'
 [user]
 	name = Mike Chevett
-	email = mchevett@appnexus.com
+	email = mchevett@gmail.com
 [core]
 	excludesfile = /Users/mchevett/.gitignore_global
 	editor = /usr/local/bin/vim -f
