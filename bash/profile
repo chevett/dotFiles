@@ -1,8 +1,10 @@
 #! /usr/bin/env bash
 
+HISTSIZE=10000
+
 PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
-PATH=~/Library/Python/2.7/bin:$PATH
+PATH=/usr/local/share/python:$PATH
 
 if [ -d "$HOME/tools/android-sdk-macosx" ]; then
 	PATH=~/tools/android-sdk-macosx/platform-tools:$PATH
