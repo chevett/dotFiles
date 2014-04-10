@@ -54,6 +54,7 @@ filetype off                   " required!
 
 filetype plugin on
 
+let NERDTreeIgnore = ['\.pyc$']
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
 
