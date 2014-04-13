@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-cd ~/code/ez-app/
-git add -A
-git commit -am'syncing'
-git push origin master
-cd -
