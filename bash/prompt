@@ -1,4 +1,32 @@
 #! /usr/bin/env bash
+highlight()
+{
+    if [ -x /usr/bin/tput ]
+    then
+        tput bold
+        tput setaf $1
+    fi
+    shift
+    printf -- "$@"
+    if [ -x /usr/bin/tput ]
+    then
+        tput sgr0
+    fi
+}
+
+highlight_error()
+{
+    highlight 1 "$@"
+}
+
+highlight_exit_code()
+{
+    exit_code=$?
+    if [ $exit_code -ne 0 ]
+    then
+        highlight_error "\e[97;48;5;196m $exit_code ${RESTORE} "
+    fi
+}
 
 if hash gdate 2>/dev/null; then
 	if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -7,6 +35,6 @@ if hash gdate 2>/dev/null; then
 		GIT_PS1_SHOWUPSTREAM="auto"
 		GIT_PS1_SHOWCOLORHINTS="yes"
 		GIT_PS1_SHOWUNTRACKEDFILES='yes'
-		export PROMPT_COMMAND='__git_ps1 "\u@\h \W" "\\\$ ";'
+		export PROMPT_COMMAND='__git_ps1 "\u@\h \W" " \$(highlight_exit_code)\\\$ ";'
 	fi
 fi
