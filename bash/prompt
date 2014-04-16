@@ -24,7 +24,7 @@ highlight_exit_code()
     exit_code=$?
     if [ $exit_code -ne 0 ]
     then
-        highlight_error "\e[97;48;5;196m $exit_code ${RESTORE} "
+        highlight_error "\e[97;48;5;196m $exit_code "
     fi
 }
 
