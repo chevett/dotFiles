@@ -1,5 +1,7 @@
 let mapleader=","
+let g:airline_powerline_fonts = 1
 let t_Co=256
+let g:airline_theme='solarized'
 set tags=tags;~
 set cursorline
 set number
@@ -146,8 +148,8 @@ Bundle 'git@github.com:jelera/vim-javascript-syntax.git'
 Bundle 'git@github.com:ervandew/supertab.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
-Bundle 'git@github.com:itchyny/lightline.vim.git'
 Bundle 'git@github.com:tpope/vim-commentary.git'
+Bundle 'git@github.com:bling/vim-airline.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
@@ -212,4 +214,3 @@ highlight DiffAdd    cterm=bold ctermfg=87 ctermbg=22 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=236 ctermbg=52 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=99 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=233 ctermbg=88 gui=none guifg=bg guibg=Red
-
