@@ -20,3 +20,4 @@ alias py=python
 # random stuff really just for reference when i forget
 alias list-terminals='find /usr/share/terminfo -type f'
 alias show-path="echo $PATH | tr ':' '\n'";
+alias is_login_shell='shopt -q login_shell && echo "Login shell" || echo "No login shell"'
