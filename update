@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -x "$dirname/private/update" ]; then
+	source $dirname/private/update
+fi
+
 dirname="$PWD"
 
 mkdir -p ~/.config
@@ -30,9 +34,6 @@ if [ ! -d "$HOME/bin" ]; then
 	ln -s $dirname/bin ~/bin
 fi
 
-if [ -x "$dirname/private/update" ]; then
-	source $dirname/private/update
-fi
 
 source ~/.bash_profile
 vim +BundleInstall +qall
