@@ -119,5 +119,7 @@ function tmx(){
 
 
 function replaceAll(){
-	find ./ -type f -iname $1  -exec gsed -i "s/$2/$3/" {} \;
+	echo $PWD
+	echo "s/$1/$2"
+	find "$PWD" -type f -iname '*.py'  -exec gsed -i "s/$1/$2/" {} \;
 }
