@@ -118,3 +118,6 @@ function tmx(){
 }
 
 
+function replaceAll(){
+	find ./ -type f -iname $1  -exec gsed -i "s/$2/$3/" {} \;
+}
