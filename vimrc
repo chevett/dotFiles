@@ -117,6 +117,7 @@ nmap <F1> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 imap <F1> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 nmap <F2> :.w !pbcopy<CR><CR>
 vmap <F2> :w !pbcopy<CR><CR>
+map <F8> :TagbarToggle<CR>
 
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
@@ -151,6 +152,7 @@ Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
 Bundle 'git@github.com:tpope/vim-commentary.git'
 Bundle 'git@github.com:bling/vim-airline.git'
 Bundle 'git@github.com:tpope/vim-unimpaired.git'
+Bundle 'git@github.com:majutsushi/tagbar.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()

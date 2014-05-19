@@ -123,3 +123,6 @@ function replaceAll(){
 	echo "s/$1/$2"
 	find "$PWD" -type f -iname '*.py'  -exec gsed -i "s/$1/$2/" {} \;
 }
+
+# get the parent pid from a pid
+function ppid () { ps -p ${1:-$$} -o ppid=; }
