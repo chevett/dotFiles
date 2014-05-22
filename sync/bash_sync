@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-rsyncOpts="-rhtlC  --itemize-changes --delete --exclude-from=sync_ignore.txt" 
-output=$(rsync $rsyncOpts "$1" "$2")
-
-echo "$output" | ack  '^.f' | awk '{print $2;}'
-
-[[ ! -z "$output" ]] && echo "$(date | awk '{print $4;}')"
-
