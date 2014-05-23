@@ -133,7 +133,7 @@ noremap <Down>  <NOP>
 nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
 nnoremap <Leader><Leader>2 :NERDTreeFind<CR>
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
