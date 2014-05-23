@@ -88,7 +88,7 @@ nnoremap <Leader>r :TernRename<CR>
 nnoremap <Leader>gd :call MyDiffToggle()<cr>
 nnoremap <Leader>f :Ack --smart-case<space>
 
-nnoremap <Leader>s :w<CR>
+
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR> " set the working directiory to the current file's location
@@ -121,10 +121,13 @@ nmap <F2> :.w !pbcopy<CR><CR>
 vmap <F2> :w !pbcopy<CR><CR>
 map <F8> :TagbarToggle<CR>
 
-inoremap <Left>  <NOP>
-inoremap <Right> <NOP>
-inoremap <Up>    <NOP>
-inoremap <Down>  <NOP>
+" write anyway
+cmap w!! w !sudo tee % >/dev/null
+
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
 
 "nnoremap <Leader><Leader>1 :cd %:p:h<CR>:NERDTreeCWD<CR>
 nnoremap <Leader><Leader>1 :NERDTreeTabsToggle<CR>
