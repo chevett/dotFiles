@@ -57,6 +57,8 @@ filetype off                   " required!
 filetype plugin on
 
 let NERDTreeIgnore = ['\.pyc$']
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
+
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
 
