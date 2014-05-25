@@ -13,7 +13,6 @@ set nocompatible
 set backspace=2 " make backspace work like most other apps
 "set grepprg=ack
 set omnifunc=syntaxcomplete#Complete
-set wildignore+=node_modules,.git
 set mouse=nirc
 set shiftwidth=4
 set tabstop=4
@@ -58,6 +57,7 @@ filetype plugin on
 
 let NERDTreeIgnore = ['\.pyc$']
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
+set wildignore+=node_modules,.git
 
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
