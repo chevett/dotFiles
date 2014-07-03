@@ -7,6 +7,7 @@ set cursorline
 set number
 set hidden 
 set autoindent
+set autoread
 set smartcase
 set ignorecase
 set nocompatible 
