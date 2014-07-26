@@ -2,6 +2,7 @@
 	"undef": true,
 	"unused": true,
 	"node" : true,
+	"expr" : true,
     "browser" : true,	
 	"globals": {
 		"anx": false,

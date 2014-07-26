@@ -28,8 +28,8 @@ set noerrorbells
 set novisualbell
 set t_vb=
 syntax enable
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
@@ -70,7 +70,7 @@ hi CursorLine   cterm=NONE ctermbg=235
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi PMenu cterm=NONE ctermbg=39 ctermfg=233 guibg=darkred guifg=white
 hi PMenuSel cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi LineNr cterm=NONE ctermfg=23
+"hi LineNr cterm=NONE ctermfg=23
 hi NonText ctermfg=234
 hi SpecialKey ctermfg=234
 hi Search ctermbg=49 ctermfg=233
