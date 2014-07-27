@@ -28,6 +28,7 @@ set noerrorbells
 set novisualbell
 set t_vb=
 syntax enable
+let g:syntastic_enable_highlighting = 0
 "set background=dark
 "colorscheme solarized
 "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
