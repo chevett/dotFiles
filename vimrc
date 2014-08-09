@@ -36,8 +36,7 @@ let g:syntastic_enable_highlighting = 0
 
 autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
-autocmd BufNewFile,BufRead *.pjs set filetype=javascript
-autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.json set ft=json
 
 function SetInsertOptions()
 	set nocursorline
@@ -146,7 +145,6 @@ Bundle 'git@github.com:marijnh/tern_for_vim.git'
 Bundle 'git@github.com:terryma/vim-smooth-scroll.git' 
 Bundle 'git@github.com:mileszs/ack.vim.git'
 Bundle 'git@github.com:guns/xterm-color-table.vim.git'
-Bundle 'git@github.com:groenewege/vim-less.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:jistr/vim-nerdtree-tabs.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
@@ -156,7 +154,10 @@ Bundle 'git@github.com:ervandew/supertab.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
 Bundle 'git@github.com:tpope/vim-commentary.git'
-Bundle 'git@github.com:tpope/vim-unimpaired.git'
+
+let g:vim_json_syntax_conceal = 0
+Plugin 'elzr/vim-json'
+
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
