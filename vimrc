@@ -156,9 +156,7 @@ Bundle 'git@github.com:ervandew/supertab.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
 Bundle 'git@github.com:tpope/vim-commentary.git'
-"Bundle 'git@github.com:bling/vim-airline.git'
 Bundle 'git@github.com:tpope/vim-unimpaired.git'
-Bundle 'git@github.com:majutsushi/tagbar.git'
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
