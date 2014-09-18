@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-function is_osx()
-{
-	test $(uname | tr -d '\n') = 'Darwin';
-}
-export -f is_osx
 
 if [ -x "$dirname/private/update" ]; then
 	source $dirname/private/update

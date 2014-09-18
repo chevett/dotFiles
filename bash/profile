@@ -6,6 +6,12 @@ PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
 PATH=/usr/local/share/python:$PATH
 
+function is_osx()
+{
+	test $(uname | tr -d '\n') = 'Darwin';
+}
+export -f is_osx
+
 if [ -d "$HOME/tools/android-sdk-macosx" ]; then
 	PATH=~/tools/android-sdk-macosx/platform-tools:$PATH
 	PATH=~/tools/android-sdk-macosx/tools:$PATH
