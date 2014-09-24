@@ -11,7 +11,7 @@ mkdir -p ~/.config
 mkdir -p ~/.vim
 
 for file in ./bash/*; do
-	name=$(echo "$file" | ack -o '[^\/]*$');
+	name=$(echo "$file" | grep -o '[^\/]*$');
 	ln -sf "$dirname/bash/$name" "$HOME/.bash_$name"
 done
 
