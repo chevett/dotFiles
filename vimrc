@@ -38,6 +38,7 @@ autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
 autocmd BufNewFile,BufRead *.json set ft=json
 autocmd BufNewFile,BufRead *.less set ft=less
+autocmd BufNewFile,BufRead *.vash set ft=html
 
 function SetInsertOptions()
 	set nocursorline
@@ -188,7 +189,6 @@ endfunction "call AutoHighlightToggle() "=======================================
  filetype plugin indent on     " required!
 
 set laststatus=2
-set statusline+=%F
 
  " highlight tabs and trailing spaces
  set listchars=tab:>-,trail:~,extends:>,precedes:<
@@ -224,3 +224,16 @@ highlight DiffAdd    cterm=bold ctermfg=87 ctermbg=22 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=236 ctermbg=52 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=99 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=233 ctermbg=88 gui=none guifg=bg guibg=Red
+
+
+
+set statusline=%t       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
