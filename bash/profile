@@ -26,7 +26,6 @@ function __runIfPresent(){
 }
 for file in ~/.bash_*; do
 	if [[ ! $file =~ bash_profile|bash_history$ ]]; then
-	echo "hi: $file"
 		__runIfPresent "$file"
 	fi
 done
