@@ -12,20 +12,21 @@ function is_osx()
 }
 export -f is_osx
 
-if [ -d "$HOME/tools/android-sdk-macosx" ]; then
-	PATH=~/tools/android-sdk-macosx/platform-tools:$PATH
-	PATH=~/tools/android-sdk-macosx/tools:$PATH
+if [ -d "$HOME/tools/android-sdk" ]; then
+	PATH=~/tools/android-sdk/platform-tools:$PATH
+	PATH=~/tools/android-sdk/tools:$PATH
 fi
 
 export PATH="/usr/local/heroku/bin:$PATH"
 export EDITOR='vim'
-
+export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 
 function __runIfPresent(){
 	[[ -s "$1" ]] && source "$1";
 }
 for file in ~/.bash_*; do
 	if [[ ! $file =~ bash_profile|bash_history$ ]]; then
+	echo "hi: $file"
 		__runIfPresent "$file"
 	fi
 done
