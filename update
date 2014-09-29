@@ -22,18 +22,12 @@ ln -sf $dirname/ackrc ~/.ackrc
 ln -sf $dirname/jshintrc ~/.jshintrc
 ln -sf $dirname/tmux.conf ~/.tmux.conf
 ln -sf $dirname/powerline ~/.config/
+ln -sf $dirname/xmobarrc ~/.xmobarrc
 
-if [ ! -d "$HOME/.vim/colors" ]; then
-	ln -s $dirname/vim/colors ~/.vim/colors
-fi
-
-if [ ! -d "$HOME/.vim/after" ]; then
-	ln -s $dirname/vim/after ~/.vim/after
-fi
-
-if [ ! -d "$HOME/bin" ]; then
-	ln -s $dirname/bin ~/bin
-fi
+ln -snf $dirname/vim/colors ~/.vim/colors
+ln -snf $dirname/vim/after ~/.vim/after
+ln -snf $dirname/bin ~/bin
+ln -snf $dirname/xmonad ~/.xmonad
 
 
 source ~/.bash_profile

@@ -1,4 +1,8 @@
 *.sublime-project
 *.sublime-workspace
 *.private
+xmonad/*.hi
+xmonad/*.o
+xmonad/*.errors
+xmonad/*x86*
 
