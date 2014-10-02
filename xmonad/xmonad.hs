@@ -15,8 +15,7 @@ main = do
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
-        } `additionalKeys`
-        [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
-        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-        , ((0, xK_Print), spawn "scrot")
-        ]
+		, borderWidth = 6
+		, focusedBorderColor = "#D45FBE"
+		, normalBorderColor = "#3A3C3D"
+        }
