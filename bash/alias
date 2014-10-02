@@ -17,4 +17,7 @@ alias is_login_shell='shopt -q login_shell && echo "Login shell" || echo "No log
 if is_osx; then
 	alias find=gfind
 	alias sed=gsed
+else
+	alias pbcopy='xclip -selection clipboard'
+	alias pbpaste='xclip -selection clipboard -o'
 fi
