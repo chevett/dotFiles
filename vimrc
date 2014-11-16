@@ -66,6 +66,7 @@ set wildignore+=node_modules,.git
 
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
+let g:CommandTTraverseSCM='pwd'
 
 exec 'set viminfo=%,' . &viminfo
 
