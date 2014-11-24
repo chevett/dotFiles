@@ -18,7 +18,7 @@
 	email = mchevett@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = /usr/local/bin/vim -f
+	editor = /usr/bin/vim -f
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
