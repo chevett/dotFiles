@@ -16,6 +16,7 @@ for file in ./bash/*; do
 done
 
 ln -sf $dirname/vimrc ~/.vimrc
+ln -sf $dirname/dir_colors ~/.dir_colors
 ln -sf $dirname/gitconfig ~/.gitconfig
 ln -sf $dirname/gitignore_global ~/.gitignore_global
 ln -sf $dirname/ackrc ~/.ackrc

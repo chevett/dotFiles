@@ -32,3 +32,6 @@ done
 
 __runIfPresent "$HOME/.rvm/scripts/rvm"
 __runIfPresent "$HOME/code/dotFiles/anx-api/init"
+
+
+eval `dircolors ~/.dir_colors`
