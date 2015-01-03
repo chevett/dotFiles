@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-alias ll="ls -lh"
+alias ll="ls -lh --color"
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias jpp='python -mjson.tool | less'
 alias jpp2='prettyjson | less -R'
