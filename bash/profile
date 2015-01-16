@@ -2,6 +2,8 @@
 
 HISTSIZE=10000
 
+set -o vi
+
 PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
 PATH=/usr/local/share/python:$PATH
