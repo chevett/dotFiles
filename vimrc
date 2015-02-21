@@ -36,6 +36,7 @@ let g:syntastic_enable_highlighting = 0
 
 autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
+autocmd BufNewFile,BufRead *.ts set ft=typescript
 autocmd BufNewFile,BufRead *.json set ft=json
 autocmd BufNewFile,BufRead *.less set ft=less
 autocmd BufNewFile,BufRead *.vash set ft=html
@@ -160,6 +161,7 @@ Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
 Bundle 'git@github.com:tpope/vim-commentary.git'
 Bundle 'git@github.com:groenewege/vim-less.git'
+Bundle 'git@github.com:leafgarland/typescript-vim.git'
 
 let g:vim_json_syntax_conceal = 0
 Plugin 'elzr/vim-json'
