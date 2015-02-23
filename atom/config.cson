@@ -5,7 +5,7 @@
     showInvisibles: true
   core:
     themes: [
-      "one-dark-ui"
+      "seti-ui"
       "atom-dark-syntax"
     ]
   "exception-reporting":
