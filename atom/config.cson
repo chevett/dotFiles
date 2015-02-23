@@ -1,0 +1,16 @@
+"*":
+  editor:
+    invisibles: {}
+    fontSize: 13
+    showInvisibles: true
+  core:
+    themes: [
+      "one-dark-ui"
+      "atom-dark-syntax"
+    ]
+  "exception-reporting":
+    userId: "f682918d-5c67-064d-dc82-4d97dd8c8f80"
+  welcome:
+    showOnStartup: false
+  "autocomplete-plus": {}
+  linter: {}

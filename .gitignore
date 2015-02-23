@@ -5,4 +5,7 @@ xmonad/*.hi
 xmonad/*.o
 xmonad/*.errors
 xmonad/*x86*
+atom/storage
+atom/packages
+atom/.apm
 

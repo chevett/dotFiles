@@ -29,6 +29,7 @@ ln -snf $dirname/vim/colors ~/.vim/colors
 ln -snf $dirname/vim/after ~/.vim/after
 ln -snf $dirname/bin ~/bin
 ln -snf $dirname/xmonad ~/.xmonad
+ln -snf $dirname/atom ~/.atom
 
 
 source ~/.bash_profile
