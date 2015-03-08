@@ -1,18 +1,20 @@
 "*":
   editor:
     invisibles: {}
-    fontSize: 13
     showInvisibles: true
+    fontFamily: "Liberation Mono"
+    fontSize: 15
   core:
     themes: [
-      "seti-ui"
-      "atom-dark-syntax"
+      "atom-dark-ui"
+      "solarized-dark-syntax"
     ]
   "exception-reporting":
     userId: "f682918d-5c67-064d-dc82-4d97dd8c8f80"
   welcome:
     showOnStartup: false
   "autocomplete-plus": {}
-  linter: {}
+  linter:
+    showInfoMessages: true
   "tree-view":
     hideVcsIgnoredFiles: true

@@ -26,3 +26,12 @@
 'body':
   'alt-{': 'pane:show-previous-item'
   'alt-}': 'pane:show-next-item'
+
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  ';': 'ex-mode:open'
+
+'atom-text-editor.vim-mode.insert-mode':
+  'k': 'insert-incomplete-keybinding'
+
+'.vim-mode.insert-mode:not(.mini)':
+  'k j': 'vim-mode:activate-command-mode'
