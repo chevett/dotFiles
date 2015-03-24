@@ -22,6 +22,7 @@ ln -sf $dirname/gitignore_global ~/.gitignore_global
 ln -sf $dirname/ackrc ~/.ackrc
 ln -sf $dirname/jshintrc ~/.jshintrc
 ln -sf $dirname/tmux.conf ~/.tmux.conf
+ln -sf $dirname/rtorrent.rc ~/.rtorrent.rc
 ln -sf $dirname/powerline ~/.config/
 ln -sf $dirname/xmobarrc ~/.xmobarrc
 
