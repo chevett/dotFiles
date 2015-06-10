@@ -60,6 +60,8 @@ filetype off                   " required!
 
 
 filetype plugin on
+au BufRead,BufNewFile *.ts        setlocal filetype=typescript
+set rtp+=/usr/local/lib/node_modules/typescript-tools/
 
 let NERDTreeIgnore = ['\.pyc$']
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
@@ -161,6 +163,7 @@ Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:christoomey/vim-tmux-navigator.git'
 Bundle 'git@github.com:tpope/vim-commentary.git'
 Bundle 'git@github.com:groenewege/vim-less.git'
+Bundle 'clausreinke/typescript-tools'
 Bundle 'git@github.com:leafgarland/typescript-vim.git'
 
 let g:vim_json_syntax_conceal = 0
