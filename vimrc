@@ -76,8 +76,11 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
 set wildignore+=node_modules,.git
 
 let g:CommandTMaxFiles=20000
-let g:CommandTMatchWindowAtTop=1
+let g:CommandTMatchWindowAtTop=0
+let g:CommandTMaxHeight=8
+let g:CommandTMinHeight=8
 let g:CommandTTraverseSCM='pwd'
+"let g:CommandTMatchWindowReverse=1
 
 exec 'set viminfo=%,' . &viminfo
 
@@ -207,3 +210,4 @@ nmap <silent> <expr> <C-l> &diff ? ':diffput<CR>' : ':TmuxNavigateRight<cr>'
 nmap <silent> <expr> <C-h> &diff ? ':diffget<CR>' : ':TmuxNavigateLeft<cr>'
 nmap <silent> <expr> <enter> &diff ? 'zR' : ''
 nmap <expr> <C-enter> &diff ? ':echo 'hi'' : ''
+
