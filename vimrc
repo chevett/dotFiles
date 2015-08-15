@@ -202,9 +202,10 @@ nnoremap <Leader>o o<Esc>
 nnoremap <Leader>d :call MyDiffToggle()<CR>
 
 " if in diff mode, then hjkl navigates changes and pulls from left or right
-nmap <expr> <C-j> &diff ? ']c' : ':TmuxNavigateDown<cr>'
-nmap <expr> <C-k> &diff ? '[c' : ':TmuxNavigateUp<cr>'
-nmap <expr> <C-l> &diff ? ':diffput<CR>' : ':TmuxNavigateRight<cr>'
-nmap <expr> <C-h> &diff ? ':diffget<CR>' : ':TmuxNavigateLeft<cr>'
+nmap <silent> <expr> <C-j> &diff ? ']c' : ':TmuxNavigateDown<cr>'
+nmap <silent> <expr> <C-k> &diff ? '[c' : ':TmuxNavigateUp<cr>'
+nmap <silent> <expr> <C-l> &diff ? ':diffput<CR>' : ':TmuxNavigateRight<cr>'
+nmap <silent> <expr> <C-h> &diff ? ':diffget<CR>' : ':TmuxNavigateLeft<cr>'
+nmap <silent> <expr> <enter> &diff ? 'zR' : ''
 
 
