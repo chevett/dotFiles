@@ -1,6 +1,5 @@
 let mapleader=","
 let t_Co=256
-let g:airline_theme='solarized'
 let g:tmux_navigator_no_mappings=1
 set tags=tags;~
 set cursorline
@@ -149,7 +148,7 @@ set laststatus=2
 function! MyDiffToggle()
   if (&diff == 0 || getbufvar('#', '&diff') == 0)
 		\ && (bufname('%') !~ '^fugitive:' && bufname('#') !~ '^fugitive:')
-	Gdiff
+	Gvdiff
 	return
   endif
   bd
@@ -207,5 +206,4 @@ nmap <silent> <expr> <C-k> &diff ? '[c' : ':TmuxNavigateUp<cr>'
 nmap <silent> <expr> <C-l> &diff ? ':diffput<CR>' : ':TmuxNavigateRight<cr>'
 nmap <silent> <expr> <C-h> &diff ? ':diffget<CR>' : ':TmuxNavigateLeft<cr>'
 nmap <silent> <expr> <enter> &diff ? 'zR' : ''
-
-
+nmap <expr> <C-enter> &diff ? ':echo 'hi'' : ''
