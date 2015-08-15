@@ -8,4 +8,11 @@ xmonad/*x86*
 atom/storage
 atom/packages
 atom/.apm
-
+/bin/db-dev.sh
+/bin/db-etho.sh
+/bin/db-local.sh
+/bin/db-pp.sh
+/bin/db-prod.sh
+/bin/dump.dump
+/bin/prod-dump.sh
+/bin/restore-to-dev.sh
