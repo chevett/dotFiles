@@ -182,9 +182,6 @@ set statusline+=%c,		"cursor column
 set statusline+=%l/%L	"cursor line/total lines
 set statusline+=\ %P	"percent through file
 
-map <Leader>w <Plug>(easymotion-w)
-map <Leader>b <Plug>(easymotion-b)
-
 nnoremap ; :
 inoremap kj <Esc>
 noremap <Left>	<NOP>
