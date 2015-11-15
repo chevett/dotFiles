@@ -3,10 +3,8 @@
 	"unused": true,
 	"node" : true,
 	"expr" : true,
-    "browser" : true,	
+	"browser" : true,
 	"globals": {
-		"anx": false,
-		"ANX": false,
 		"console": false,
 		"describe": false,
 		"it": false,

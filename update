@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 if [ -x "$dirname/private/update" ]; then
 	source $dirname/private/update
 fi
@@ -29,8 +28,6 @@ ln -sf $dirname/xmobarrc ~/.xmobarrc
 ln -snf $dirname/vim/colors ~/.vim/colors
 ln -snf $dirname/vim/after ~/.vim/after
 ln -snf $dirname/bin ~/bin
-ln -snf $dirname/xmonad ~/.xmonad
-ln -snf $dirname/atom ~/.atom
 
 
 source ~/.bash_profile

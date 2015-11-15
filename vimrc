@@ -96,7 +96,6 @@ Plugin 'git@github.com:Lokaltog/vim-easymotion.git'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'git@github.com:marijnh/tern_for_vim.git'
 Plugin 'git@github.com:mileszs/ack.vim.git'
-Plugin 'git@github.com:guns/xterm-color-table.vim.git'
 Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:scrooloose/syntastic.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
@@ -106,8 +105,6 @@ Plugin 'git@github.com:tpope/vim-fugitive.git'
 Plugin 'git@github.com:christoomey/vim-tmux-navigator.git'
 Plugin 'git@github.com:tpope/vim-commentary.git'
 Plugin 'git@github.com:groenewege/vim-less.git'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 let g:vim_json_syntax_conceal = 0
 Plugin 'elzr/vim-json'
@@ -157,22 +154,6 @@ function! MyDiffToggle()
   bd
 
 endfunction
-
-"highlight DiffAdd	  cterm=bold ctermfg=87 ctermbg=22 gui=none guifg=bg guibg=Red
-"highlight DiffDelete cterm=bold ctermfg=236 ctermbg=52 gui=none guifg=bg guibg=Red
-"highlight DiffChange cterm=bold ctermfg=99 ctermbg=17 gui=none guifg=bg guibg=Red
-"highlight DiffText   cterm=bold ctermfg=233 ctermbg=88 gui=none guifg=bg guibg=Red
-"hi MatchParen cterm=NONE ctermbg=169
-"hi CursorLine	cterm=NONE ctermbg=235
-"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"hi PMenu cterm=NONE ctermbg=39 ctermfg=233 guibg=darkred guifg=white
-"hi PMenuSel cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-""hi LineNr cterm=NONE ctermfg=23
-"hi NonText ctermfg=234
-"hi SpecialKey ctermfg=234
-"hi Search ctermbg=49 ctermfg=233
-"hi Visual  ctermfg=232 ctermbg=198 gui=none
-"hi SignColumn ctermbg=NONE
 
 set statusline=%t		"tail of the filename
 set statusline+=%m		"modified flag
