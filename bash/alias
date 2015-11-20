@@ -14,10 +14,5 @@ alias list-terminals='find /usr/share/terminfo -type f'
 alias show-path="echo $PATH | tr ':' '\n'";
 alias is_login_shell='shopt -q login_shell && echo "Login shell" || echo "No login shell"'
 
-if is_osx; then
-	alias find=gfind
-	alias sed=gsed
-else
-	alias pbcopy='xclip -selection clipboard'
-	alias pbpaste='xclip -selection clipboard -o'
-fi
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
