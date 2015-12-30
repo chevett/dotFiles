@@ -1,7 +1,10 @@
 #! /usr/bin/env bash
 
+function calc() {
+    bc -l <<< "$@"
+}
 function where(){
-	gfind . -iname "*$1*"
+	find . -iname "*$1*"
 }
 
 function cm() { git commit -am "$*"; }
@@ -121,7 +124,7 @@ function tmx(){
 function replaceAll(){
 	echo $PWD
 	echo "s/$1/$2"
-	find "$PWD" -type f -iname '*.py'  -exec gsed -i "s/$1/$2/" {} \;
+	find "$PWD" -type f -iname '*.py'  -exec sed -i "s/$1/$2/" {} \;
 }
 
 # get the parent pid from a pid
