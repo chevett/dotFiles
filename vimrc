@@ -35,6 +35,7 @@ autocmd InsertLeave * :call SetNormalOptions()
 autocmd BufNewFile,BufRead *.json set ft=json
 autocmd BufNewFile,BufRead *.less set ft=less
 autocmd BufNewFile,BufRead *.vash set ft=html
+autocmd BufWritePost * redraw!
 
 au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/colors/yaml.vim
 
@@ -163,7 +164,7 @@ set statusline+=%c,		"cursor column
 set statusline+=%l/%L	"cursor line/total lines
 set statusline+=\ %P	"percent through file
 
-nnoremap ; :
+"nnoremap ; :
 inoremap kj <Esc>
 noremap <Left>	<NOP>
 noremap <Right> <NOP>
