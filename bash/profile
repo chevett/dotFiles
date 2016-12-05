@@ -4,21 +4,24 @@ HISTSIZE=10000
 export EDITOR='vim'
 
 set -o vi
+complete -C aws_completer aws
+gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
 
 PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
 PATH=/usr/local/share/python:$PATH
 
-if [ -d "$HOME/tools/android-sdk" ]; then
-	PATH=~/tools/android-sdk/platform-tools:$PATH
-	PATH=~/tools/android-sdk/tools:$PATH
+if [ -d "$HOME/bin/android-sdk" ]; then
+	PATH=~/bin/android-sdk/platform-tools:$PATH
+	PATH=~/bin/android-sdk/tools:$PATH
 fi
 
-export JAVA_HOME=/usr/lib/jvm/java0.7.0-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
 
 function __runIfPresent(){
 	[[ -s "$1" ]] && source "$1";
 }
+
 for file in ~/.bash_*; do
 	if [[ ! $file =~ bash_profile|bash_history$ ]]; then
 		__runIfPresent "$file"
