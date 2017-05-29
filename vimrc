@@ -54,25 +54,6 @@ call SetNormalOptions()
 syntax on
 filetype off				   " required!
 
-let NERDTreeIgnore = ['\.pyc$']
-let NERDTreeChDirMode=2
-let NERDTreeWinPos='right'
-let NERDTreeHighlightCursorline=1
-let NERDTreeAutoDeleteBuffer=1
-let NERDTreeMinimalUI=1
-
-nmap <silent> <Leader>l :call g:MyNERDTreeToggle()<CR>
-nmap <silent> <Leader>L :call MyNERDTreeFind()<CR>
-
-function! g:MyNERDTreeToggle()
-  try | NERDTreeToggle | catch | silent! NERDTree | endtry
-endfunction
-
-function! g:MyNERDTreeFind()
-  try | NERDTreeToggle | catch | silent! NERDTree | endtry
-  NERDTreeFind
-endfunction
-
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
 set wildignore+=node_modules,.git
 
@@ -97,7 +78,6 @@ Plugin 'git@github.com:Lokaltog/vim-easymotion.git'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'git@github.com:marijnh/tern_for_vim.git'
 Plugin 'git@github.com:mileszs/ack.vim.git'
-Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:scrooloose/syntastic.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:jelera/vim-javascript-syntax.git'
