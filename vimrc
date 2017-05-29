@@ -1,3 +1,7 @@
+ab fuc function nnnn() {}
+ab rec const _ = require('lodash');
+ab ife if (true) {} else {}
+
 let mapleader=","
 let t_Co=256
 let g:tmux_navigator_no_mappings=1
