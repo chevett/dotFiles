@@ -1,18 +1,7 @@
 #! /usr/bin/env bash
 
-alias ll="ls -lh --color"
-alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
-alias jpp='python -mjson.tool | less'
-alias jpp2='prettyjson | less -R'
-alias dif='git --no-pager diff'
-alias lastcmd="history | tail -n 2 | head -n 1 | gsed -r 's/^\s+[0-9]+\s+//g'  | pbcopy"
-alias j=json
-alias patch='git format-patch master --stdout | pbcopy'
-
-# random stuff really just for reference when i forget
-alias list-terminals='find /usr/share/terminfo -type f'
-alias show-path="echo $PATH | tr ':' '\n'";
-alias is_login_shell='shopt -q login_shell && echo "Login shell" || echo "No login shell"'
-
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+alias ll="ls -lh --color"
+alias lastcmd="history | tail -n 2 | head -n 1 | sed -r 's/^\s+[0-9]+\s+//g'  | pbcopy"
