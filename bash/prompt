@@ -22,26 +22,17 @@ highlight_error()
 highlight_exit_code()
 {
     exit_code=$?
-	# green=$(tput setaf 2)
-	# blue=$(tput setaf 4)
-	# bold=$(tput bold)
-	# reset=$(tput sgr0)
     if [ $exit_code -ne 0 ]
     then
-		:
-		#echo -e "\[$green$bold\]\h\[$reset\]:\[$blue$bold\]\w\[$reset\]\$ "
-        #echo -e "\e[97;48;5;196m $exit_code \e[0m"
         echo  " $exit_code !!!"
     fi
 }
 
-if hash date 2>/dev/null; then
-	if [ -f /etc/bash_completion ]; then
-		source /etc/bash_completion
-		source /etc/bash_completion.d/git-prompt
-		GIT_PS1_SHOWUPSTREAM="auto"
-		GIT_PS1_SHOWCOLORHINTS="yes"
-		GIT_PS1_SHOWUNTRACKEDFILES='yes'
-		export PROMPT_COMMAND='__git_ps1 "\u@\h \W" "$(highlight_exit_code) $ ";'
-	fi
+if [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion
+	source /etc/bash_completion.d/git-prompt
+	GIT_PS1_SHOWUPSTREAM="auto"
+	GIT_PS1_SHOWCOLORHINTS="yes"
+	GIT_PS1_SHOWUNTRACKEDFILES='yes'
+	export PROMPT_COMMAND='__git_ps1 "\u@\h \W" "$(highlight_exit_code) $ ";'
 fi
