@@ -33,7 +33,9 @@ set t_vb=
 set updatetime=250
 syntax enable
 let g:syntastic_enable_highlighting = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
+au BufWritePost * redraw!
 autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
 autocmd BufNewFile,BufRead *.json set ft=json
