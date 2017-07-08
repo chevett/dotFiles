@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
+dirname="$PWD"
+
 if [ -x "$dirname/private/update" ]; then
 	source $dirname/private/update
 fi
 
-dirname="$PWD"
 
 mkdir -p ~/.config
 mkdir -p ~/.vim
