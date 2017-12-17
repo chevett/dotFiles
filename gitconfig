@@ -43,3 +43,5 @@
 	diff = false
 [push]
 	default = simple
+[cola]
+	spellcheck = false
