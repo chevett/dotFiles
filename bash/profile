@@ -9,6 +9,7 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
 
 PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
+PATH=~/private-bin:$PATH
 PATH=/usr/local/share/python:$PATH
 
 if [ -d "$HOME/bin/android-sdk" ]; then
