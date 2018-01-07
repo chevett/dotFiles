@@ -10,7 +10,10 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
 PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
 PATH=~/private-bin:$PATH
+PATH=~/code/dotFiles/private/scripts:$PATH
 PATH=/usr/local/share/python:$PATH
+PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
 
 if [ -d "$HOME/bin/android-sdk" ]; then
 	PATH=~/bin/android-sdk/platform-tools:$PATH
