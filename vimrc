@@ -8,14 +8,13 @@ let g:tmux_navigator_no_mappings=1
 set tags=tags;~
 set cursorline
 set number
-set hidden 
+set hidden
 set autoindent
 set autoread
 set smartcase
 set ignorecase
-set nocompatible 
+set nocompatible
 set backspace=2 " make backspace work like most other apps
-"set grepprg=ack
 set omnifunc=syntaxcomplete#Complete
 set mouse=nirc
 set shiftwidth=4
@@ -26,8 +25,8 @@ set noswapfile
 set scrolloff=4
 set nowrap
 set incsearch
-set sidescroll=1 
-set noerrorbells 
+set sidescroll=1
+set noerrorbells
 set novisualbell
 set t_vb=
 set updatetime=250
@@ -47,12 +46,12 @@ au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/colors/yaml.vim
 
 function SetInsertOptions()
 	set nocursorline
-	" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-	" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	hi StatusLine ctermbg=232  ctermfg=40
 endfunction
 
 function SetNormalOptions()
 	set cursorline
+	hi StatusLine ctermbg=White ctermfg=33
 endfunction
 
 call SetNormalOptions()
@@ -68,13 +67,11 @@ let g:CommandTMatchWindowAtTop=0
 let g:CommandTMaxHeight=8
 let g:CommandTMinHeight=8
 let g:CommandTTraverseSCM='pwd'
-"let g:CommandTMatchWindowReverse=1
 
 exec 'set viminfo=%,' . &viminfo
 
 
-
-filetype off	
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -94,7 +91,7 @@ Plugin 'git@github.com:jelera/vim-javascript-syntax.git'
 let g:vim_json_syntax_conceal = 0
 Plugin 'elzr/vim-json'
 call vundle#end()
-filetype off	
+filetype off
 
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
@@ -117,19 +114,35 @@ endfunction "call AutoHighlightToggle() "=======================================
 
 
 " Enable omni completion.
- autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
- autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
- autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
  filetype plugin indent on	   " required!
 
 set laststatus=2
 
- " highlight tabs and trailing spaces
- set listchars=tab:>-,trail:~,extends:>,precedes:<
- set list
+" highlight tabs and trailing spaces
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+set list
 
 
+set statusline=%F		"tail of the filename
+set statusline+=%m		"modified flag
+set statusline+=%r		"read only flag
+set statusline+=%=		"left/right separator
+set statusline+=%c,		"cursor column
+set statusline+=%l/%L	"cursor line/total lines
+set statusline+=\ %P	"percent through file
+
+inoremap kj <Esc>
+noremap <Left>	<NOP>
+noremap <Right> <NOP>
+noremap <Up>	<NOP>
+noremap <Down>	<NOP>
+
+
+" my diff viewer
 function! MyDiffToggle()
   if (&diff == 0 || getbufvar('#', '&diff') == 0)
 		\ && (bufname('%') !~ '^fugitive:' && bufname('#') !~ '^fugitive:')
@@ -139,31 +152,6 @@ function! MyDiffToggle()
   bd
 
 endfunction
-
-set statusline=%t		"tail of the filename
-set statusline+=%m		"modified flag
-set statusline+=%r		"read only flag
-set statusline+=%=		"left/right separator
-set statusline+=%c,		"cursor column
-set statusline+=%l/%L	"cursor line/total lines
-set statusline+=\ %P	"percent through file
-
-"nnoremap ; :
-inoremap kj <Esc>
-noremap <Left>	<NOP>
-noremap <Right> <NOP>
-noremap <Up>	<NOP>
-noremap <Down>	<NOP>
-
-nnoremap <Leader>f :Ack --smart-case<space>
-
-nnoremap <Leader>m :TernDef<CR>
-nnoremap <Leader>u :TernRefs<CR>
-nnoremap <Leader>r :TernRename<CR>
-
-nnoremap <Leader>O O<Esc>
-nnoremap <Leader>o o<Esc>
-
 nnoremap <Leader>d :call MyDiffToggle()<CR>
 
 " if in diff mode, then hjkl navigates changes and pulls from left or right
