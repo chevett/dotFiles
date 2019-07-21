@@ -127,7 +127,7 @@ set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
 
 
-set statusline=%F		"tail of the filename
+set statusline=%F		"the filename
 set statusline+=%m		"modified flag
 set statusline+=%r		"read only flag
 set statusline+=%=		"left/right separator
