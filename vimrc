@@ -34,6 +34,7 @@ syntax enable
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
+set shell=/bin/bash\ --rcfile\ ~/.bash_profile
 au BufWritePost * redraw!
 autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
