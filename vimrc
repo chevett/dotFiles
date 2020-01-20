@@ -35,6 +35,7 @@ let g:syntastic_enable_highlighting = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
 set shell=/bin/bash\ --rcfile\ ~/.bash_profile
+
 au BufWritePost * redraw!
 autocmd InsertEnter * :call SetInsertOptions()
 autocmd InsertLeave * :call SetNormalOptions()
@@ -160,6 +161,6 @@ nmap <silent> <expr> <C-j> &diff ? ']c' : ':TmuxNavigateDown<cr>'
 nmap <silent> <expr> <C-k> &diff ? '[c' : ':TmuxNavigateUp<cr>'
 nmap <silent> <expr> <C-l> &diff ? ':diffput<CR>' : ':TmuxNavigateRight<cr>'
 nmap <silent> <expr> <C-h> &diff ? ':diffget<CR>' : ':TmuxNavigateLeft<cr>'
-nmap <silent> <expr> <enter> &diff ? 'zR' : ''
+"nmap <silent> <expr> <enter> &diff ? 'zR' : ''
 nmap <expr> <C-enter> &diff ? ':echo 'hi'' : ''
 
