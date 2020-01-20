@@ -154,6 +154,7 @@ function! MyDiffToggle()
   bd
 
 endfunction
+nnoremap <Leader>g :CommandT %:p:h<CR>
 nnoremap <Leader>d :call MyDiffToggle()<CR>
 
 " if in diff mode, then hjkl navigates changes and pulls from left or right
