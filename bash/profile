@@ -13,10 +13,12 @@ PATH=~/private-bin:$PATH
 PATH=~/code/dotFiles/private/scripts:$PATH
 PATH=/usr/local/share/python:$PATH
 PATH="$HOME/.tmuxifier/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 eval "$(tmuxifier init -)"
 
-
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+if [ -d "/opt/android-sdk-linux/cmdline-tools/tools/bin/" ]; then
+   PATH=/opt/android-sdk-linux/cmdline-tools/tools/bin/:$PATH
+fi
 
 function __runIfPresent(){
 	[[ -s "$1" ]] && source "$1";
