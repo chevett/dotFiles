@@ -15,10 +15,6 @@ PATH=/usr/local/share/python:$PATH
 PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
 
-if [ -d "$HOME/bin/android-sdk" ]; then
-	PATH=~/bin/android-sdk/platform-tools:$PATH
-	PATH=~/bin/android-sdk/tools:$PATH
-fi
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 
