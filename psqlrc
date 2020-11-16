@@ -1,2 +1,2 @@
-\pset null '¤'
-\set timezone to 'America/New_York';
+\set null '¤';
+set timezone to 'America/New_York';
