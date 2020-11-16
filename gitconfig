@@ -45,3 +45,5 @@
 	default = simple
 [cola]
 	spellcheck = false
+[pull]
+	ff = only
