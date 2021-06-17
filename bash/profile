@@ -20,6 +20,15 @@ if [ -d "/opt/android-sdk-linux/cmdline-tools/tools/bin/" ]; then
    PATH=/opt/android-sdk-linux/cmdline-tools/tools/bin/:$PATH
 fi
 
+if [ -d "/opt/android-sdk-linux/plaform-tools/" ]; then
+   PATH=/opt/android-sdk-linux/platform-tools/:$PATH
+fi
+
+if [ -d "/opt/balena-cli/" ]; then
+   PATH=/opt/balena-cli/:$PATH
+   export NODE_EXTRA_CA_CERTS='/usr/local/share/ca-certificates/ca.crt'
+fi
+
 export ANDROID_HOME=/opt/android-sdk-linux
 export ANDROID_SDK_ROOT=/opt/android-sdk-linux/
 
