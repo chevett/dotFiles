@@ -26,7 +26,7 @@ fi
 
 if [ -d "/opt/balena-cli/" ]; then
    PATH=/opt/balena-cli/:$PATH
-   export NODE_EXTRA_CA_CERTS='/usr/local/share/ca-certificates/ca.crt'
+   export NODE_EXTRA_CA_CERTS='/usr/local/share/ca-certificates/super.crt'
 fi
 
 export ANDROID_HOME=/opt/android-sdk-linux
