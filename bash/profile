@@ -20,7 +20,7 @@ if [ -d "/opt/android-sdk-linux/cmdline-tools/tools/bin/" ]; then
    PATH=/opt/android-sdk-linux/cmdline-tools/tools/bin/:$PATH
 fi
 
-if [ -d "/opt/android-sdk-linux/plaform-tools/" ]; then
+if [ -d "/opt/android-sdk-linux/platform-tools/" ]; then
    PATH=/opt/android-sdk-linux/platform-tools/:$PATH
 fi
 
@@ -43,5 +43,6 @@ for file in ~/.bash_*; do
 	fi
 done
 
+echo 'hey mike, you are doing a great job.'
 
 __runIfPresent "$HOME/.sdkman/bin/sdkman-init.sh"
