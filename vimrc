@@ -129,6 +129,15 @@ set laststatus=2
 set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
 
+" gitgutter
+set signcolumn=yes
+set signcolumn=number
+let g:gitgutter_sign_allow_clobber = 1
+let g:gitgutter_set_sign_backgrounds = 0
+highlight clear SignColumn
+highlight GitGutterAdd    guifg=#009900 ctermfg=3
+highlight GitGutterChange guifg=#bbbb00 ctermfg=6
+highlight GitGutterDelete guifg=#ff2222 ctermfg=14
 
 set statusline=%F		"the filename
 set statusline+=%m		"modified flag
