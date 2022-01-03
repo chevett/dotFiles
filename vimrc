@@ -30,6 +30,7 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set updatetime=250
+set exrc  " enable directory-level .vimrc files
 syntax enable
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_javascript_checkers = ['eslint']
