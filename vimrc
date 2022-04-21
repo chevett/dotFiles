@@ -90,6 +90,8 @@ Plugin 'git@github.com:tpope/vim-commentary.git'
 
 Plugin 'git@github.com:groenewege/vim-less.git'
 Plugin 'git@github.com:jelera/vim-javascript-syntax.git'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 
 let g:vim_json_syntax_conceal = 0
 Plugin 'elzr/vim-json'
