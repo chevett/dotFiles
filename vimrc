@@ -80,7 +80,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'L9'
-Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'git@github.com:scrooloose/syntastic.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:ervandew/supertab.git'
