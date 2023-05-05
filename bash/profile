@@ -16,22 +16,15 @@ PATH="$HOME/.tmuxifier/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 eval "$(tmuxifier init -)"
 
-if [ -d "/opt/android-sdk-linux/cmdline-tools/tools/bin/" ]; then
-   PATH=/opt/android-sdk-linux/cmdline-tools/tools/bin/:$PATH
-fi
-
-if [ -d "/opt/android-sdk-linux/platform-tools/" ]; then
-   PATH=/opt/android-sdk-linux/platform-tools/:$PATH
-fi
 
 if [ -d "/opt/balena-cli/" ]; then
    PATH=/opt/balena-cli/:$PATH
    export NODE_EXTRA_CA_CERTS='/usr/local/share/ca-certificates/super.crt'
 fi
 
-export ANDROID_HOME=/opt/android-sdk-linux
-export ANDROID_SDK_ROOT=/opt/android-sdk-linux/
-
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 function __runIfPresent(){
 	[[ -s "$1" ]] && source "$1";
