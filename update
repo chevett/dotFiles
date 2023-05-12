@@ -37,11 +37,15 @@ ln -snf $dirname/vim/colors ~/.vim/colors
 ln -snf $dirname/vim/after ~/.vim/after
 ln -snf $dirname/bin ~/bin
 
+mkdir -p ~/.config/lvim
+ln -sf $dirname/lvim.lua ~/.config/lvim/config.lua
+
+
 
 source ~/.bash_profile
 
 
-vim +BundleInstall +qall
+# vim +BundleInstall +qall
 
 if [ -x "$dirname/private/update" ]; then
 	source $dirname/private/update
