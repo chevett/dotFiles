@@ -26,6 +26,12 @@ lvim.plugins = {
 }
 
 require("telescope").setup {
+	defaults = {
+		file_ignore_patterns = {
+			"node_modules",
+		},
+		disable_devicons = true,
+	},
 	pickers = {
 		previewer = false,
 		git_files = {
@@ -33,7 +39,6 @@ require("telescope").setup {
 			previewer = false,
 		}
 	}
-
 }
 
 local cmp = require('cmp')
@@ -63,10 +68,13 @@ vim.opt.listchars:append "precedes:<"
 
 
 lvim.leader = ","
--- add your own keymapping
-lvim.keys.normal_mode["<leader>t"] = ":Telescope git_files previewer=false<cr>"
+lvim.keys.normal_mode["<leader>t"] = ":Telescope git_files prompt_title=\"\" previewer=false<cr>"
+lvim.builtin.lualine.style = "lvim"
+-- lvim.builtin.lualine.active = false
+lvim.builtin.nvimtree.active = false
 
 
+lvim.use_icons = false
 
 -- general
 lvim.log.level = "info"
@@ -76,7 +84,6 @@ lvim.format_on_save = {
 	timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = false
 
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 
