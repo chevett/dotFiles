@@ -25,6 +25,16 @@ lvim.plugins = {
 	}
 }
 
+require("telescope").setup {
+	pickers = {
+		previewer = false,
+		git_files = {
+			theme = "dropdown",
+			previewer = false,
+		}
+	}
+
+}
 
 local cmp = require('cmp')
 
@@ -54,7 +64,8 @@ vim.opt.listchars:append "precedes:<"
 
 lvim.leader = ","
 -- add your own keymapping
-lvim.keys.normal_mode["<leader>t"] = ":Telescope git_files<cr>"
+lvim.keys.normal_mode["<leader>t"] = ":Telescope git_files previewer=false<cr>"
+
 
 
 -- general
