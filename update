@@ -37,8 +37,9 @@ ln -snf $dirname/vim/colors ~/.vim/colors
 ln -snf $dirname/vim/after ~/.vim/after
 ln -snf $dirname/bin ~/bin
 
-mkdir -p ~/.config/lvim
-ln -sf $dirname/lvim.lua ~/.config/lvim/config.lua
+mkdir -p ~/.config/nvim
+ln -sf $dirname/nvim/init.lua ~/.config/nvim/init.lua
+ln -snf $dirname/nvim/lua ~/.config/nvim/lua
 
 
 
