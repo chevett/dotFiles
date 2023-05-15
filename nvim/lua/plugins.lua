@@ -1,5 +1,6 @@
 
 
+
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
@@ -31,10 +32,12 @@ require('packer').startup(function(use)
 		end,
 	}
 
+
 	use {
 		'lewis6991/gitsigns.nvim',
 		config = function()
-			require('gitsigns').setup()
+			require('gitsigns').setup({
+			})
 		end,
 	}
 
@@ -45,15 +48,18 @@ require('packer').startup(function(use)
 		end
 	}
 
-	use({
+	-- themes
+	use 'folke/tokyonight.nvim'
+	use {
 		'projekt0n/github-nvim-theme',
 		config = function()
 			require('github-theme').setup({
 			})
 
-			vim.cmd('colorscheme github_dark_default')
+			-- vim.cmd('colorscheme github_dark_default')
+			vim.cmd('colorscheme tokyonight')
 		end
-	})
+	}
 
 end)
 
