@@ -1,15 +1,20 @@
 function map(mode, shortcut, command)
-	vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+	vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
-function nmap(shortcut, command)
-	map('n', shortcut, command)
-end
+map('i', 'kj', '<esc>')
 
-function imap(shortcut, command)
-	map('i', shortcut, command)
-end
+local builtin = require('telescope.builtin')
+vim.g.mapleader = " "
+
+map('n', ',t', ':Telescope find_files results_title="" prompt_title="" previewer=false prompt_prefix=🔍<cr>')
+-- map('n', ',g', ':Telescope find_files find_command=rg results_title="" prompt_title="" previewer=false prompt_prefix=🔍<cr>')
 
 
-imap('kj', '<esc>')
-nmap(',t', ':Telescope find_files results_title="" prompt_title="" previewer=false<cr>')
+local find_files_opt = {
+	results_title = '',
+	prompt_title = '',
+	previewer = false,
+}
+
+-- vim.keymap.set('n', ',t', builtin.find_files(find_files_opt), { noremap = true, silent = true })
