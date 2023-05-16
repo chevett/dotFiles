@@ -6,6 +6,7 @@ require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'
 	use 'github/copilot.vim'
 	use 'sindrets/diffview.nvim'
+	use 'dense-analysis/ale' -- eslint
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
