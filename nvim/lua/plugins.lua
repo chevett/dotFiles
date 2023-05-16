@@ -4,6 +4,7 @@
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'tpope/vim-fugitive'
+	use 'github/copilot.vim'
 	use 'sindrets/diffview.nvim'
 
 	use {
