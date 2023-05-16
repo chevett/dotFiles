@@ -10,7 +10,9 @@ require('packer').startup(function(use)
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		requires = { { 'nvim-lua/plenary.nvim' } },
+		requires = {
+			{ 'nvim-lua/plenary.nvim' }
+		},
 		config = function()
 			require("telescope").setup({
 				defaults = {
@@ -35,7 +37,6 @@ require('packer').startup(function(use)
 			})
 		end,
 	}
-
 
 	use {
 		'lewis6991/gitsigns.nvim',
