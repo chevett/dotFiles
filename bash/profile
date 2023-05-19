@@ -12,16 +12,18 @@ PATH=~/bin:$PATH
 PATH=~/private-bin:$PATH
 PATH=~/code/dotFiles/private/scripts:$PATH
 PATH=/usr/local/share/python:$PATH
-PATH="$HOME/.tmuxifier/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 eval "$(tmuxifier init -)"
 
-if [ -d "/opt/android-sdk-linux/cmdline-tools/tools/bin/" ]; then
-   PATH=/opt/android-sdk-linux/cmdline-tools/tools/bin/:$PATH
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+
+if [ -d "$ANDROID_HOME/tools/bin/" ]; then
+   PATH=$ANDROID_HOME/tools/bin/:$PATH
 fi
 
-if [ -d "/opt/android-sdk-linux/platform-tools/" ]; then
-   PATH=/opt/android-sdk-linux/platform-tools/:$PATH
+if [ -d "$ANDROID_HOME/platform-tools/" ]; then
+   PATH=$ANDROID_HOME/platform-tools/:$PATH
 fi
 
 if [ -d "/opt/balena-cli/" ]; then
@@ -29,8 +31,6 @@ if [ -d "/opt/balena-cli/" ]; then
    export NODE_EXTRA_CA_CERTS='/usr/local/share/ca-certificates/super.crt'
 fi
 
-export ANDROID_HOME=/opt/android-sdk-linux
-export ANDROID_SDK_ROOT=/opt/android-sdk-linux/
 
 
 function __runIfPresent(){
