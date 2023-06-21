@@ -4,6 +4,7 @@ require 'keys'
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
+vim.opt.ignorecase = true
 vim.opt.expandtab = false
 vim.opt.number = true
 vim.opt.cursorline = true
