@@ -13,7 +13,6 @@ PATH=~/private-bin:$PATH
 PATH=~/code/dotFiles/private/scripts:$PATH
 PATH=/usr/local/share/python:$PATH
 PATH="$HOME/.local/bin:$PATH"
-eval "$(tmuxifier init -)"
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
