@@ -1,5 +1,5 @@
 [alias]
-	cm = commit am
+	cm = commit -m
 	sup = submodule update --init --recursive
 	hash = rev-parse
 	co = checkout
@@ -47,3 +47,5 @@
 	spellcheck = false
 [pull]
 	ff = only
+[init]
+	defaultBranch = master
