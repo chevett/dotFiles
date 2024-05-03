@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
 	use 'dense-analysis/ale' -- eslint
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.6',
+		'nvim-telescope/telescope.nvim',
 		requires = {
 			{ 'nvim-lua/plenary.nvim' }
 		},
