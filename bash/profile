@@ -31,6 +31,8 @@ if [ -d "/opt/balena-cli/" ]; then
    export NODE_EXTRA_CA_CERTS='/usr/local/share/ca-certificates/super.crt'
 fi
 
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 function __runIfPresent(){
