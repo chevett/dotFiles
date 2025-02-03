@@ -2,6 +2,17 @@
 
 dirname="$PWD"
 
+sudo apt install -y \
+	curl \
+	wget \
+	xclip \
+	tmux \
+	git \
+	git-cola \
+	aptitude \
+	silversearcher-ag \
+	postgresql-client\
+	;
 mkdir -p ~/.config
 mkdir -p ~/.vim
 
