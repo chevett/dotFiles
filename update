@@ -6,6 +6,7 @@ sudo apt install -y \
 	curl \
 	wget \
 	xclip \
+	vim \
 	tmux \
 	git \
 	git-cola \
