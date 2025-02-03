@@ -21,13 +21,6 @@ export NVM_DIR="$HOME/.nvm" && (
 ) && \. "$NVM_DIR/nvm.sh"
 
 mkdir -p ~/.config
-mkdir -p ~/.vim
-
-# if this is the first run we are going to need to install vundle
-if [[ ! -d "$HOME/.vim/bundle/Vundle.vim" ]];then
-	mkdir -p "$HOME/.vim/bundle";
-	git clone https://github.com/gmarik/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
-fi
 
 for file in ./bash/*; do
 	name=$(echo "$file" | grep -o '[^\/]*$');
@@ -55,11 +48,8 @@ ln -sf $dirname/nvim/init.lua ~/.config/nvim/init.lua
 ln -snf $dirname/nvim/lua ~/.config/nvim/lua
 
 
-
 source ~/.bash_profile
 
-
-# vim +BundleInstall +qall
 
 if [ -x "$dirname/private/update" ]; then
 	source $dirname/private/update
