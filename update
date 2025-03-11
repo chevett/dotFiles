@@ -29,16 +29,12 @@ for file in ./bash/*; do
 done
 
 ln -sf $dirname/vimrc ~/.vimrc
-ln -sf $dirname/dir_colors ~/.dir_colors
 ln -sf $dirname/gitconfig ~/.gitconfig
 ln -sf $dirname/gitignore_global ~/.gitignore_global
 ln -sf $dirname/ackrc ~/.ackrc
 ln -sf $dirname/psqlrc ~/.psqlrc
-ln -sf $dirname/jshintrc ~/.jshintrc
 ln -sf $dirname/tmux.conf ~/.tmux.conf
 ln -sf $dirname/rtorrent.rc ~/.rtorrent.rc
-ln -sf $dirname/powerline ~/.config/
-ln -sf $dirname/xmobarrc ~/.xmobarrc
 
 ln -snf $dirname/vim/colors ~/.vim/colors
 ln -snf $dirname/vim/after ~/.vim/after
