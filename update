@@ -40,13 +40,13 @@ ln -sf $dirname/psqlrc ~/.psqlrc
 ln -sf $dirname/tmux.conf ~/.tmux.conf
 ln -sf $dirname/rtorrent.rc ~/.rtorrent.rc
 
-ln -snf $dirname/vim/colors ~/.vim/colors
-ln -snf $dirname/vim/after ~/.vim/after
 ln -snf $dirname/bin ~/bin
 
 mkdir -p ~/.config/nvim
 ln -sf $dirname/nvim/init.lua ~/.config/nvim/init.lua
 ln -snf $dirname/nvim/lua ~/.config/nvim/lua
+ln -snf $dirname/nvim/plugin ~/.config/nvim/plugin
+ln -snf $dirname/nvim/after ~/.config/nvim/after
 
 
 source ~/.bash_profile
