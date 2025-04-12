@@ -13,6 +13,7 @@ sudo apt install -y \
 	aptitude \
 	silversearcher-ag \
 	postgresql-client\
+	meld \
 	;
 
 export NVM_DIR="$HOME/.nvm";
