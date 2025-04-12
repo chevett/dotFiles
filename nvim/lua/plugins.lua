@@ -26,26 +26,13 @@ return require('packer').startup(function(use)
 			{ 'nvim-lua/plenary.nvim' }
 		},
 		config = function()
-			require("telescope").setup({
+			require('telescope').setup({
 				defaults = {
-					previewer = false,
 					file_ignore_patterns = {
-						"dist",
-						"node_modules",
+						'node_modules/**',
+						'dist/**',
 					},
-					disable_devicons = true,
 				},
-				pickers = {
-					previewer = false,
-					git_files = {
-						theme = "dropdown",
-						previewer = false,
-					},
-					find_files = {
-						previewer = false,
-						prompt_prefix=🔍,
-					}
-				}
 			})
 		end,
 	}

@@ -6,12 +6,15 @@ end
 map('i', 'kj', '<esc>')
 
 local builtin = require('telescope.builtin')
-vim.g.mapleader = " "
-
-map('n', ',t', function()
-	return ':Telescope find_files results_title="" prompt_title="" previewer=false prompt_prefix=🔍<cr>'
-end, { expr = true })
-
+local telescopeThemes = require('telescope.themes')
+vim.g.mapleader = ","
+vim.keymap.set('n', '<leader>t',
+	function() 
+		local theme = telescopeThemes.get_ivy({})
+		theme.previewer = false
+		theme.prompt_prefix = '🔍 '
+		builtin.find_files(theme)
+	end, {})
 
 local myDiffOpened = false
 map('n', ',d', function()
@@ -23,6 +26,8 @@ map('n', ',d', function()
 		return ':DiffviewOpen<cr>'
 	end
 end, { expr = true })
+
+
 
 local myX = true
 map('n', ',x', function()
