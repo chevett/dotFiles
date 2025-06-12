@@ -74,28 +74,28 @@ let g:CommandTTraverseSCM='pwd'
 exec 'set viminfo=%,' . &viminfo
 
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'L9'
-Plugin 'git@github.com:scrooloose/syntastic.git'
-Plugin 'git@github.com:airblade/vim-gitgutter.git'
-Plugin 'git@github.com:ervandew/supertab.git'
-Plugin 'git@github.com:tpope/vim-fugitive.git'
-Plugin 'git@github.com:christoomey/vim-tmux-navigator.git'
-Plugin 'git@github.com:tpope/vim-commentary.git'
-
-Plugin 'git@github.com:groenewege/vim-less.git'
-Plugin 'git@github.com:jelera/vim-javascript-syntax.git'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-
-let g:vim_json_syntax_conceal = 0
-Plugin 'elzr/vim-json'
-call vundle#end()
-filetype off
+" filetype off
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+"
+" Plugin 'VundleVim/Vundle.vim'
+" Plugin 'L9'
+" Plugin 'git@github.com:scrooloose/syntastic.git'
+" Plugin 'git@github.com:airblade/vim-gitgutter.git'
+" Plugin 'git@github.com:ervandew/supertab.git'
+" Plugin 'git@github.com:tpope/vim-fugitive.git'
+" Plugin 'git@github.com:christoomey/vim-tmux-navigator.git'
+" Plugin 'git@github.com:tpope/vim-commentary.git'
+"
+" Plugin 'git@github.com:groenewege/vim-less.git'
+" Plugin 'git@github.com:jelera/vim-javascript-syntax.git'
+" Plugin 'leafgarland/typescript-vim'
+" Plugin 'peitalin/vim-jsx-typescript'
+"
+" let g:vim_json_syntax_conceal = 0
+" Plugin 'elzr/vim-json'
+" call vundle#end()
+" filetype off
 
 "------------------------------------------------------------------------
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
