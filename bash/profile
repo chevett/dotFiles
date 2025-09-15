@@ -26,11 +26,6 @@ if [ -d "$ANDROID_HOME/platform-tools/" ]; then
    PATH=$ANDROID_HOME/platform-tools/:$PATH
 fi
 
-if [ -d "/opt/balena-cli/" ]; then
-   PATH=/opt/balena-cli/:$PATH
-   export NODE_EXTRA_CA_CERTS='/usr/local/share/ca-certificates/super.crt'
-fi
-
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
@@ -44,7 +39,5 @@ for file in ~/.bash_*; do
 		__runIfPresent "$file"
 	fi
 done
-
-echo 'hey mike, you are doing a great job.'
 
 __runIfPresent "$HOME/.sdkman/bin/sdkman-init.sh"
