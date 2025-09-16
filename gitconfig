@@ -28,8 +28,8 @@
         interactive = auto
         status = auto
 [diff]
-	external = git_diff_wrapper
-	pager = cat
+	; external = git_diff_wrapper
+	; pager = cat
 [merge]
 	tool = vimdiff
 [difftool]
