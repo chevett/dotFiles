@@ -3,6 +3,8 @@
 HISTSIZE=10000
 export EDITOR='vim'
 
+PRIVATE_MODULE=~/code/dotFiles/private/
+
 set -o vi
 complete -C aws_completer aws
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
@@ -11,7 +13,6 @@ PATH=/usr/local/sbin:$PATH
 PATH=~/bin:$PATH
 PATH=~/private-bin:$PATH
 PATH=~/private-bin/nvim-linux64/bin:$PATH
-PATH=~/code/dotFiles/private/scripts:$PATH
 PATH=/usr/local/share/python:$PATH
 PATH="$HOME/.local/bin:$PATH"
 
@@ -24,6 +25,10 @@ fi
 
 if [ -d "$ANDROID_HOME/platform-tools/" ]; then
    PATH=$ANDROID_HOME/platform-tools/:$PATH
+fi
+
+if [ -f "$PRIVATE_MODULE/bash_profile.sh" ]; then
+	source "$PRIVATE_MODULE/bash_profile.sh"
 fi
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -39,5 +44,3 @@ for file in ~/.bash_*; do
 		__runIfPresent "$file"
 	fi
 done
-
-__runIfPresent "$HOME/.sdkman/bin/sdkman-init.sh"
