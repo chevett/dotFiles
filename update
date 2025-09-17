@@ -17,6 +17,10 @@ sudo apt install -y \
 	openvpn-systemd-resolved \
 	;
 
+sudo snap install \
+	glow \
+	;
+
 export NVM_DIR="$HOME/.nvm";
 
 if [ ! -d "$NVM_DIR" ]; then
