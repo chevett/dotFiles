@@ -19,6 +19,14 @@ vim.opt.listchars:append "tab:>-"
 vim.opt.listchars:append "trail:~"
 vim.opt.listchars:append "precedes:<"
 
+-- Enable line wrapping for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})
+
 
 
 
