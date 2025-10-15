@@ -15,6 +15,7 @@ PATH=~/private-bin:$PATH
 PATH=~/private-bin/nvim-linux64/bin:$PATH
 PATH=/usr/local/share/python:$PATH
 PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/home/mchevett/go/bin"
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
