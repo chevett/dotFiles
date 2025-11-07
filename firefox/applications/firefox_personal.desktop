@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Firefox_Personal
+Comment=Firefox
+Icon=$HOME/.local/share/icons/firefox-personal.png
+Exec=/usr/bin/firefox -new-instance -P PERSONAL about:blank
+Categories=GNOME;GTK;Network;WebBrowser;

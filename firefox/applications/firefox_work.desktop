@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Firefox_Work
+Comment=Firefox
+Icon=$HOME/.local/share/icons/firefox-work.png
+Exec=/usr/bin/firefox -new-instance -P WORK about:blank
+Categories=GNOME;GTK;Network;WebBrowser;
