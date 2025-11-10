@@ -57,6 +57,8 @@ ln -snf $dirname/nvim/after ~/.config/nvim/after
 # Firefox custom applications and icons
 mkdir -p ~/.local/share/applications
 mkdir -p ~/.local/share/icons
+mkdir -p ~/.local/bin
+cp $dirname/firefox/bin/firefox-*.sh ~/.local/bin/
 cp $dirname/firefox/applications/firefox_work.desktop ~/.local/share/applications/
 cp $dirname/firefox/applications/firefox_personal.desktop ~/.local/share/applications/
 cp $dirname/firefox/icons/firefox-work.png ~/.local/share/icons/
