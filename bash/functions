@@ -15,3 +15,24 @@ function replaceAll(){
 	echo "s/$1/$2"
 	find "$PWD" -type f -iname '*.js'  -exec sed -i "s/$1/$2/" {} \;
 }
+
+function jsx() {
+	# npm install -g @ast-grep/cli
+	local file="$1"
+	local lang="javascript"
+	[[ "$file" == *.ts || "$file" == *.tsx ]] && lang="typescript"
+
+	local patterns=(
+		'export const $NAME = $_'
+		'export let $NAME = $_'
+		'export function $NAME($_) { $$$ }'
+		'export class $NAME { $$$ }'
+		'export type $NAME = $_'
+		'export interface $NAME { $$$ }'
+	)
+
+	for pattern in "${patterns[@]}"; do
+		ast-grep --pattern "$pattern" -l "$lang" --json "$file" 2>/dev/null \
+			| jq -r '.[].metaVariables.single.NAME.text' 2>/dev/null
+	done | sort -u
+}
