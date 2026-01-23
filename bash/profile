@@ -32,12 +32,8 @@ if [ -f "$PRIVATE_MODULE/bash_profile.sh" ]; then
 	source "$PRIVATE_MODULE/bash_profile.sh"
 fi
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
 function __runIfPresent(){
-	[[ -s "$1" ]] && source "$1";
+	[[ -f "$1" && -s "$1" ]] && source "$1";
 }
 
 for file in ~/.bash_*; do
