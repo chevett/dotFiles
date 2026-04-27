@@ -54,16 +54,7 @@ return require('packer').startup(function(use)
 
 	-- themes
 	use 'folke/tokyonight.nvim'
-	use {
-		'projekt0n/github-nvim-theme',
-		config = function()
-			require('github-theme').setup({
-			})
-
-			-- vim.cmd('colorscheme github_dark_default')
-			vim.cmd('colorscheme tokyonight')
-		end
-	}
+	use 'projekt0n/github-nvim-theme'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

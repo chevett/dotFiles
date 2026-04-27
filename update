@@ -54,6 +54,10 @@ ln -snf $dirname/nvim/lua ~/.config/nvim/lua
 ln -snf $dirname/nvim/plugin ~/.config/nvim/plugin
 ln -snf $dirname/nvim/after ~/.config/nvim/after
 
+mkdir -p ~/.config/wezterm
+ln -sf $dirname/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
+ln -snf $dirname/wezterm/colors ~/.config/wezterm/colors
+
 # Firefox custom applications and icons
 mkdir -p ~/.local/share/applications
 mkdir -p ~/.local/share/icons

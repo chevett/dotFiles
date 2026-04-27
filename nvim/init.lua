@@ -1,6 +1,17 @@
 require 'plugins'
 require 'keys'
 
+require('tokyonight').setup({
+	style = 'night',
+	transparent = true,
+	styles = {
+		sidebars = 'transparent',
+		floats = 'transparent',
+	},
+})
+vim.cmd('colorscheme tokyonight-night')
+
+vim.opt.termguicolors = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
