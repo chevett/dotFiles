@@ -17,3 +17,4 @@ atom/.apm
 /bin/prod-dump.sh
 /bin/restore-to-dev.sh
 /bin/android-sdk
+.claude/
