@@ -2,6 +2,19 @@
 
 dirname="$PWD"
 
+# wezterm isn't in Ubuntu's default repos — add the official apt source
+if [ ! -f /etc/apt/sources.list.d/wezterm.list ]; then
+	curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+	echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+	sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+	sudo apt update
+fi
+
+# wezterm-nightly conflicts with the stable wezterm package — drop stable if it's installed
+if dpkg -l wezterm 2>/dev/null | grep -q '^ii'; then
+	sudo apt remove -y wezterm
+fi
+
 sudo apt install -y \
 	curl \
 	wget \
@@ -15,11 +28,24 @@ sudo apt install -y \
 	postgresql-client\
 	meld \
 	openvpn-systemd-resolved \
+	wezterm-nightly \
+	pipx \
+	unzip \
 	;
 
-sudo snap install \
-	glow \
-	;
+# pipx-installed CLI tools
+pipx list --short 2>/dev/null | grep -q '^frogmouth ' || pipx install frogmouth
+
+# JetBrainsMono Nerd Font (used by wezterm)
+if ! fc-list | grep -q "JetBrainsMono Nerd Font"; then
+	tmpdir=$(mktemp -d)
+	curl -fsSL -o "$tmpdir/JetBrainsMono.zip" \
+		https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+	mkdir -p ~/.local/share/fonts/JetBrainsMonoNerdFont
+	unzip -q -o "$tmpdir/JetBrainsMono.zip" -d ~/.local/share/fonts/JetBrainsMonoNerdFont
+	rm -rf "$tmpdir"
+	fc-cache -f ~/.local/share/fonts
+fi
 
 export NVM_DIR="$HOME/.nvm";
 
