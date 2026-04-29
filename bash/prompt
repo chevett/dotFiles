@@ -34,5 +34,5 @@ if [ -f /etc/bash_completion ]; then
 	GIT_PS1_SHOWUPSTREAM="auto"
 	GIT_PS1_SHOWCOLORHINTS="yes"
 	GIT_PS1_SHOWUNTRACKEDFILES='yes'
-	export PROMPT_COMMAND='__git_ps1 "\[\e[2m\]\u@\h\[\e[0m\] \[\e[1;34m\]\W\[\e[0m\]" "\[\e[31m\]$(highlight_exit_code)\[\e[0m\] \[\e[1;35m\]\[\e[0m\] ";'
+	export PROMPT_COMMAND='__git_ps1 "\[\e[2m\]\u@\h\[\e[0m\] \[\e[1;34m\]\W\[\e[0m\]" "\[\e[31m\]$(highlight_exit_code)\[\e[0m\] ";'
 fi
