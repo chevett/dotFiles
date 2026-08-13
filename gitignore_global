@@ -11,3 +11,5 @@ nohup.out
 # ignore all compiled python files
 *.pyc
 *.pyo
+
+**/.claude/settings.local.json
